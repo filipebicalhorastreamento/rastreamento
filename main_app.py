@@ -23,7 +23,7 @@ data = load_data(10000)
 st.subheader('Veículos por situação.')
 situações = data['SITUAÇÃO'].value_counts()
 
-situaçoes2 = data.transpose()
+situaçoes2 = situações.transpose()
 st.bar_chart(situaçoes2)
 st.table(situaçoes2)
 # Some number in the range 0-23
