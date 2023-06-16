@@ -32,9 +32,12 @@ tab2.subheader("A tab with a chart")
 tab2.bar_chart(situações)
 
 st.subheader('LISTA DE VEÍCULOS')
+col1, col2 = st.columns([3, 1])
+col1.subheader("A wide column with a chart")
 # Some number in the range 0-23
 hour_to_filter = st.slider('hour', 0, 23, 17)
-st.write(data)
+col2.subheader("A wide column with a chart")
+col2.write(data)
 #filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
