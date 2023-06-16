@@ -25,8 +25,8 @@ situações = data['SITUAÇÃO'].value_counts()
 situações = data['SITUAÇÃO'].value_counts().to_frame().rename(columns={'SITUAÇÃO': 'ocorrências'})
 #situações = situações.set_index('SITUAÇÃO')
 situações_invertido = situações.T
-st.bar_chart(situações)
-st.table(situações)
+st.bar_chart(situações_invertido)
+st.table(situações_invertido)
 st.write(situações_invertido)
 # Some number in the range 0-23
 hour_to_filter = st.slider('hour', 0, 23, 17)
