@@ -21,7 +21,7 @@ data = load_data(10000)
 
 
 st.subheader('Veículos por situação.')
-situações = data['situação'].value_counts()
+situações = data['SITUAÇÃO'].value_counts()
 
 st.bar_chart(situações)
 st.table(situações)
