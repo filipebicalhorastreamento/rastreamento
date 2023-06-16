@@ -21,9 +21,8 @@ data = load_data(10000)
 
 
 st.subheader('Veículos por situação.')
-
-hist_values = data['SITUAÇÃO'].unique()
-#st.bar_chart(hist_values)
+situações = data['SITUAÇÃO'].value_counts()
+st.bar_chart(situações)
 
 # Some number in the range 0-23
 hour_to_filter = st.slider('hour', 0, 23, 17)
