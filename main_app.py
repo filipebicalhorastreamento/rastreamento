@@ -23,13 +23,15 @@ data = load_data(10000)
 st.subheader('Veículos por situação.')
 situações = data['SITUAÇÃO'].value_counts()
 st.bar_chart(situações)
+situaçoes2= data.transpose()
 
+st.table(situações)
 # Some number in the range 0-23
 hour_to_filter = st.slider('hour', 0, 23, 17)
 #filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
 st.subheader('Map of all pickups at %s:00' % hour_to_filter)
-st.table(situações)
+
 
 if st.checkbox('Mostrar dados'):
     st.subheader('Dataframe')
