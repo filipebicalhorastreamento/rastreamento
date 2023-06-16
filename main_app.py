@@ -22,7 +22,7 @@ data = load_data(10000)
 
 st.subheader('Veículos por situação.')
 
-hist_values = df['Situação].nunique()
+hist_values = df['Situação].unique()
 #st.bar_chart(hist_values)
 
 # Some number in the range 0-23
