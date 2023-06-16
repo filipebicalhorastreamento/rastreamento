@@ -18,15 +18,18 @@ def load_data2(sheets_url):
     return pd.read_csv(csv_url)
 
 data = load_data(10000)
-
+tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
 
 st.subheader('Veículos por situação.')
+
 situações = data['SITUAÇÃO'].value_counts()
 situações = data['SITUAÇÃO'].value_counts().to_frame().rename(columns={'SITUAÇÃO': 'ocorrências'})
 #situações = situações.set_index('SITUAÇÃO')
 situações_invertido = situações.T
-st.write(situações_invertido)
-st.bar_chart(situações)
+tab1.subheader("A tab with the data")
+tab1.write(situações_invertido)
+tab2.subheader("A tab with a chart")
+tab2.bar_chart(situações)
 
 
 # Some number in the range 0-23
