@@ -22,7 +22,7 @@ def load_data2(sheets_url):
 
 @st.cache_data
 def load_data(nrows):
-    data = load_data2(st.secrets["public_gsheets_url"], nrows=nrows)
+    data = load_data2(st.secrets["public_gsheets_url"])
     lowercase = lambda x: str(x).lower()
     data.rename(lowercase, axis='columns', inplace=True)
     data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
