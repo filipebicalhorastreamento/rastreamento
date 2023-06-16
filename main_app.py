@@ -11,19 +11,18 @@ def load_data(nrows):
     data = load_data2(st.secrets["public_gsheets_url"])
     uppercase = lambda x: str(x).upper()
     data.rename(uppercase, axis='columns', inplace=True)
-    situacoes_unicos = data['Situação'].unique()
     return data
 
 def load_data2(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(csv_url)
 
-#data_load_state = st.text('CARREGANDO.')
 data = load_data(10000)
-#data_load_state.text("CONCLUÍDO")
+
 
 st.subheader('Veículos por situação.')
-#hist_values = np.histogram(data[DATE_COLUMN].dt.hour, bins=24, range=(0,24))[0]
+
+hist_values = df['Situação].nunique()
 #st.bar_chart(hist_values)
 
 # Some number in the range 0-23
