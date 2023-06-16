@@ -4,11 +4,6 @@ import numpy as np
 
 st.title('MOBILI - RASTREAMENTO')
 
-DATE_COLUMN = 'date/time'
-DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
-            'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
-sheets_url = ('https://docs.google.com/spreadsheets/d/18s05hCgFEwfCnV4SAzyrG-8EyCcUluMOatJWDoluagI/edit#gid=0')
-
 # Read in data from the Google Sheet.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
 @st.cache_data(ttl=600)
