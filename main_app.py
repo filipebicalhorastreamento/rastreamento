@@ -18,10 +18,10 @@ def load_data2(sheets_url):
     return pd.read_csv(csv_url)
 
 data = load_data(10000)
-tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
+
 
 st.subheader('Veículos por situação.')
-
+tab2, tab1 = st.tabs(["📈 Chart", "🗃 Data"])
 situações = data['SITUAÇÃO'].value_counts()
 situações = data['SITUAÇÃO'].value_counts().to_frame().rename(columns={'SITUAÇÃO': 'ocorrências'})
 #situações = situações.set_index('SITUAÇÃO')
