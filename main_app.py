@@ -22,7 +22,7 @@ data = load_data(10000)
 
 st.subheader('Veículos por situação.')
 situações = data['SITUAÇÃO'].value_counts()
-situações = situações.rename(columns={'count': 'QUANTIDADE'})
+situações = situações.rename({'count': 'ocorrências'}, axis='columns')
 situações_invertido = situações.T
 st.bar_chart(situações)
 st.table(situações)
