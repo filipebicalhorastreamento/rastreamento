@@ -10,7 +10,7 @@ st.title('MOBILI - RASTREAMENTO')
 def load_data(nrows):
     data = load_data2(st.secrets["public_gsheets_url"])
     lowercase = lambda x: str(x).lower()
-    data.rename(lowercase, axis='columns', inplace=True)
+    data.rename(uppercase, axis='columns', inplace=True)
     return data
 
 def load_data2(sheets_url):
