@@ -6,17 +6,6 @@ st.title('MOBILI - RASTREAMENTO')
 # Read in data from the Google Sheet.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
 
-def load_data2(sheets_url):
-    csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
-    return pd.read_csv(csv_url)
-
-#df = load_data(st.secrets["public_gsheets_url"])
-
-# Print results.
-#for row in df.itertuples():
-    #st.write(f"{row.name} has a :{row.pet}:")"""
-
-
 @st.cache_data
 def load_data(nrows):
     data = load_data2(st.secrets["public_gsheets_url"])
@@ -24,15 +13,19 @@ def load_data(nrows):
     data.rename(lowercase, axis='columns', inplace=True)
     return data
 
-data_load_state = st.text('Loading data...')
-data = load_data(10000)
-data_load_state.text("Done! (using st.cache_data)")
+def load_data2(sheets_url):
+    csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
+    return pd.read_csv(csv_url)
 
-if st.checkbox('Show raw data'):
-    st.subheader('Raw data')
+data_load_state = st.text('CARREGANDO.')
+data = load_data(10000)
+data_load_state.text("CONCLUÍDO")
+
+if st.checkbox('Mostrar dados'):
+    st.subheader('Dataframe')
     st.write(data)
 
-st.subheader('Number of pickups by hour')
+st.subheader('Veículos por situação.')
 #hist_values = np.histogram(data[DATE_COLUMN].dt.hour, bins=24, range=(0,24))[0]
 st.bar_chart(hist_values)
 
