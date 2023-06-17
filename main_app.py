@@ -41,8 +41,8 @@ date_to_filter = col1.date_input(
 col1.write(date_to_filter)
 data_frame['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO'])
 data_frame['DATA/HORA ALTERAÇÃO'].dt.strftime('%Y,%M,%D')
-
-situação_filtro = st.selectbox(
+col1.subheader("Situação")
+situação_filtro = col1.selectbox(
     'How would you like to be contacted?',
     ('PENDENTE INSTALAÇÃO', 'AGENDADO', 'RETIRADA'))
 
