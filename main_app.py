@@ -25,8 +25,9 @@ data_frame = data
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 situações = data['SITUAÇÃO'].value_counts().to_frame()
 st.subheader('SITUAÇÕES')
-st.write(situações)
-st.bar_chart(situações)
+tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
+tab1.bar_chart(situações)
+tab2.write(situações)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
