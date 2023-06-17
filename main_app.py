@@ -35,7 +35,8 @@ tab2.bar_chart(situações)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
-data_frame = data[["PLACA", "SITUAÇÃO", "ESTADO CLIENTE", "DATA/HORA ALTERAÇÃO", "NUMERO DE DIAS"]
+data_frame['NÚMERO DE DIAS'] = '0'
+data_frame = data[["PLACA", "SITUAÇÃO", "ESTADO CLIENTE", "DATA/HORA ALTERAÇÃO", "NÚMERO DE DIAS"]
 situação_filtro = col1.selectbox(
     "Situação",
     ('AGENDADO',
