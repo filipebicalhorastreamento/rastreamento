@@ -33,7 +33,7 @@ tab2.write(situações_inv)
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
 data_frame['NÚMERO DE DIAS'] = '0'
-data_frame = data[["PLACA", "SITUAÇÃO", "ESTADO CLIENTE", "DATA/HORA ALTERAÇÃO", "NÚMERO DE DIAS"]]
+data_frame = data[["PLACA", "SITUAÇÃO", "CIDADE CLIENTE", "ESTADO CLIENTE", "DATA/HORA ALTERAÇÃO", "NÚMERO DE DIAS"]]
 situação_filtro = col1.selectbox(
     "Situação",
     ('AGENDADO',
