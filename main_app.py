@@ -38,7 +38,7 @@ col1.subheader("Data")
 date_to_filter = col1.date_input(
     "Data:",
     datetime.date(2023, 7, 6))
-filtered_data = data_frame[data_frame['DATA/HORA ALTERAÇÃO'].dt.hour == date_to_filter]
+filtered_data = data_frame[data_frame['DATA/HORA ALTERAÇÃO'] == date_to_filter]
 col2.subheader("Lista de Veículos")
 
 col2.write(data_frame)
