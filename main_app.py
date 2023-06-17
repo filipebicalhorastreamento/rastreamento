@@ -33,7 +33,7 @@ tab2.subheader("A tab with a chart")
 tab2.bar_chart(situações)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
-col1, col2 = st.columns([1, 2])
+col1, col2 = st.columns([1, 5])
 situação_filtro = col1.selectbox(
     "Situação",
     ('AGENDADO',
