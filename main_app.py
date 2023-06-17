@@ -35,7 +35,7 @@ st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
 data_frame['DATA SITUAÇÃO'] = data_frame['DATA/HORA ALTERAÇÃO']
 f_date = date.today()
-data_frame['NÚMERO DE DIAS'] = (data_frame['DATA SITUAÇÃO'] - f_date).dt.days
+data_frame['NÚMERO DE DIAS'] = (data_frame['DATA SITUAÇÃO'] - date.today()).dt.days
 data_frame = data[["DATA SITUAÇÃO", "PLACA", "SITUAÇÃO", "CIDADE CLIENTE", "ESTADO CLIENTE", "NÚMERO DE DIAS"]]
 situação_filtro = col1.selectbox(
     "Situação",
