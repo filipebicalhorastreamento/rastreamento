@@ -51,7 +51,7 @@ situação_filtro = col1.selectbox(
 filtered_data = data_frame[data_frame['SITUAÇÃO'] == situação_filtro]
 col2.write(filtered_data)
 st.subheader('LISTA DE VEÍCULOS POR ESTADO')
-estado = data['ESTADO CLIENTE'].value_counts().to_frame()
+estado = data_frame['ESTADO CLIENTE'].value_counts().to_frame()
 st.write(estado)
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
