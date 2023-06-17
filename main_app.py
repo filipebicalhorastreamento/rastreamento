@@ -20,13 +20,12 @@ def load_data2(sheets_url):
     return pd.read_csv(csv_url)
 
 data = load_data(10000)
-
+data_frame = data
 
 st.subheader('SITUAÇÕES')
 tab2, tab1 = st.tabs(["📈 Chart", "🗃 Data"])
-situações = data['SITUAÇÃO'].value_counts()
-situações = data['SITUAÇÃO'].value_counts().to_frame()
-#situações = situações.set_index('SITUAÇÃO')
+situações = data_frame['SITUAÇÃO'].value_counts().to_frame()
+
 situações_invertido = situações.T
 tab1.subheader("A tab with the data")
 tab1.write(situações_invertido)
@@ -35,13 +34,15 @@ tab2.bar_chart(situações)
 
 st.subheader('LISTA DE VEÍCULOS')
 col1, col2 = st.columns([1, 4])
+
 col1.subheader("Data")
 # Some number in the range 0-23
 hour_to_filter = col1.date_input(
     "Data:",
     datetime.date(2023, 7, 6))
 col2.subheader("Lista de Veículos")
-col2.write(data)
+
+col2.write(data_frame)
 #filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
