@@ -34,8 +34,8 @@ tab2.subheader("A tab with a chart")
 tab2.bar_chart(situações)
 
 st.subheader('LISTA DE VEÍCULOS')
-col1, col2 = st.columns([3, 1])
-col1.subheader("A wide column with a chart")
+col1, col2 = st.columns([1, 3])
+col1.subheader("Selecione uma data")
 # Some number in the range 0-23
 hour_to_filter = col1.date_input(
     "Selecione uma data:",
