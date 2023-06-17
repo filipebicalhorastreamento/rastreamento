@@ -52,7 +52,6 @@ filtered_data = data_frame[data_frame['SITUAÇÃO'] == situação_filtro]
 estado = filtered_data['ESTADO CLIENTE'].value_counts().to_frame()
 col1.write(estado)
 col2.write(filtered_data)
-st.subheader('LISTA DE VEÍCULOS POR ESTADO')
 
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
