@@ -25,7 +25,7 @@ data_frame = data
 
 st.subheader('SITUAÇÕES')
 tab2, tab1 = st.tabs(["📈 Chart", "🗃 Data"])
-situações = data_frame['SITUAÇÃO'].value_counts().to_frame()
+situações = data['SITUAÇÃO'].value_counts().to_frame()
 
 situações_invertido = situações.T
 tab1.subheader("A tab with the data")
@@ -35,7 +35,7 @@ tab2.bar_chart(situações)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
-data_frame = data[["PLACA", "SITUAÇÃO", "ESTADO CLIENTE", "DATA/HORA ALTERAÇÃO"]]
+data_frame = data[["PLACA", "SITUAÇÃO", "ESTADO CLIENTE", "DATA/HORA ALTERAÇÃO", "NUMERO DE DIAS"]
 situação_filtro = col1.selectbox(
     "Situação",
     ('AGENDADO',
