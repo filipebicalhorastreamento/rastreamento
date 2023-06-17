@@ -33,7 +33,7 @@ tab2.subheader("A tab with a chart")
 tab2.bar_chart(situações)
 
 st.subheader('LISTA DE VEÍCULOS')
-col1, col2 = st.columns([1, 4])
+col1, col2, col3 = st.columns([1, 2, 2])
 col1.subheader("Data")
 date_to_filter = col1.date_input(
     "Data:",
