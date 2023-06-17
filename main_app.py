@@ -24,12 +24,8 @@ data = load_data(10000)
 data_frame = data
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 st.subheader('SITUAÇÕES')
-tab2, tab1 = st.tabs(["📈 Gráfico", "🗃 Números"])
-situações = data['SITUAÇÃO'].value_counts().to_frame()
-
-situações_invertido = situações.T
-tab1.write(situações_invertido)
-tab2.bar_chart(situações)
+st.write(situações)
+st.bar_chart(situações)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
