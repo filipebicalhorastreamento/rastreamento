@@ -37,8 +37,7 @@ data_frame['NÚMERO DE DIAS'] = '0'
 data_frame = data[["PLACA", "SITUAÇÃO", "ESTADO CLIENTE", "DATA/HORA ALTERAÇÃO", "NÚMERO DE DIAS"]]
 situação_filtro = col1.selectbox(
     "Situação",
-    (null,
-    'AGENDADO',
+    ('AGENDADO',
     'ATIVO',
     'INATIVO',
     'MANUTENÇÃO',
