@@ -48,8 +48,8 @@ situação_filtro = col1.selectbox(
     'RECUSADO',
     'RETIRADA',
     'SAFECAR'))
-filtered_data = data_frame[data_frame['SITUAÇÃO'] == situação_filtro]
 estado = data_frame['ESTADO CLIENTE'].value_counts().to_frame()
+filtered_data = data_frame[data_frame['SITUAÇÃO'] == situação_filtro]
 col1.write(estado)
 col2.write(filtered_data)
 st.subheader('LISTA DE VEÍCULOS POR ESTADO')
