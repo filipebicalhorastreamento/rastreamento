@@ -34,13 +34,13 @@ tab2.subheader("A tab with a chart")
 tab2.bar_chart(situações)
 
 st.subheader('LISTA DE VEÍCULOS')
-col1, col2 = st.columns([1, 3])
+col1, col2 = st.columns([1, 4])
 col1.subheader("Selecione uma data")
 # Some number in the range 0-23
 hour_to_filter = col1.date_input(
     "Selecione uma data:",
     datetime.date(2023, 7, 6))
-col2.subheader("A wide column with a chart")
+col2.subheader("Lista de Veículos")
 col2.write(data)
 #filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
