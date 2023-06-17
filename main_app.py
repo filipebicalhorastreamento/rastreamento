@@ -49,10 +49,11 @@ situação_filtro = col1.selectbox(
     'RETIRADA',
     'SAFECAR'))
 filtered_data = data_frame[data_frame['SITUAÇÃO'] == situação_filtro]
+estado = data_frame['ESTADO CLIENTE'].value_counts().to_frame()
+col1.write(estado)
 col2.write(filtered_data)
 st.subheader('LISTA DE VEÍCULOS POR ESTADO')
-estado = data_frame['ESTADO CLIENTE'].value_counts().to_frame()
-st.write(estado)
+
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
 if st.checkbox('Mostrar dados'):
