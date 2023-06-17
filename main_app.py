@@ -35,7 +35,7 @@ st.subheader('LISTA DE VEÍCULOS')
 col1, col2 = st.columns([3, 1])
 col1.subheader("A wide column with a chart")
 # Some number in the range 0-23
-hour_to_filter = col1.slider('hour', 0, 23, 17)
+hour_to_filter = col1.date_input(label, value=None, min_value=None, max_value=None, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False, label_visibility="visible")
 col2.subheader("A wide column with a chart")
 col2.write(data)
 #filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
