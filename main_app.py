@@ -41,10 +41,19 @@ date_to_filter = col1.date_input(
 col1.write(date_to_filter)
 data_frame['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO'])
 data_frame['DATA/HORA ALTERAÇÃO'].dt.strftime('%Y,%M,%D')
-filtered_data = data_frame[data_frame['DATA/HORA ALTERAÇÃO'] == date_to_filter]
+
+situação_filtro = st.selectbox(
+    'How would you like to be contacted?',
+    ('PENDENTE INSTALAÇÃO', 'AGENDADO', 'RETIRADA'))
+
+filtered_data = data_frame[data_frame['SITUAÇÃO'] == situação_filtro]
+
 col2.subheader("Lista de Veículos")
 
 col2.write(data_frame)
+col3.subheader("Lista de Veículos")
+
+col3.write(filtered_data)
 #filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
