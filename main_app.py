@@ -13,6 +13,7 @@ def load_data(nrows):
     data = load_data2(st.secrets["public_gsheets_url"])
     uppercase = lambda x: str(x).upper()
     data.rename(uppercase, axis='columns', inplace=True)
+    st.set_page_config(layout="wide")
     return data
 
 def load_data2(sheets_url):
