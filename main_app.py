@@ -41,7 +41,7 @@ date_to_filter = col1.date_input(
 filtered_data = data_frame[data_frame['DATA/HORA ALTERAÇÃO'] == date_to_filter]
 col2.subheader("Lista de Veículos")
 
-col2.write(data_frame)
+col2.write(filtered_data)
 #filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
