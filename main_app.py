@@ -36,6 +36,7 @@ st.subheader('LISTA DE VEÍCULOS')
 col1, col2 = st.columns([1, 4])
 col1.subheader("Data")
 date_to_filter = col1.date_input(
+    "Data:",
     datetime.datetime(2023, 6, 7))
 col1.write(date_to_filter)
 data_frame['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO'])
