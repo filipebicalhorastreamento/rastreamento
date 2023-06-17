@@ -39,8 +39,8 @@ date_to_filter = col1.date_input(
     "Data:",
     datetime.datetime(2023, 6, 7))
 col1.write(date_to_filter)
-data_frame['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO'])
-data_frame['DATA/HORA ALTERAÇÃO'] = data_frame['DATA/HORA ALTERAÇÃO'].dt.strftime('%Y,%M,%D')
+data_frame['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO'].dt.strftime('%Y,%M,%D'))
+
 filtered_data = data_frame[data_frame['DATA/HORA ALTERAÇÃO'] == date_to_filter]
 col2.subheader("Lista de Veículos")
 
