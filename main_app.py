@@ -24,13 +24,11 @@ data = load_data(10000)
 data_frame = data
 
 st.subheader('SITUAÇÕES')
-tab2, tab1 = st.tabs(["📈 Chart", "🗃 Data"])
+tab2, tab1 = st.tabs(["📈 Gráfico", "🗃 Números"])
 situações = data['SITUAÇÃO'].value_counts().to_frame()
 
 situações_invertido = situações.T
-tab1.subheader("A tab with the data")
 tab1.write(situações_invertido)
-tab2.subheader("A tab with a chart")
 tab2.bar_chart(situações)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
