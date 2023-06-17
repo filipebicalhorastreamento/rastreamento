@@ -35,10 +35,10 @@ tab2.bar_chart(situações)
 
 st.subheader('LISTA DE VEÍCULOS')
 col1, col2 = st.columns([1, 4])
-col1.subheader("Selecione uma data")
+col1.subheader("Data")
 # Some number in the range 0-23
 hour_to_filter = col1.date_input(
-    "Selecione uma data:",
+    "Data:",
     datetime.date(2023, 7, 6))
 col2.subheader("Lista de Veículos")
 col2.write(data)
