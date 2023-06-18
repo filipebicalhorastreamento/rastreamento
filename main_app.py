@@ -16,17 +16,17 @@ import streamlit as st
 from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
+st.set_page_config(layout="wide")
 
 
 def run():
     st.set_page_config(
-        page_title="Hello",
-        page_icon="👋",
+        page_title="MOBILI - RASTREAMENTO",
     )
 
-    st.write("# Welcome to Streamlit! 👋")
+    st.write("MOBILI - RASTREAMENTO")
 
-    st.sidebar.success("Select a demo above.")
+    st.sidebar.success("Carregado com sucesso!")
 
     st.markdown(
         """
