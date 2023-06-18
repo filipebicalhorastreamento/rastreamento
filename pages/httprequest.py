@@ -1,26 +1,27 @@
 import requests
 
-# Define as informações de autenticação
-auth_url = 'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/headers_authorization'
-auth_payload = {
-    'cliente': '3452',
-    'nome': 'operacional',
-    'senha': 'WR3D5K'
-}
+url = "https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/headers_authorization?cliente=3542&nome=operacional&senha=WR3D5K"
 
-# Faz a solicitação de autenticação
-response = requests.post(auth_url, params=auth_payload)
+payload = {}
+headers = {}
+
+response = requests.request("POST", url, headers=headers, data=payload)
 data = response.json()
+
+print(response.text)
+
 
 # Verifica se a autenticação foi bem-sucedida
 if response.status_code == 200 and data.get('Error') == 'false':
     # Obtém o token de autenticação
-    auth_token = data['Headers']['X-Auth-Token']
-    headers = {'Authorization': auth_token}
-
+    Accept = ('application/json')
+    Autorization = data['Headers']['Authorization']
+    XAuthToken = data['Headers']['X-Auth-Token']
+    headers = {'Accept': Accept, 'X-Auth-Token': XAuthToken, 'Authorization': Autorization}
+    print(headers)
     # Faz uma solicitação GET para buscar um veículo específico
-    chave_api = 'sua_chave_api'
-    veiculo_url = f'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/buscar_veiculo/{chave_api}'
+    chave_api = 'c5b79e7ce0c72d6e3c9842a51433c726'
+    veiculo_url = f'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/buscar_veiculo/{chave_api}'
     veiculo_response = requests.get(veiculo_url, headers=headers)
     veiculo_data = veiculo_response.json()
 
