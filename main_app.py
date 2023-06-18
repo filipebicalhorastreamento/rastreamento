@@ -27,7 +27,7 @@ data_frame = data
 
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 situações = data_frame
-situações ['QUANTIDADE'] = data_frame['SITUAÇÃO'].value_counts().to_frame()
+situações = data_frame['SITUAÇÃO'].value_counts().to_frame()
 situações ['SITUAÇÃO']= data_frame['SITUAÇÃO'].unique()
 situações = data_frame[["SITUAÇÃO", "QUANTIDADE"]]
 situações_inv = situações.T
