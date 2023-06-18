@@ -26,6 +26,7 @@ data_frame = data
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 situações = data['SITUAÇÃO'].value_counts().to_frame()
 situações_inv = situações.T
+
 st.subheader('SITUAÇÕES')
 tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
 tab1.bar_chart(situações)
@@ -40,7 +41,7 @@ data_frame['NÚMERO DE DIAS'] = (f_date - data_frame['DATA SITUAÇÃO']) / np.ti
 data_frame = data[["NOME", "PLACA", "SITUAÇÃO","DATA SITUAÇÃO", "CIDADE CLIENTE", "ESTADO CLIENTE", "NÚMERO DE DIAS", "OBSERVAÇÃO"]]
 
 #COLUNA 1
-situação_filtro = col1.selectbox(
+situação_filtro = st.sidebar..selectbox(
     "Situação",
     ('AGENDADO',
     'ATIVO',
