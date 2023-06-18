@@ -65,8 +65,8 @@ if remover_filtro:
 else:
     selecao = (data_frame['SITUAÇÃO'] == situação_filtro) & (data_frame['ESTADO CLIENTE'] == make_choice)
     filtered_data = data_frame[selecao]
-    estado = filtered_data['ESTADO CLIENTE'].value_counts().to_frame()
-
+    
+estado = filtered_data['ESTADO CLIENTE'].value_counts().to_frame()
 col1.dataframe(data=estado, use_container_width=True, hide_index=False)
 col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
 
