@@ -1,10 +1,9 @@
 import requests
-import streamlit as st
 
 # Define as informações de autenticação
 auth_url = 'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/headers_authorization'
 auth_payload = {
-    'cliente': '3542',
+    'cliente': '3452',
     'nome': 'operacional',
     'senha': 'WR3D5K'
 }
@@ -26,8 +25,7 @@ if response.status_code == 200 and data.get('Error') == 'false':
     veiculo_data = veiculo_response.json()
 
     # Exibe os dados no Streamlit
-    st.subheader('Dados do Veículo')
-    st.write(veiculo_data)
+    print('Dados do Veículo')
+    print(veiculo_data)
 else:
-    st.error('Erro na autenticação. Verifique as credenciais.')
-
+    print('Erro na autenticação. Verifique as credenciais.')
