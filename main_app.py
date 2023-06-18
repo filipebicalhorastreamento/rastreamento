@@ -67,7 +67,7 @@ else:
 
 
 #selecao = (filtered_data['SITUAÇÃO'] == situação_filtro) & (filtered_data['ESTADO CLIENTE'] == make_choice)
-df2 = filtered_data[selecao]
+#df2 = filtered_data[selecao]
 
 col1.dataframe(data=estado, use_container_width=True, hide_index=False)
 col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
