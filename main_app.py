@@ -25,11 +25,12 @@ data = load_data(10000)
 data_frame = data
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 situações = data_frame['SITUAÇÃO'].value_counts().to_frame()
+
 situações_inv = situações.T
 
 st.subheader('SITUAÇÕES')
 tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
-tab1.bar_chart(data=situações_inv, use_container_width=True)
+tab1.bar_chart(data=situações_inv, use_container_width=True, x="SITUAÇÃO")
 tab2.dataframe(situações_inv,use_container_width=True ,hide_index=True)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
