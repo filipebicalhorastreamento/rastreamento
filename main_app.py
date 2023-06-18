@@ -63,10 +63,10 @@ remover_filtro = st.sidebar.checkbox("Remover filtros")
 if remover_filtro:
     filtered_data = data_frame
 else:
-    filtered_data = (filtered_data['SITUAÇÃO'] == situação_filtro) & (filtered_data['ESTADO CLIENTE'] == make_choice)
+    filtered_data = (data_frame['SITUAÇÃO'] == situação_filtro) & (data_frame['ESTADO CLIENTE'] == make_choice)
 
 
-selecao = (filtered_data['SITUAÇÃO'] == situação_filtro) & (filtered_data['ESTADO CLIENTE'] == make_choice)
+#selecao = (filtered_data['SITUAÇÃO'] == situação_filtro) & (filtered_data['ESTADO CLIENTE'] == make_choice)
 df2 = filtered_data[selecao]
 
 col1.dataframe(data=estado, use_container_width=True, hide_index=False)
