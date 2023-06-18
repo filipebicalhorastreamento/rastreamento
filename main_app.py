@@ -26,8 +26,8 @@ data = load_data(10000)
 data_frame = data
 
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
-#situações = data_frame
-situações = pd.DataFrame(data=data_frame)
+situações = data_frame
+
 situações['QUANTIDADE'] = situações['SITUAÇÃO'].value_counts().to_frame()
 #situações = situações[["SITUAÇÃO", "count"]]
 
