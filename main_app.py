@@ -29,15 +29,16 @@ data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTE
 situações = data_frame
 situações = data_frame['SITUAÇÃO'].value_counts().to_frame()
 #situações = situações[["SITUAÇÃO", "count"]]
+
 situações_inv = situações.T
 c = alt.Chart(situações).mark_arc(innerRadius=50).encode(
-    theta=alt.Theta(field="count", type="quantitative"),
+    theta=alt.Theta(field="situações", type="quantitative"),
     color=alt.Color(field="count", type="quantitative"),
 )
 
 st.subheader('SITUAÇÕES')
 tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
-
+tab1.write(situações)
 tab1.altair_chart(c, use_container_width=True)
 tab2.dataframe(situações_inv,use_container_width=True ,hide_index=True)
 
