@@ -41,7 +41,7 @@ data_frame['NÚMERO DE DIAS'] = (f_date - data_frame['DATA SITUAÇÃO']) / np.ti
 data_frame = data[["NOME", "PLACA", "SITUAÇÃO","DATA SITUAÇÃO", "CIDADE CLIENTE", "ESTADO CLIENTE", "NÚMERO DE DIAS", "OBSERVAÇÃO"]]
 
 #COLUNA 1
-situação_filtro = st.sidebar..selectbox(
+situação_filtro = st.sidebar.selectbox(
     "Situação",
     ('AGENDADO',
     'ATIVO',
