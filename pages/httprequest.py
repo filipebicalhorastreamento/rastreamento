@@ -2,11 +2,11 @@ import requests
 import streamlit as st
 
 # Define as informações de autenticação
-auth_url = 'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos'
+auth_url = 'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/headers_authorization'
 auth_payload = {
-    'COD': 'seu_codigo',
-    'CLIENTE': 'seu_cliente',
-    'SENHA': 'sua_senha'
+    'cliente': '3542',
+    'nome': 'operacional',
+    'senha': 'WR3D5K'
 }
 
 # Faz a solicitação de autenticação
