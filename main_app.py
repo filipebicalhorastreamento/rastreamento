@@ -34,6 +34,7 @@ tab2.write(situações_inv)
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
 
+f_date = date.today()
 data_frame['DATA SITUAÇÃO'] = data_frame['DATA/HORA ALTERAÇÃO']
 data_frame['NÚMERO DE DIAS'] = (f_date - data_frame['DATA SITUAÇÃO']) / np.timedelta64(1, 'D')
 data_frame = data[["NOME", "PLACA", "SITUAÇÃO","DATA SITUAÇÃO", "CIDADE CLIENTE", "ESTADO CLIENTE", "NÚMERO DE DIAS", "OBSERVAÇÃO"]]
