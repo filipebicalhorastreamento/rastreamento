@@ -43,7 +43,7 @@ c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
 
 
 tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
-tab1.dataframe(situações_pizza_inv,use_container_width=True ,hide_index=True)
+tab1.dataframe(situações_pizza,use_container_width=True ,hide_index=True)
 tab1.altair_chart(c, use_container_width=True)
 
 
