@@ -63,7 +63,8 @@ remover_filtro = st.sidebar.checkbox("Remover filtros")
 if remover_filtro:
     filtered_data = data_frame
 else:
-    filtered_data = (data_frame['SITUAÇÃO'] == situação_filtro) & (data_frame['ESTADO CLIENTE'] == make_choice)
+    selecao = (data_frame['SITUAÇÃO'] == situação_filtro) & (data_frame['ESTADO CLIENTE'] == make_choice)
+    filtered_data = filtered_data[selecao]
 
 
 selecao = (data_frame['SITUAÇÃO'] == situação_filtro) & (data_frame['ESTADO CLIENTE'] == make_choice)
