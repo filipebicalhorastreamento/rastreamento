@@ -27,13 +27,16 @@ data_frame = data
 
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 situações = data_frame['SITUAÇÃO'].value_counts().to_frame()
-columns=["a", "b", "c"]
 situações_inv = situações.T
+c = alt.Chart(situações).mark_arc(innerRadius=50).encode(
+    theta=alt.Theta(field="count", type="quantitative"),
+    color=alt.Color(field="SITUAÇÃO", type="nominal"),
+)
 
 st.subheader('SITUAÇÕES')
 tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
 tab1.dataframe(situações_inv,use_container_width=True ,hide_index=True)
-tab1.altair_chart(situações, use_container_width=True)
+tab2.altair_chart(c, use_container_width=True)
 
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
