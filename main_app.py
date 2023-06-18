@@ -33,10 +33,12 @@ tab2.write(situações_inv)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
+
 data_frame['DATA SITUAÇÃO'] = data_frame['DATA/HORA ALTERAÇÃO']
-f_date = date.today()
 data_frame['NÚMERO DE DIAS'] = (f_date - data_frame['DATA SITUAÇÃO']) / np.timedelta64(1, 'D')
 data_frame = data[["NOME", "PLACA", "SITUAÇÃO","DATA SITUAÇÃO", "CIDADE CLIENTE", "ESTADO CLIENTE", "NÚMERO DE DIAS", "OBSERVAÇÃO"]]
+
+#COLUNA 1
 situação_filtro = col1.selectbox(
     "Situação",
     ('AGENDADO',
@@ -53,6 +55,19 @@ situação_filtro = col1.selectbox(
 
 filtered_data = data_frame[data_frame['SITUAÇÃO'] == situação_filtro]
 estado = filtered_data['ESTADO CLIENTE'].value_counts().to_frame()
+
+col1.data_editor(
+    estado,
+    column_config={
+        "favorite": col1.column_config.CheckboxColumn(
+            "Your favorite?",
+            help="Select your **favorite** widgets",
+            default=False,
+        )
+    },
+    disabled=["widgets"],
+    hide_index=True,
+)
 col1.write(estado)
 col2.dataframe(data=filtered_data,use_container_width=True ,hide_index=True)
 #col2.write(filtered_data)
