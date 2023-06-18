@@ -37,9 +37,9 @@ c = alt.Chart(situações).mark_arc(innerRadius=50).encode(
 
 st.subheader('SITUAÇÕES')
 tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
-tab1.dataframe(situações_inv,use_container_width=True ,hide_index=True)
-tab2.altair_chart(c, use_container_width=True)
 
+tab1.altair_chart(c, use_container_width=True)
+tab2.dataframe(situações_inv,use_container_width=True ,hide_index=True)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
