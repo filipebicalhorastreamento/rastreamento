@@ -10,7 +10,7 @@ auth_payload = {
 }
 
 # Faz a solicitação de autenticação
-response = requests.post(auth_url, json=auth_payload)
+response = requests.post(auth_url, params=auth_payload)
 data = response.json()
 
 # Verifica se a autenticação foi bem-sucedida
