@@ -31,7 +31,7 @@ situações = data_frame['SITUAÇÃO'].value_counts().to_frame()
 #situações = situações[["SITUAÇÃO", "count"]]
 
 situações_inv = situações.T
-c = alt.Chart(situações_inv).mark_arc(innerRadius=50).encode(
+c = alt.Chart(situações).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="count", type="quantitative"),
     color=alt.Color(field="SITUAÇÃO", type="nominal"),
 )
@@ -39,7 +39,7 @@ c = alt.Chart(situações_inv).mark_arc(innerRadius=50).encode(
 st.subheader('SITUAÇÕES')
 tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
 tab1.write(situações)
-tab1.altair_chart(c, use_container_width=True)
+tab1.altair_chart(situações, use_container_width=True)
 tab2.dataframe(situações_inv,use_container_width=True ,hide_index=True)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
