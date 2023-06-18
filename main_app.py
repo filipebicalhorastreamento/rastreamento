@@ -23,7 +23,7 @@ def run():
         layout="wide",
     )
 
-    st.write("MOBILI - RASTREAMENTO")
+    st.header("MOBILI - RASTREAMENTO")
 
     st.sidebar.success("Carregado com sucesso!")
 
