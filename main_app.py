@@ -38,12 +38,12 @@ situações_pizza = pd.DataFrame({'Situação': situações.index, 'Count': situ
 st.write(situações_pizza)
 
 # Plotar o gráfico de pizza usando o novo DataFrame
-st.subheader('Gráfico de Pizza')
+st.subheader('SITUAÇÕES')
 c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="count", type="quantitative"),
     color=alt.Color(field="Situação", type="nominal")
 
-st.subheader('SITUAÇÕES')
+
 tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
 tab1.write(situações)
 tab1.altair_chart(c, use_container_width=True)
