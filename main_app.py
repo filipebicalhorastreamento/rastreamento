@@ -40,7 +40,6 @@ data_frame['DATA SITUAÇÃO'] = data_frame['DATA/HORA ALTERAÇÃO']
 data_frame['NÚMERO DE DIAS'] = (f_date - data_frame['DATA SITUAÇÃO']) / np.timedelta64(1, 'D')
 data_frame = data[["NOME", "PLACA", "SITUAÇÃO","DATA SITUAÇÃO", "CIDADE CLIENTE", "ESTADO CLIENTE", "NÚMERO DE DIAS", "OBSERVAÇÃO"]]
 
-#COLUNA 1
 situação_filtro = st.sidebar.selectbox(
     "Situação",
     ('AGENDADO',
@@ -55,16 +54,22 @@ situação_filtro = st.sidebar.selectbox(
     'RETIRADA',
     'SAFECAR'))
 
-filtered_data = data_frame[data_frame['SITUAÇÃO'] == situação_filtro]
+remover_filtro = st.sidebar.checkbox("Remover filtros")
+
+if remover_filtro:
+    filtered_data = data_frame
+else:
+    filtered_data = data_frame[data_frame['SITUAÇÃO'] == situação_filtro]
+
 estado = filtered_data['ESTADO CLIENTE'].value_counts().to_frame()
 uf = filtered_data['ESTADO CLIENTE'].unique()
 make_choice = st.sidebar.selectbox('Select your vehicle:', uf)
-filtered_data2 = data_frame[data_frame['ESTADO CLIENTE'] == make_choice]
-selecao = (data_frame['SITUAÇÃO'] == situação_filtro) & (data_frame['ESTADO CLIENTE'] == make_choice)
-df2 = data_frame[selecao]
-col1.dataframe(data=estado,use_container_width=True ,hide_index=False)
-col2.dataframe(data=df2,use_container_width=True ,hide_index=True)
+filtered_data2 = filtered_data[filtered_data['ESTADO CLIENTE'] == make_choice]
+selecao = (filtered_data['SITUAÇÃO'] == situação_filtro) & (filtered_data['ESTADO CLIENTE'] == make_choice)
+df2 = filtered_data[selecao]
 
+col1.dataframe(data=estado, use_container_width=True, hide_index=False)
+col2.dataframe(data=df2, use_container_width=True, hide_index=True)
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
 if st.checkbox('Mostrar dados'):
