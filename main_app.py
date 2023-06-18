@@ -4,7 +4,6 @@ from datetime import date
 import pandas as pd
 import numpy as np
 import altair as alt
-import matplotlib.pyplot as plot
 
 st.set_page_config(layout="wide")
 st.title('MOBILI - RASTREAMENTO')
@@ -39,8 +38,10 @@ st.write(situações_pizza)
 
 # Plotar o gráfico de pizza usando o novo DataFrame
 st.subheader('Gráfico de Pizza')
-st.pyplot(situações_pizza.plot.pie(y='Count', labels=situações_pizza['Situação'], autopct='%1.1f%%'))
-
+#st.pyplot(situações_pizza.plot.pie(y='Count', labels=situações_pizza['Situação'], autopct='%1.1f%%'))
+c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
+    theta=alt.Theta(field="count", type="quantitative"),
+    color=alt.Color(field="Situação", type="nominal")
 """
 #situações = situações[["SITUAÇÃO", "count"]]
 
