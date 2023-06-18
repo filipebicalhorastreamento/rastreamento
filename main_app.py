@@ -42,9 +42,9 @@ st.subheader('Gráfico de Pizza')
 c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="count", type="quantitative"),
     color=alt.Color(field="Situação", type="nominal")
-"""
-#situações = situações[["SITUAÇÃO", "count"]]
 
+#situações = situações[["SITUAÇÃO", "count"]]
+"""
 situações_inv = situações.T
 c = alt.Chart(situações).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="count", type="quantitative"),
