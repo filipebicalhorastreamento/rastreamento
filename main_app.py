@@ -33,7 +33,7 @@ situações_inv = situações.T
 st.subheader('SITUAÇÕES')
 tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
 tab1.dataframe(situações_inv,use_container_width=True ,hide_index=True)
-tab1.altair_chart(data=situações, use_container_width=True)
+tab1.altair_chart(situações, use_container_width=True)
 
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
