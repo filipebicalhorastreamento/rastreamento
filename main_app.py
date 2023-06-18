@@ -27,15 +27,27 @@ data_frame = data
 
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 situações = data_frame
-
 situações = situações['SITUAÇÃO'].value_counts().to_frame()
+# Supondo que você já possui o DataFrame 'situações' com a contagem das situações
+
+# Criar um novo DataFrame para o gráfico de pizza
+situações_pizza = pd.DataFrame({'Situação': situações.index, 'Count': situações['count']})
+
+# Exibir o DataFrame para verificar
+st.write(situações_pizza)
+
+# Plotar o gráfico de pizza usando o novo DataFrame
+st.subheader('Gráfico de Pizza')
+st.pyplot(situações_pizza.plot.pie(y='Count', labels=situações_pizza['Situação'], autopct='%1.1f%%'))
+
+"""
 #situações = situações[["SITUAÇÃO", "count"]]
 
 situações_inv = situações.T
 c = alt.Chart(situações).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="count", type="quantitative"),
     color=alt.Color(field="SITUAÇÃO", type="nominal"),
-)
+)"""
 
 st.subheader('SITUAÇÕES')
 tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
