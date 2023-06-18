@@ -24,7 +24,7 @@ def load_data2(sheets_url):
 data = load_data(10000)
 data_frame = data
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
-situações = data['SITUAÇÃO'].value_counts().to_frame()
+situações = data_frame['SITUAÇÃO'].value_counts().to_frame()
 situações_inv = situações.T
 
 st.subheader('SITUAÇÕES')
