@@ -4,6 +4,7 @@ from datetime import date
 import pandas as pd
 import numpy as np
 import altair as alt
+import matplotlib.pyplot as plot
 
 st.set_page_config(layout="wide")
 st.title('MOBILI - RASTREAMENTO')
