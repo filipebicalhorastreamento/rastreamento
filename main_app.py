@@ -40,11 +40,8 @@ c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Count", type="quantitative"),
     color=alt.Color(field="Situação", type="nominal"),
 )
-
-
-tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
-tab1.dataframe(situações_pizza.T,use_container_width=True ,hide_index=True)
-tab1.altair_chart(c, use_container_width=True)
+st.dataframe(situações_pizza.T,use_container_width=True ,hide_index=True)
+st.altair_chart(c, use_container_width=True)
 
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
