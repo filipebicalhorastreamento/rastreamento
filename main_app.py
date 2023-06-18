@@ -30,7 +30,7 @@ situações_inv = situações.T
 
 st.subheader('SITUAÇÕES')
 tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
-tab1.bar_chart(data=situações_inv, use_container_width=True, x="SITUAÇÃO")
+tab1.bar_chart(data=situações_inv, use_container_width=True)
 tab2.dataframe(situações_inv,use_container_width=True ,hide_index=True)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
