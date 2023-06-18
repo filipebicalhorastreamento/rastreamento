@@ -37,7 +37,7 @@ situações_pizza = pd.DataFrame({'Situação': situações.index, 'Count': situ
 # Plotar o gráfico de pizza usando o novo DataFrame
 st.subheader('SITUAÇÕES')
 c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
-    theta=alt.Theta(field="count", type="quantitative"),
+    theta=alt.Theta(field="Count", type="quantitative"),
     color=alt.Color(field="Situação", type="nominal"),
 )
 
