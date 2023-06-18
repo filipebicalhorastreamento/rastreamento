@@ -58,7 +58,7 @@ filtered_data = data_frame[data_frame['SITUAÇÃO'] == situação_filtro]
 estado = filtered_data['ESTADO CLIENTE'].value_counts().to_frame()
 
 st.data_editor(
-    data_,
+    data,
     column_config={
         "favorite": st.column_config.CheckboxColumn(
             "Your favorite?",
