@@ -36,6 +36,7 @@ c = alt.Chart(situações).mark_arc(innerRadius=50).encode(
 st.subheader('SITUAÇÕES')
 tab1, tab2 = st.tabs(["📈 Gráfico", "🗃 Números"])
 tab1.dataframe(situações_inv,use_container_width=True ,hide_index=True)
+tab1.write(situações)
 tab2.altair_chart(c, use_container_width=True)
 
 
