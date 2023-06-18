@@ -29,7 +29,7 @@ data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTE
 situações = data_frame
 situações = data_frame['SITUAÇÃO'].value_counts().to_frame()
 situações ['SITUAÇÃO']= data_frame['SITUAÇÃO'].unique()
-situações = data_frame[["SITUAÇÃO", "count"]]
+situações = situações[["SITUAÇÃO", "count"]]
 situações_inv = situações.T
 c = alt.Chart(situações).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="count", type="quantitative"),
