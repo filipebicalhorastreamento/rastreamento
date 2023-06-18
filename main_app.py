@@ -57,10 +57,10 @@ situação_filtro = col1.selectbox(
 filtered_data = data_frame[data_frame['SITUAÇÃO'] == situação_filtro]
 estado = filtered_data['ESTADO CLIENTE'].value_counts().to_frame()
 
-col1.data_editor(
-    estado,
+st.data_editor(
+    data_,
     column_config={
-        "favorite": col1.column_config.CheckboxColumn(
+        "favorite": st.column_config.CheckboxColumn(
             "Your favorite?",
             help="Select your **favorite** widgets",
             default=False,
