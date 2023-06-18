@@ -64,7 +64,7 @@ if remover_filtro:
     filtered_data = data_frame
 else:
     selecao = (data_frame['SITUAÇÃO'] == situação_filtro) & (data_frame['ESTADO CLIENTE'] == make_choice)
-    filtered_data = filtered_data[selecao]
+    filtered_data = data_frame[selecao]
 
 
 selecao = (data_frame['SITUAÇÃO'] == situação_filtro) & (data_frame['ESTADO CLIENTE'] == make_choice)
