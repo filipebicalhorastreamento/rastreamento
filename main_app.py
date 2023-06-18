@@ -26,10 +26,10 @@ data = load_data(10000)
 data_frame = data
 
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
-situações = data_frame[["SITUAÇÃO", "QUANTIDADE"]]
+situações = data_frame
 situações ['QUANTIDADE'] = data_frame['SITUAÇÃO'].value_counts().to_frame()
 situações ['SITUAÇÃO']= data_frame['SITUAÇÃO'].unique()
-
+situações = data_frame[["SITUAÇÃO", "QUANTIDADE"]]
 situações_inv = situações.T
 c = alt.Chart(situações).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="count", type="quantitative"),
