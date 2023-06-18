@@ -61,8 +61,8 @@ uf = filtered_data['ESTADO CLIENTE'].unique()
 make_choice = st.sidebar.selectbox('Select your vehicle:', uf)
 filtered_data2 = data_frame[data_frame['ESTADO CLIENTE'] == make_choice]
 col1.write(estado)
-col2.dataframe(data=filtered_data2,use_container_width=True ,hide_index=True)
-#col2.write(filtered_data)
+col2.dataframe(data=filtered_data,use_container_width=True ,hide_index=True)
+col2.write(filtered_data2)
 
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
