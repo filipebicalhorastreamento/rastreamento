@@ -32,7 +32,7 @@ situações = data_frame['SITUAÇÃO'].value_counts().to_frame()
 situações_inv = situações.T
 c = alt.Chart(situações_inv).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="count", type="quantitative"),
-    color=alt.Color(field="SITUAÇÃO", type="nominal"),
+    color=alt.Color(field="count", type="quantitative"),
 )
 
 st.subheader('SITUAÇÕES')
