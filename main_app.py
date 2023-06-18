@@ -56,8 +56,8 @@ situação_filtro = col1.selectbox(
 
 filtered_data = data_frame[data_frame['SITUAÇÃO'] == situação_filtro]
 estado = filtered_data['ESTADO CLIENTE'].value_counts().to_frame()
-
-make_choice = st.sidebar.selectbox('Select your vehicle:', estado)
+uf = filtered_data['ESTADO CLIENTE'].unique()
+make_choice = st.sidebar.selectbox('Select your vehicle:', uf)
 col1.write(estado)
 col2.dataframe(data=filtered_data,use_container_width=True ,hide_index=True)
 #col2.write(filtered_data)
