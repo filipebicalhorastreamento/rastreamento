@@ -63,8 +63,7 @@ filtered_data2 = data_frame[data_frame['ESTADO CLIENTE'] == make_choice]
 selecao = (data_frame['SITUAÇÃO'] == situação_filtro) & (data_frame['ESTADO CLIENTE'] == make_choice)
 df2 = data_frame[selecao]
 col1.dataframe(data=estado,use_container_width=True ,hide_index=False)
-col2.dataframe(data=filtered_data,use_container_width=True ,hide_index=True)
-col2.write(df2)
+col2.dataframe(data=df2,use_container_width=True ,hide_index=True)
 
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
