@@ -36,7 +36,7 @@ col1, col2 = st.columns([1, 5])
 data_frame['DATA SITUAÇÃO'] = data_frame['DATA/HORA ALTERAÇÃO']
 f_date = date.today()
 data_frame['NÚMERO DE DIAS'] = (f_date - data_frame['DATA SITUAÇÃO']) / np.timedelta64(1, 'D')
-data_frame = data[["NOME", "PLACA", "SITUAÇÃO","DATA SITUAÇÃO", "CIDADE CLIENTE", "ESTADO CLIENTE", "NÚMERO DE DIAS"]]
+data_frame = data[["NOME", "PLACA", "SITUAÇÃO","DATA SITUAÇÃO", "CIDADE CLIENTE", "ESTADO CLIENTE", "NÚMERO DE DIAS", "OBSERVAÇÃO"]]
 situação_filtro = col1.selectbox(
     "Situação",
     ('AGENDADO',
