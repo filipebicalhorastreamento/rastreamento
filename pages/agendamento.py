@@ -43,7 +43,7 @@ def load_data2(sheets_url):
 
 data = load_data(10000)
 
-data_frame = DataFrame.from_dict(data)
+data_frame = pd.DataFrame.from_dict(data)
 
 """data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 situações = data_frame
