@@ -42,6 +42,7 @@ def load_data2(sheets_url):
     return pd.read_csv(csv_url)
 
 data = load_data(10000)
+st.write(data)
 data_frame = data
 
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
