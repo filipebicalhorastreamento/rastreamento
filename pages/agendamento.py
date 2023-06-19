@@ -100,7 +100,7 @@ else:
     
 estado = filtered_data['ESTADO CLIENTE'].value_counts().to_frame()
 col1.dataframe(data=estado, use_container_width=True, hide_index=False)
-col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
+col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)"""
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
 if st.checkbox('Mostrar dados'):
