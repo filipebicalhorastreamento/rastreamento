@@ -105,4 +105,5 @@ col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)"""
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
 if st.checkbox('Mostrar dados'):
     st.subheader('Dataframe')
-    st.write(data_frame)
+    st.write(data)
+    st.magic(data)
