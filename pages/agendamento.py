@@ -31,20 +31,20 @@ def load_data(nrows):
 
     # Verifica se a autenticação foi bem-sucedida
     if response.status_code == 200 and data.get('error') == False:
-    dados = []
-    indice = 0
+        dados = []
+        indice = 0
 
-    while True:
-        # Faz uma solicitação GET para buscar um veículo específico
-        chave_api = 'c5b79e7ce0c72d6e3c9842a51433c726'
-        veiculo_url = f'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/buscar_veiculo/{chave_api}'
-        params = {'indice': str(indice)}
-        veiculo_response = session.get(url=veiculo_url, params=params)
-        veiculo_data = veiculo_response.json()
+        while True:
+            # Faz uma solicitação GET para buscar um veículo específico
+            chave_api = 'c5b79e7ce0c72d6e3c9842a51433c726'
+            veiculo_url = f'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/buscar_veiculo/{chave_api}'
+            params = {'indice': str(indice)}
+            veiculo_response = session.get(url=veiculo_url, params=params)
+            veiculo_data = veiculo_response.json()
 
         # Se dar algum erro, ou não retonar 200, quebrar o loop pois chegou no fim da lista
-        if veiculo_response.status_code != 200 or veiculo_data.get('error') == True or len(veiculo_data.get('data')) == 0:
-            break
+            if veiculo_response.status_code != 200 or veiculo_data.get('error') == True or len(veiculo_data.get('data')) == 0:
+                break
 
         # Adicionar dados na lista de dados
         dados.extend(veiculo_data.get('data'))
