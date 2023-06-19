@@ -106,4 +106,4 @@ st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
 if st.checkbox('Mostrar dados'):
     st.subheader('Dataframe')
     st.write(data)
-    st.magic(data)
+    data
