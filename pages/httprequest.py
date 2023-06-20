@@ -88,7 +88,9 @@ if remover_filtro:
 else:
     selecao = (df['situacao_veiculo'] == situação_filtro) & (df['uf_veiculo'] == make_choice)
     filtered_data = df[selecao]
-
+    
+estado = filtered_data['situacao_veiculo'].value_counts().to_frame()
+col1.dataframe(data=estado, use_container_width=True, hide_index=False)
 col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
 
 st.dataframe(df)
