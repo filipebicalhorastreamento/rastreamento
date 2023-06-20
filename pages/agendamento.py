@@ -46,8 +46,8 @@ def load_data(nrows):
         cod_veiculo += 1
 
         # Exibe os dados no Streamlit
-    return dados
-        else:
+        return dados
+    else:
         print('Erro na autenticação. Verifique as credenciais.')
     return dados
 
