@@ -29,20 +29,21 @@ def load_data(nrows):
 
         while True:
             # Faz uma solicitação GET para buscar um veículo específico
+            chave_api = 'c5b79e7ce0c72d6e3c9842a51433c726'
             veiculo_url = f'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/buscar_veiculo/{chave_api}'
-            params = {'indice': str(cod_veiculo)}
+            params = {'indice': str(indice)}
             veiculo_response = session.get(url=veiculo_url, params=params)
             veiculo_data = veiculo_response.json()
 
             # Se dar algum erro, ou não retonar 200, quebrar o loop pois chegou no fim da lista
-            if veiculo_response.status_code != 200 or veiculo_data.get('error') == True:
+            if veiculo_response.status_code != 200 or veiculo_data.get('error') == True or len(veiculo_data.get('data')) == 0:
                 break
 
         # Adicionar dados na lista de dados
-        dados.extend(veiculo_data.get('data'))
+            dados.extend(veiculo_data.get('data'))
 
         # Subir indice, para procurar no proximo indice
-        cod_veiculo += 1
+            indice += 200
 
         # Exibe os dados no Streamlit
         return dados
