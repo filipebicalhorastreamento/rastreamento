@@ -69,11 +69,7 @@ st.altair_chart(c, use_container_width=True)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
-col1.dataframe(data_frame)
-df = data_frame.astype(str)
-st.dataframe(df)
-
-situação_filtro = st.sidebar.selectbox(
+situação_filtro = col1.sidebar.selectbox(
     "Situação",
     ('AGENDADO',
     'ATIVO',
@@ -88,20 +84,11 @@ situação_filtro = st.sidebar.selectbox(
     'SAFECAR'))
 
 
-uf = data_frame[uf_veiculo'].unique()
-make_choice = st.sidebar.selectbox('Select your vehicle:', uf)
 
-remover_filtro = st.sidebar.checkbox("Remover filtros")
+make_choice = col1.sidebar.selectbox('Select your vehicle:', uf)
 
-if remover_filtro:
-    filtered_data = data_frame
-else:
-    selecao = (data_frame['SITUAÇÃO'] == situação_filtro) & (data_frame['ESTADO CLIENTE'] == make_choice)
-    filtered_data = data_frame[selecao]
-    
-estado = filtered_data['ESTADO CLIENTE'].value_counts().to_frame()
-col1.dataframe(data=estado, use_container_width=True, hide_index=False)
-col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
+col1.dataframe(data=data_frame, use_container_width=True, hide_index=False)
+col2.dataframe(data=data_frame, use_container_width=True, hide_index=True)
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
 if st.checkbox('Mostrar dados'):
