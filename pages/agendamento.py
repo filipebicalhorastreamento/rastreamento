@@ -25,12 +25,12 @@ def load_data(nrows):
     # Verifica se a autenticação foi bem-sucedida
     if response.status_code == 200 and data.get('error') == False:
         dados = []
-        indice = 0
+        cod_veiculo = 0
 
         while True:
             # Faz uma solicitação GET para buscar um veículo específico
             veiculo_url = f'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/buscar_veiculo/{chave_api}'
-            params = {'indice': str(indice)}
+            params = {'cod_veiculo': str(indice)}
             veiculo_response = session.get(url=veiculo_url, params=params)
             veiculo_data = veiculo_response.json()
 
@@ -42,8 +42,8 @@ def load_data(nrows):
         dados.extend(veiculo_data.get('data'))
 
         # Subir indice, para procurar no proximo indice
-        st.write(f"{indice} {veiculo_response.status_code} {veiculo_data.get('error')} {len(veiculo_data.get('data'))} {len(dados)}")
-        indice += 1
+        st.write(f"{cod_veiculo} {veiculo_response.status_code} {veiculo_data.get('error')} {len(veiculo_data.get('data'))} {len(dados)}")
+        cod_veiculo += 1
 
         # Exibe os dados no Streamlit
     return dados
