@@ -91,7 +91,7 @@ df['DATA SITUAÇÃO'] = df['ultima_atualizacao']
 
 
 df['Nº DIAS'] = (f_date - df['DATA SITUAÇÃO']) / np.timedelta64(1, 'D')
-data_frame = df[["nome_cliente", "placa_veiculo", "situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","DATA SITUAÇÃO", "NÚMERO DE DIAS"]]
+data_frame = df[["nome_cliente", "placa_veiculo", "situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","DATA SITUAÇÃO", "Nº DIAS"]]
 remover_filtro = st.sidebar.checkbox("Remover filtros")
 
 if remover_filtro:
