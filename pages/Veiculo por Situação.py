@@ -54,7 +54,6 @@ def load_data(nrows):
 dados = load_data(10000000)
 
 data_frame = pd.DataFrame.from_dict(dados)
-data_frame ['ultima_atualizacao'] = pd.to_datetime(data_frame['ultima_atualizacao']).dt.date
 situações = data_frame
 situações = situações['situacao_veiculo'].value_counts().to_frame()
 situações_inv = situações.T
@@ -72,9 +71,8 @@ st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
 
 f_date = date.today()
-data_frame['DATA SITUAÇÃO'] = data_frame['ultima_atualizacao']
-data_frame['NÚMERO DE DIAS'] = (f_date - data_frame['DATA SITUAÇÃO']) / np.timedelta64(1, 'D')
-data_frame = data[["nome_cliente", "placa_veiculo", "situacao_veiculo","DATA SITUAÇÃO", "cidade_veiculo", "uf_veiculo", "NÚMERO DE DIAS"]]
+data_frame['NÚMERO DE DIAS'] = (f_date - data_frame['ultima_atualizacao']) / np.timedelta64(1, 'D')
+data_frame = data[["nome_cliente", "placa_veiculo", "situacao_veiculo","ultima_atualizacao", "cidade_veiculo", "uf_veiculo", "NÚMERO DE DIAS"]]
 
 situação_filtro = st.sidebar.selectbox(
     "Situação",
