@@ -54,7 +54,7 @@ def load_data(nrows):
 dados = load_data(10000000)
 
 data_frame = pd.DataFrame.from_dict(dados)
-
+data_frame ['ultima_atualizacao'] = pd.to_datetime(data_frame['ultima_atualizacao']).dt.date
 situações = data_frame
 situações = situações['situacao_veiculo'].value_counts().to_frame()
 situações_inv = situações.T
