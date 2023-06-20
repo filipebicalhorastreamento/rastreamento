@@ -56,7 +56,7 @@ dados = load_data(10000000)
 data_frame = pd.DataFrame.from_dict(dados)
 situações = data_frame
 situações = situações['situacao_veiculo'].value_counts().to_frame()
-st.dataframe(situações.T,use_container_width=True ,hide_index=True
+st.dataframe(situações.T,use_container_width=True ,hide_index=True)
              
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
