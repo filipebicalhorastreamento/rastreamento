@@ -54,7 +54,7 @@ def load_data(nrows):
     
 @st.cache
 def convert_df(df):
-    return df.to_excel().encode('utf-8')
+    return df.to_csv().encode('utf-8')
 
 
 
