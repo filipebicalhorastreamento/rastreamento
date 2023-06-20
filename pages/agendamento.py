@@ -24,7 +24,7 @@ def load_data(nrows):
 
     # Verifica se a autenticação foi bem-sucedida
     if response.status_code == 200 and data.get('error') == False:
-        dados = []
+        dados = {}
         indice = 0
 
         while True:
