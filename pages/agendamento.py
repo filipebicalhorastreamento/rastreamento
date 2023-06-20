@@ -50,7 +50,7 @@ def load_data(nrows):
         dados.extend(veiculo_data.get('data'))
 
         # Subir indice, para procurar no proximo indice
-        print(f"{indice} {veiculo_response.status_code} {veiculo_data.get('error')} {len(veiculo_data.get('data'))} {len(dados)}")
+        st.write(f"{indice} {veiculo_response.status_code} {veiculo_data.get('error')} {len(veiculo_data.get('data'))} {len(dados)}")
         indice += 1
 
         # Exibe os dados no Streamlit
@@ -63,7 +63,7 @@ def load_data2(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(csv_url)
 
-dados = load_data(10000)
+dados = load_data(10000000)
 
 data_frame = pd.DataFrame.from_dict(dados)
 
