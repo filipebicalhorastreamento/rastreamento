@@ -24,7 +24,7 @@ def load_data(nrows):
 
     # Verifica se a autenticação foi bem-sucedida
     if response.status_code == 200 and data.get('error') == False:
-        dados = {}
+        dados = []
         indice = 0
 
         while True:
@@ -34,9 +34,9 @@ def load_data(nrows):
             veiculo_response = session.get(url=veiculo_url, params=params)
             veiculo_data = veiculo_response.json()
 
-        # Se dar algum erro, ou não retonar 200, quebrar o loop pois chegou no fim da lista
+            # Se dar algum erro, ou não retonar 200, quebrar o loop pois chegou no fim da lista
             if veiculo_response.status_code != 200 or veiculo_data.get('error') == True or len(veiculo_data.get('data')) == 0:
-                break
+            break
 
         # Adicionar dados na lista de dados
         dados.extend(veiculo_data.get('data'))
