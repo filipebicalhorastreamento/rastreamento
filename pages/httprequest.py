@@ -51,7 +51,12 @@ def load_data(nrows):
     else:
         print('Erro na autenticação. Verifique as credenciais.')
     return dados
-df = pd.read_csv("dir/file.csv")
+    
+@st.cache
+def convert_df(df):
+    return df.to_csv().encode('utf-8')
+
+csv = convert_df(df)
 
 dados = load_data(10000000)
 df = pd.DataFrame.from_dict(dados)
@@ -105,5 +110,12 @@ estado = filtered_data['uf_veiculo'].value_counts().to_frame()
 dfsituacao = filtered_data
 col1.dataframe(data=estado, use_container_width=True, hide_index=False)
 col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
+st.download_button(
+    "Press to Download",
+    csv,
+    "browser_visits.csv",
+    "text/csv",
+    key='browser-data'
+)
 
 st.dataframe(df)
