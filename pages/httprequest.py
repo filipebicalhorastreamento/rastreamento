@@ -58,7 +58,24 @@ c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Count", type="quantitative"),
     color=alt.Color(field="Situação", type="nominal"),
 )
-st.dataframe(situações_pizza.T,use_container_width=True ,hide_index=True)
+st.dataframe(situações,use_container_width=True ,hide_index=True)
 st.altair_chart(c, use_container_width=True)
+
+st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
+col1, col2 = st.columns([1, 5])
+
+situação_filtro = col1.sidebar.selectbox(
+    "Situação",
+    ('AGENDADO',
+    'ATIVO',
+    'INATIVO',
+    'MANUTENÇÃO',
+    'MUZZI',
+    'PENDENTE',
+    'PENDENTE INSTALAÇÃO',
+    'PROPRIO',
+    'RECUSADO',
+    'RETIRADA',
+    'SAFECAR'))
 
 st.dataframe(df)
