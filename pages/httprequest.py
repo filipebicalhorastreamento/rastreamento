@@ -4,6 +4,7 @@ import requests
 import altair as alt
 import datetime
 from datetime import date
+import numpy as np
 
 st.set_page_config(layout="wide")
 st.title('MOBILI - VEÍCULOS POR SITUAÇÃO')
