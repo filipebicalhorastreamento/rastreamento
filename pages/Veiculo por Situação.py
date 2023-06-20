@@ -56,17 +56,8 @@ dados = load_data(10000000)
 data_frame = pd.DataFrame.from_dict(dados)
 situações = data_frame
 situações = situações['situacao_veiculo'].value_counts().to_frame()
-situações_inv = situações.T
-"""situações_pizza = pd.DataFrame({'Situação': situações.index, 'Count': situações['count']})
-
-st.subheader('SITUAÇÕES ATIVAS')
-c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
-    theta=alt.Theta(field="Count", type="quantitative"),
-    color=alt.Color(field="Situação", type="nominal"),
-))
-st.altair_chart(c, use_container_width=True)"""
-
-st.dataframe(situações_inv,use_container_width=True ,hide_index=True
+st.dataframe(situações.T,use_container_width=True ,hide_index=True
+             
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
 situação_filtro = col1.sidebar.selectbox(
