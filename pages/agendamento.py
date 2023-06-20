@@ -55,7 +55,7 @@ dados = load_data(10000000)
 
 data_frame = pd.DataFrame.from_dict(dados)
 
-data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
+#data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 situações = data_frame
 situações = situações['SITUAÇÃO'].value_counts().to_frame()
 situações_inv = situações.T
