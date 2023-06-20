@@ -51,16 +51,10 @@ def load_data(nrows):
     else:
         print('Erro na autenticação. Verifique as credenciais.')
     return dados
-    
-@st.cache
-def convert_df(df):
-    return df.to_csv().encode('utf-8')
-
-
 
 dados = load_data(10000000)
 df = pd.DataFrame.from_dict(dados)
-
+f_date = date.today()
 situações = df['situacao_veiculo'].value_counts().to_frame()
 situações_pizza = pd.DataFrame({'Situação': situações.index, 'Count': situações['count']})
 df ['ultima_atualizacao'] = pd.to_datetime(df['ultima_atualizacao']).dt.date
@@ -95,7 +89,7 @@ uf = df['uf_veiculo'].unique()
 
 df['DATA SITUAÇÃO'] = df['ultima_atualizacao']
 
-f_date = date.today()
+
 df['NÚMERO DE DIAS'] = (f_date - df['DATA SITUAÇÃO']) / np.timedelta64(1, 'D')
 data_frame = df[["nome_cliente", "placa_veiculo", "situacao_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao", "NÚMERO DE DIAS"]]
 remover_filtro = st.sidebar.checkbox("Remover filtros")
@@ -106,18 +100,11 @@ else:
     selecao = (data_frame['situacao_veiculo'] == situação_filtro) #& (df['uf_veiculo'] == make_choice)
     filtered_data = data_frame[selecao]
     
-csv = convert_df(filtered_data)
 make_choice = st.sidebar.selectbox('Selecione um estado:', uf)
 estado = filtered_data['uf_veiculo'].value_counts().to_frame()
 dfsituacao = filtered_data
 col1.dataframe(data=estado, use_container_width=True, hide_index=False)
 col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
-st.download_button(
-    "Download da planilha",
-    csv,
-    "browser_visits.csv",
-    "text/csv",
-    key='browser-data'
-)
+
 
 st.dataframe(df)
