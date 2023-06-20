@@ -78,4 +78,17 @@ situação_filtro = st.sidebar.selectbox(
     'RETIRADA',
     'SAFECAR'))
 
+uf = data_frame['uf_veiculo'].unique()
+make_choice = st.sidebar.selectbox('Selecione um estado:', uf)
+
+remover_filtro = st.sidebar.checkbox("Remover filtros")
+
+if remover_filtro:
+    filtered_data = df
+else:
+    selecao = (df['SITUAÇÃO'] == situação_filtro) & (df['uf_veiculo'] == make_choice)
+    filtered_data = df[selecao]
+
+col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
+
 st.dataframe(df)
