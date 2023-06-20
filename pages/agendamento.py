@@ -60,6 +60,14 @@ situações = situações['situacao_veiculo'].value_counts().to_frame()
 situações_inv = situações.T
 situações_pizza = pd.DataFrame({'Situação': situações.index, 'Count': situações['count']})
 
+st.subheader('SITUAÇÕES')
+c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
+    theta=alt.Theta(field="Count", type="quantitative"),
+    color=alt.Color(field="Situação", type="nominal"),
+)
+st.dataframe(situações_pizza.T,use_container_width=True ,hide_index=True)
+st.altair_chart(c, use_container_width=True)
+
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
 if st.checkbox('Mostrar dados'):
     st.subheader('Dataframe')
