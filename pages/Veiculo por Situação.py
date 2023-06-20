@@ -73,6 +73,8 @@ data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['ultima_atualiz
 f_date = date.today()
 data_frame['NÚMERO DE DIAS'] = (f_date - data_frame['ultima_atualizacao']) / np.timedelta64(1, 'D')
 data_frame = data_frame[["nome_cliente", "placa_veiculo", "situacao_veiculo","ultima_atualizacao", "cidade_veiculo", "uf_veiculo", "NÚMERO DE DIAS"]]
+df = data_frame.astype(str)
+st.dataframe(df)
 
 situação_filtro = st.sidebar.selectbox(
     "Situação",
