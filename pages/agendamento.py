@@ -46,10 +46,10 @@ def load_data(nrows):
         indice += 1
 
         # Exibe os dados no Streamlit
-        return dados
+    return dados
     else:
         print('Erro na autenticação. Verifique as credenciais.')
-        return dados
+    return dados
 
 def load_data2(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
