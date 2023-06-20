@@ -72,7 +72,7 @@ col1, col2 = st.columns([1, 5])
 
 f_date = date.today()
 data_frame['NÚMERO DE DIAS'] = (f_date - data_frame['ultima_atualizacao']) / np.timedelta64(1, 'D')
-data_frame = data[["nome_cliente", "placa_veiculo", "situacao_veiculo","ultima_atualizacao", "cidade_veiculo", "uf_veiculo", "NÚMERO DE DIAS"]]
+data_frame = data_frame[["nome_cliente", "placa_veiculo", "situacao_veiculo","ultima_atualizacao", "cidade_veiculo", "uf_veiculo", "NÚMERO DE DIAS"]]
 
 situação_filtro = st.sidebar.selectbox(
     "Situação",
