@@ -36,7 +36,7 @@ def load_data(nrows):
 
             # Se dar algum erro, ou não retonar 200, quebrar o loop pois chegou no fim da lista
             if veiculo_response.status_code != 200 or veiculo_data.get('error') == True or len(veiculo_data.get('data')) == 0:
-            break
+                break
 
         # Adicionar dados na lista de dados
         dados.extend(veiculo_data.get('data'))
