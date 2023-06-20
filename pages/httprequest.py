@@ -79,15 +79,15 @@ situação_filtro = st.sidebar.selectbox(
     'SAFECAR'))
 
 uf = df['uf_veiculo'].unique()
-data_frame = df[["nome_cliente", "placa_veiculo", "situacao_veiculo"]]
+data_frame = df[["nome_cliente", "placa_veiculo", "situacao_veiculo","uf_veiculo"]]
 
 remover_filtro = st.sidebar.checkbox("Remover filtros")
 
 if remover_filtro:
     filtered_data = data_frame
 else:
-    selecao = (df['situacao_veiculo'] == situação_filtro) #& (df['uf_veiculo'] == make_choice)
-    filtered_data = df[selecao]
+    selecao = (data_frame['situacao_veiculo'] == situação_filtro) #& (df['uf_veiculo'] == make_choice)
+    filtered_data = data_frame[selecao]
     
 make_choice = st.sidebar.selectbox('Selecione um estado:', uf)
 estado = filtered_data['uf_veiculo'].value_counts().to_frame()
