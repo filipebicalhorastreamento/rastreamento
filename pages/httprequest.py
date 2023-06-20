@@ -79,7 +79,7 @@ situação_filtro = st.sidebar.selectbox(
     'SAFECAR'))
 
 uf = df['uf_veiculo'].unique()
-data_frame = df[["nome_cliente", "placa_veiculo", "situacao_veiculo","uf_veiculo"]]
+data_frame = df[["nome_cliente", "placa_veiculo", "situacao_veiculo","uf_veiculo","ultima_atualizacao"]]
 
 remover_filtro = st.sidebar.checkbox("Remover filtros")
 
