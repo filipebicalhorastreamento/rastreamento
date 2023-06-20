@@ -55,7 +55,7 @@ dados = load_data(10000000)
 df = pd.DataFrame.from_dict(dados)
 situações = df['situacao_veiculo'].value_counts().to_frame()
 situações_pizza = pd.DataFrame({'Situação': situações.index, 'Count': situações['count']})
-df ['ultima_atualizacao] = pd.to_datetime(df['ultima_atualizacao']).dt.date
+df ['ultima_atualizacao'] = pd.to_datetime(df['ultima_atualizacao']).dt.date
 
 
 st.subheader('SITUAÇÕES')
