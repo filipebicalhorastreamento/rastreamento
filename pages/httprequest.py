@@ -54,13 +54,13 @@ def load_data(nrows):
     
 @st.cache
 def convert_df(df):
-    return df.to_csv().encode('utf-8')
+    return df.to_excel().encode('utf-8')
 
 
 
 dados = load_data(10000000)
 df = pd.DataFrame.from_dict(dados)
-csv = convert_df(df)
+
 situações = df['situacao_veiculo'].value_counts().to_frame()
 situações_pizza = pd.DataFrame({'Situação': situações.index, 'Count': situações['count']})
 df ['ultima_atualizacao'] = pd.to_datetime(df['ultima_atualizacao']).dt.date
@@ -106,13 +106,14 @@ else:
     selecao = (data_frame['situacao_veiculo'] == situação_filtro) #& (df['uf_veiculo'] == make_choice)
     filtered_data = data_frame[selecao]
     
+csv = convert_df(filtered_data)
 make_choice = st.sidebar.selectbox('Selecione um estado:', uf)
 estado = filtered_data['uf_veiculo'].value_counts().to_frame()
 dfsituacao = filtered_data
 col1.dataframe(data=estado, use_container_width=True, hide_index=False)
 col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
 st.download_button(
-    "Press to Download",
+    "Download da planilha",
     csv,
     "browser_visits.csv",
     "text/csv",
