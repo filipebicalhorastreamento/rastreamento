@@ -25,7 +25,7 @@ def load_data(nrows):
     # Verifica se a autenticação foi bem-sucedida
     if response.status_code == 200 and data.get('error') == False:
         dados = []
-        cod_veiculo = 0
+        indice = 0
 
         while True:
             # Faz uma solicitação GET para buscar um veículo específico
