@@ -64,15 +64,12 @@ c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Count", type="quantitative"),
     color=alt.Color(field="Situação", type="nominal"),
 )
-st.dataframe(situações_pizza.T,use_container_width=True ,hide_index=True)
+st.dataframe(situações_inv,use_container_width=True ,hide_index=True)
 st.altair_chart(c, use_container_width=True)
 
 st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
 col1, col2 = st.columns([1, 5])
-
-f_date = date.today()
-
-data_frame = data_frame[["nome_cliente", "placa_veiculo", "situacao_veiculo","ultima_atualizacao", "cidade_veiculo", "uf_veiculo"]]
+col1.dataframe(data_frame)
 df = data_frame.astype(str)
 st.dataframe(df)
 
