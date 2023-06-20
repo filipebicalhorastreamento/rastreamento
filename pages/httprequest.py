@@ -86,7 +86,7 @@ remover_filtro = st.sidebar.checkbox("Remover filtros")
 if remover_filtro:
     filtered_data = df
 else:
-    selecao = (df['SITUAÇÃO'] == situação_filtro) & (df['uf_veiculo'] == make_choice)
+    selecao = (df['situacao_veiculo'] == situação_filtro) & (df['uf_veiculo'] == make_choice)
     filtered_data = df[selecao]
 
 col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
