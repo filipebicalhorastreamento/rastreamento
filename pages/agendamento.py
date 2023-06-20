@@ -55,6 +55,11 @@ dados = load_data(10000000)
 
 data_frame = pd.DataFrame.from_dict(dados)
 
+situações = data_frame
+situações = situações['situacao_veiculo'].value_counts().to_frame()
+situações_inv = situações.T
+situações_pizza = pd.DataFrame({'Situação': situações.index, 'Count': situações['count']})
+
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
 if st.checkbox('Mostrar dados'):
     st.subheader('Dataframe')
