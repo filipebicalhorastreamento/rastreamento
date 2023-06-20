@@ -47,7 +47,7 @@ def load_data(nrows):
 
         # Exibe os dados no Streamlit
     return dados
-    else:
+        else:
         print('Erro na autenticação. Verifique as credenciais.')
     return dados
 
