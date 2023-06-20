@@ -74,7 +74,7 @@ col1, col2 = st.columns([1, 5])
 f_date = date.today()
 data_frame['DATA SITUAÇÃO'] = data_frame['ultima_atualizacao']
 data_frame['NÚMERO DE DIAS'] = (f_date - data_frame['DATA SITUAÇÃO']) / np.timedelta64(1, 'D')
-data_frame = data[["NOME", "PLACA", "SITUAÇÃO","DATA SITUAÇÃO", "CIDADE CLIENTE", "ESTADO CLIENTE", "NÚMERO DE DIAS", "OBSERVAÇÃO"]]
+data_frame = data[["nome_cliente", "placa_veiculo", "situacao_veiculo","DATA SITUAÇÃO", "cidade_veiculo", "uf_veiculo", "NÚMERO DE DIAS"]]
 
 situação_filtro = st.sidebar.selectbox(
     "Situação",
@@ -91,7 +91,7 @@ situação_filtro = st.sidebar.selectbox(
     'SAFECAR'))
 
 
-uf = data_frame['ESTADO CLIENTE'].unique()
+uf = data_frame[uf_veiculo'].unique()
 make_choice = st.sidebar.selectbox('Select your vehicle:', uf)
 
 remover_filtro = st.sidebar.checkbox("Remover filtros")
