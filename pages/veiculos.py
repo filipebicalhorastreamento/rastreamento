@@ -27,7 +27,7 @@ data_frame = data
 
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 situações = data_frame
-situações = situações['SITUAÇÃO'].value_counts().to_frame()
+#situações = situações['SITUAÇÃO'].value_counts().to_frame()
 situações_inv = situações.T
 
 # Criar um novo DataFrame para o gráfico de pizza
