@@ -35,14 +35,13 @@ def load_data(nrows):
             veiculo_data = veiculo_response.json()
 
             # Se dar algum erro, ou não retonar 200, quebrar o loop pois chegou no fim da lista
-            if veiculo_response.status_code != 200 or veiculo_data.get('error') == True or len(veiculo_data.get('data')) == 0:
+            if veiculo_response.status_code != 200 or veiculo_data.get('error') == True:
                 break
 
         # Adicionar dados na lista de dados
         dados.extend(veiculo_data.get('data'))
 
         # Subir indice, para procurar no proximo indice
-        st.write(f"{cod_veiculo} {veiculo_response.status_code} {veiculo_data.get('error')} {len(veiculo_data.get('data'))} {len(dados)}")
         cod_veiculo += 1
 
         # Exibe os dados no Streamlit
