@@ -89,7 +89,7 @@ uf = df['uf_veiculo'].unique()
 df['DATA SITUAÇÃO'] = df['ultima_atualizacao']
 
 f_date = date.today()
-data_frame['NÚMERO DE DIAS'] = (f_date - df['DATA SITUAÇÃO']) / np.timedelta64(1, 'D')
+df['NÚMERO DE DIAS'] = (f_date - df['DATA SITUAÇÃO']) / np.timedelta64(1, 'D')
 data_frame = df[["nome_cliente", "placa_veiculo", "situacao_veiculo","uf_veiculo","ultima_atualizacao", "NÚMERO DE DIAS"]]
 remover_filtro = st.sidebar.checkbox("Remover filtros")
 
