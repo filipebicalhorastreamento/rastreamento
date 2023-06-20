@@ -56,10 +56,11 @@ def load_data(nrows):
 def convert_df(df):
     return df.to_csv().encode('utf-8')
 
-csv = convert_df(df)
+
 
 dados = load_data(10000000)
 df = pd.DataFrame.from_dict(dados)
+csv = convert_df(df)
 situações = df['situacao_veiculo'].value_counts().to_frame()
 situações_pizza = pd.DataFrame({'Situação': situações.index, 'Count': situações['count']})
 df ['ultima_atualizacao'] = pd.to_datetime(df['ultima_atualizacao']).dt.date
