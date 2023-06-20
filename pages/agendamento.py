@@ -30,7 +30,7 @@ def load_data(nrows):
         while True:
             # Faz uma solicitação GET para buscar um veículo específico
             veiculo_url = f'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/buscar_veiculo/{chave_api}'
-            params = {'cod_veiculo': str(cod_veiculo)}
+            params = {'indice': str(cod_veiculo)}
             veiculo_response = session.get(url=veiculo_url, params=params)
             veiculo_data = veiculo_response.json()
 
