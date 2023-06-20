@@ -49,4 +49,15 @@ def load_data(nrows):
 
 dados = load_data(10000000)
 df = pd.DataFrame.from_dict(dados)
+situações = df['situacao_veiculo'].value_counts().to_frame()
+situações_pizza = pd.DataFrame({'Situação': situações.index, 'Count': situações['count']})
+
+st.subheader('SITUAÇÕES')
+c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
+    theta=alt.Theta(field="Count", type="quantitative"),
+    color=alt.Color(field="Situação", type="nominal"),
+)
+st.dataframe(situações_pizza.T,use_container_width=True ,hide_index=True)
+st.altair_chart(c, use_container_width=True)
+
 st.dataframe(df)
