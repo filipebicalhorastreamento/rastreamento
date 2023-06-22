@@ -23,7 +23,7 @@ def load_data2(sheets_url):
     return pd.read_csv(csv_url)
 
 data = load_data(10000)
-
+data = pd.DataFrame(data)
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
 if st.checkbox('Mostrar dados'):
     st.subheader('Dataframe')
