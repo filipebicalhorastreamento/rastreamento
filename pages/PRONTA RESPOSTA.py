@@ -24,6 +24,8 @@ def load_data2(sheets_url):
 
 data = load_data(10000)
 data = pd.DataFrame(data)
+st.dataframe(data=data, use_container_width=True, hide_index=True)
+
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
 if st.checkbox('Mostrar dados'):
     st.subheader('Dataframe')
