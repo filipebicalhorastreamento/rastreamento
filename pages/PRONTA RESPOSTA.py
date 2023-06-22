@@ -27,8 +27,3 @@ dados = load_data(10000000)
 data_frame = pd.DataFrame(dados)
 data_frame ['DATA'] = pd.to_datetime(data_frame ['DATA']).dt.date
 st.dataframe(data=data_frame, use_container_width=True, hide_index=True)
-
-st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
-if st.checkbox('Mostrar dados'):
-    st.subheader('Dataframe')
-    st.write(dados)
