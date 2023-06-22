@@ -7,7 +7,7 @@ import altair as alt
 
 st.set_page_config(layout="wide")
 st.title('MOBILI - RASTREAMENTO')
-st.subheader('TÉCNICOS')
+st.subheader('PRONTA RESPOSTA')
 # Read in data from the Google Sheet.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
 
