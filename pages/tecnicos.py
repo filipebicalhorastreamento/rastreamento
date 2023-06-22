@@ -7,7 +7,7 @@ import altair as alt
 
 st.set_page_config(layout="wide")
 st.title('MOBILI - RASTREAMENTO')
-
+st.subheader('TÉCNICOS')
 # Read in data from the Google Sheet.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
 
@@ -35,7 +35,7 @@ situações_pizza = pd.DataFrame({'Situação': situações.index, 'Count': situ
 
 
 # Plotar o gráfico de pizza usando o novo DataFrame
-st.subheader('SITUAÇÕES')
+
 c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Count", type="quantitative"),
     color=alt.Color(field="Situação", type="nominal"),
