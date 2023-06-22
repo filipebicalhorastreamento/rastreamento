@@ -1,10 +1,30 @@
-"""import requests
+import streamlit as st
+import datetime
+from datetime import date
+import pandas as pd
+import numpy as np
+import altair as alt
 
-url = "https://integration.systemsatx.com.br/Login?Username=filipebicalho.rastreamento%40gmail.com&Password=A%40sU8e1Gzl&Hashcentral=ACB2CC74-D4E2-4835-9E49-41109C43D6CB"
+st.set_page_config(layout="wide")
+st.title('MOBILI - RASTREAMENTO')
+st.subheader('TÉCNICOS')
+# Read in data from the Google Sheet.
+# Uses st.cache_data to only rerun when the query changes or after 10 min.
 
-payload = {}
-headers = {}
+@st.cache_data
+def load_data(nrows):
+    data = load_data2(st.secrets["public_gsheets_url2"])
+    uppercase = lambda x: str(x).upper()
+    data.rename(uppercase, axis='columns', inplace=True)
+    return data
 
-response = requests.request("POST", url, headers=headers, data=payload)
+def load_data2(sheets_url):
+    csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
+    return pd.read_csv(csv_url)
 
-print(response.text)"""
+data = load_data(10000)
+data = pd.DataFrame(data)
+st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
+if st.checkbox('Mostrar dados'):
+    st.subheader('Dataframe')
+    st.write(data)
