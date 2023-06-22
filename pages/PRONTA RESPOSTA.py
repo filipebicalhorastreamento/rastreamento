@@ -31,8 +31,8 @@ estado = data_frame['ESTADO'].value_counts().to_frame()
 estado_count = pd.DataFrame({'estado': estado.index, 'Count': estado['count']})
 
 c = alt.Chart(estado_count).mark_arc(innerRadius=50).encode(
-    theta=alt.Theta(field="Count", type="quantitative"),
-    color=alt.Color(field="estado", type="nominal"),
+    theta=alt.Theta(field="QUANTIDADE", type="quantitative"),
+    color=alt.Color(field="ESTADO", type="nominal"),
 )
 
 col1, col2, col3 = st.columns([3, 3, 3])
