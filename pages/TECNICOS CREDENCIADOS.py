@@ -13,7 +13,7 @@ st.subheader('TÉCNICOS')
 
 @st.cache_data
 def load_data(nrows):
-    data = load_data2(st.secrets["public_gsheets_url"])
+    data = load_data2(st.secrets["public_gsheets_url2"])
     uppercase = lambda x: str(x).upper()
     data.rename(uppercase, axis='columns', inplace=True)
     return data
@@ -22,9 +22,8 @@ def load_data2(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(csv_url)
 
-data = load_data(10000)
-data = pd.DataFrame(data)
-st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
-if st.checkbox('Mostrar dados'):
-    st.subheader('Dataframe')
-    st.write(data)
+dados = load_data(10000000)
+
+data_frame = pd.DataFrame(dados)
+data_frame ['DATA'] = pd.to_datetime(data_frame ['DATA']).dt.date
+st.dataframe(data=data_frame, use_container_width=True, hide_index=True)
