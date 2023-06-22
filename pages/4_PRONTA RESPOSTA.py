@@ -33,14 +33,22 @@ c = alt.Chart(estado_count).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Count", type="quantitative"),
     color=alt.Color(field="ESTADO", type="nominal"),
 )
+c2 = alt.Chart(data_frame).mark_arc(innerRadius=50).encode(
+    theta=alt.Theta(field="Count", type="quantitative"),
+    color=alt.Color(field="ESTADO", type="nominal"),
+)
+c3 = alt.Chart(data_frame).mark_arc(innerRadius=50).encode(
+    theta=alt.Theta(field="Count", type="quantitative"),
+    color=alt.Color(field="FIPE", type="nominal"),
+)
 
 col1, col2, col3 = st.columns([3, 3, 3])
 col1.subheader('POR ESTADO')
 col1.altair_chart(c, use_container_width=True)
 col2.subheader('POR FIPE')
-col2.altair_chart(c, use_container_width=True)
+col2.altair_chart(c2, use_container_width=True)
 col3.subheader('POR MES')
-col3.altair_chart(c, use_container_width=True)
+col3.altair_chart(c3, use_container_width=True)
 
 
 st.dataframe(data=data_frame, use_container_width=True, hide_index=True)
