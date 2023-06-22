@@ -27,10 +27,13 @@ dados = load_data(10000000)
 data_frame = pd.DataFrame(dados)
 data_frame ['DATA'] = pd.to_datetime(data_frame ['DATA']).dt.date
 
-"""c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
+estado = data_frame['ESTADO'].value_counts().to_frame()
+estado_count = pd.DataFrame({'estado': estado.index, 'Count': estado['count']})
+
+c = alt.Chart(estado).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Count", type="quantitative"),
-    color=alt.Color(field="Situação", type="nominal"),
-)"""
+    color=alt.Color(field="estado", type="nominal"),
+)
 
 col1, col2, col3 = st.columns([3, 3, 3])
 col1.altair_chart(c, use_container_width=True)
