@@ -25,7 +25,9 @@ def load_data2(sheets_url):
 dados = load_data(10000000)
 
 data_frame = pd.DataFrame(dados)
-st.dataframe(data=data_frame, use_container_width=True, hide_index=False)
+data_frame ['DATA'] = pd.to_datetime(data_frame ['DATA']).dt.date
+data_frame
+st.dataframe(data=data_frame, use_container_width=True, hide_index=True)
 
 st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
 if st.checkbox('Mostrar dados'):
