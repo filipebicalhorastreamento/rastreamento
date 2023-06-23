@@ -56,7 +56,7 @@ dados = load_data(10000000)
 df = pd.DataFrame.from_dict(dados)
 f_date = date.today()
 
-col1, col2, col3, col4 = st.columns([1, 4, 1, 4])
+col1, col2, col3, col4, col5, col6 = st.columns([1, 4, 1, 4, 1, 4])
 uf = df['uf'].value_counts().to_frame()
 servico = df['servico'].value_counts().to_frame()
 situacao = df['situacao'].value_counts().to_frame()
