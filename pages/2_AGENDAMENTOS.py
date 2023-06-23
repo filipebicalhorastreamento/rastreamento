@@ -55,18 +55,17 @@ def load_data(nrows):
 dados = load_data(10000000)
 df = pd.DataFrame.from_dict(dados)
 f_date = date.today()
-st.dataframe(df)
-
+col1, col2 = st.columns([3, 3])
 uf = df['uf'].value_counts().to_frame()
 df_uf = pd.DataFrame({'Situação': uf.index, 'Count': uf['count']})
 
-st.subheader('SITUAÇÕES')
+st.subheader('POR ESTADO')
 c = alt.Chart(df_uf).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Count", type="quantitative"),
     color=alt.Color(field="Situação", type="nominal"),
 )
 st.dataframe(df_uf.T,use_container_width=True ,hide_index=True)
-st.altair_chart(c, use_container_width=True)
+col1.altair_chart(c, use_container_width=True)
 
 nova_ordem = ['servico', 'contratante', 'placa', 'situacao', 'tecnico', 'telefone', 'data_inicial', 'cidade', 'uf']
 agendamento = df[nova_ordem]
