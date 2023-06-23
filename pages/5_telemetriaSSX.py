@@ -34,9 +34,7 @@ if authorization_request.status_code == 200:
     historico_response = session.post(url=url_historico_posicao, json=json, headers=headers)
     historico_data = historico_response.json()
 
-    # Exibe os dados no Streamlit
-    print(historico_data[0])
-    print(f"quantidade encontrada: {len(historico_data)}")
-    st.write(historico_data)
+   df = pd.DataFrame.from_dict(historico_data)
+    st.write(df)
 else:
     print('Erro na autenticação. Verifique as credenciais.')
