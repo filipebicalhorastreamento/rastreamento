@@ -59,15 +59,13 @@ st.dataframe(df)
 
 uf = df['uf'].value_counts().to_frame()
 df_uf = pd.DataFrame({'Situação': uf.index, 'Count': uf['count']})
-df ['ultima_atualizacao'] = pd.to_datetime(df['ultima_atualizacao']).dt.date
-
 
 st.subheader('SITUAÇÕES')
-c = alt.Chart(situações_pizza).mark_arc(innerRadius=50).encode(
+c = alt.Chart(df_uf).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Count", type="quantitative"),
     color=alt.Color(field="Situação", type="nominal"),
 )
-st.dataframe(situações.T,use_container_width=True ,hide_index=True)
+st.dataframe(df_uf.T,use_container_width=True ,hide_index=True)
 st.altair_chart(c, use_container_width=True)
 
 nova_ordem = ['servico', 'contratante', 'placa', 'situacao', 'tecnico', 'telefone', 'data_inicial', 'cidade', 'uf']
