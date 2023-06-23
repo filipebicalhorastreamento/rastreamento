@@ -1,10 +1,11 @@
 import streamlit as st
+import pandas as pd
+import requests
+import altair as alt
 import datetime
 from datetime import date
-import pandas as pd
 import numpy as np
-import altair as alt
-import requests
+
 st.set_page_config(layout="wide")
 st.title('MOBILI - VEÍCULOS POR SITUAÇÃO')
 
@@ -30,7 +31,7 @@ def load_data(nrows):
         while True:
             # Faz uma solicitação GET para buscar um veículo específico
             chave_api = 'c5b79e7ce0c72d6e3c9842a51433c726'
-            veiculo_url = f'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/buscar_veiculo/{chave_api}'
+            veiculo_url = f'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/buscar_agendamento/{chave_api}'
             params = {'indice': str(indice)}
             veiculo_response = session.get(url=veiculo_url, params=params)
             veiculo_data = veiculo_response.json()
@@ -52,38 +53,6 @@ def load_data(nrows):
     return dados
 
 dados = load_data(10000000)
+df = pd.DataFrame.from_dict(dados)
 
-data_frame = pd.DataFrame.from_dict(dados)
-situações = data_frame
-situações = situações['situacao_veiculo'].value_counts().to_frame()
-st.dataframe(situações.T,use_container_width=True ,hide_index=True)
-             
-st.subheader('LISTA DE VEÍCULOS POR SITUAÇÃO')
-col1, col2 = st.columns([1, 5])
-situação_filtro = col1.sidebar.selectbox(
-    "Situação",
-    ('AGENDADO',
-    'ATIVO',
-    'INATIVO',
-    'MANUTENÇÃO',
-    'MUZZI',
-    'PENDENTE',
-    'PENDENTE INSTALAÇÃO',
-    'PROPRIO',
-    'RECUSADO',
-    'RETIRADA',
-    'SAFECAR'))
-
-
-
-make_choice = col1.sidebar.selectbox('Select your vehicle:', uf)
-
-col1.dataframe(data=data_frame, use_container_width=True, hide_index=False)
-col2.dataframe(data=data_frame, use_container_width=True, hide_index=True)
-
-st.subheader('DADOS BRUTOS PARA CONFERÊNCIA')
-if st.checkbox('Mostrar dados'):
-    st.subheader('Dataframe')
-    st.write(data_frame)
-
-
+st.dataframe(df)
