@@ -25,4 +25,4 @@ def load_data2(sheets_url):
 dados = load_data(10000000)
 
 data_frame = pd.DataFrame(dados)
-st.dataframe(data=data_frame, use_container_width=True, hide_index=True)
+st.dataframe(data_frame)
