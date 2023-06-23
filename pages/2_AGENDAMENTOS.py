@@ -59,20 +59,21 @@ f_date = date.today()
 col1, col2, col3, col4 = st.columns([1, 4, 1, 4])
 uf = df['uf'].value_counts().to_frame()
 servico = df['servico'].value_counts().to_frame()
-df_uf = pd.DataFrame({'Situação': uf.index, 'Quantidade': uf['count']})
-df_servico = pd.DataFrame({'Serviço': servico.index, 'Quantidade': servico['count']})
+df_uf = pd.DataFrame({'Situação': uf.index, 'Nº': uf['count']})
+df_servico = pd.DataFrame({'Serviço': servico.index, 'Nº': servico['count']})
 
 c = alt.Chart(df_uf).mark_arc(innerRadius=50).encode(
-    theta=alt.Theta(field="Quantidade", type="quantitative"),
+    theta=alt.Theta(field="Nº", type="quantitative"),
     color=alt.Color(field="Situação", type="nominal"),
 )
 c2 = alt.Chart(df_servico).mark_arc(innerRadius=50).encode(
-    theta=alt.Theta(field="Quantidade", type="quantitative"),
+    theta=alt.Theta(field="Nº", type="quantitative"),
     color=alt.Color(field="Serviço", type="nominal"),
 )
 
-
+col1.subheader('Por')
 col1.dataframe(df_uf,use_container_width=True ,hide_index=True)
+col2.subheader('Estado')
 col2.altair_chart(c, use_container_width=True)
 col3.dataframe(servico,use_container_width=True ,hide_index=True)
 col4.altair_chart(c2, use_container_width=True)
