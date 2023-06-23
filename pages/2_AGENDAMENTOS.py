@@ -55,7 +55,7 @@ def load_data(nrows):
 dados = load_data(10000000)
 df = pd.DataFrame.from_dict(dados)
 f_date = date.today()
-col1, col2 = st.columns([3, 3])
+col1, col2 = st.columns([1, 4])
 uf = df['uf'].value_counts().to_frame()
 df_uf = pd.DataFrame({'Situação': uf.index, 'Count': uf['count']})
 
