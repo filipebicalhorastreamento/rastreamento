@@ -97,7 +97,7 @@ remover_filtro = st.sidebar.checkbox("Remover filtros")
 if remover_filtro:
     filtered_data = data_frame
 else:
-    selecao = (data_frame['situacao_veiculo'] == situação_filtro) #& (df['uf_veiculo'] == make_choice)
+    selecao = (data_frame['situacao_veiculo'] == situação_filtro) & (df['uf_veiculo'] == make_choice)
     filtered_data = data_frame[selecao]
     
 make_choice = st.sidebar.selectbox('Selecione um estado:', uf)
