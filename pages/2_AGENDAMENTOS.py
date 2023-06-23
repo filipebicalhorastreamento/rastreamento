@@ -54,7 +54,7 @@ def load_data(nrows):
 
 dados = load_data(10000000)
 df = pd.DataFrame.from_dict(dados)
-nova_ordem = ['servico']
+st.dataframe(df)
+nova_ordem = ['servico', 'contratante', 'placa', 'situacao', 'tecnico', 'telefone', 'data_inicial', 'cidade', 'uf']
 agendamento = df[nova_ordem]
 st.dataframe(agendamento)
-st.dataframe(df)
