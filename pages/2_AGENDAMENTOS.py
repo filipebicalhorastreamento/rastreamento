@@ -64,7 +64,7 @@ c = alt.Chart(df_uf).mark_arc(innerRadius=50).encode(
     color=alt.Color(field="Situação", type="nominal"),
 )
 st.subheader('POR ESTADO')
-col1.dataframe(df_uf.T,use_container_width=True ,hide_index=True)
+col1.dataframe(df_uf,use_container_width=True ,hide_index=True)
 col2.altair_chart(c, use_container_width=True)
 
 nova_ordem = ['servico', 'contratante', 'placa', 'situacao', 'tecnico', 'telefone', 'data_inicial', 'cidade', 'uf']
