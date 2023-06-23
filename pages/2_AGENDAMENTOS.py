@@ -55,6 +55,7 @@ def load_data(nrows):
 dados = load_data(10000000)
 df = pd.DataFrame.from_dict(dados)
 f_date = date.today()
+
 col1, col2 = st.columns([1, 4])
 uf = df['uf'].value_counts().to_frame()
 df_uf = pd.DataFrame({'Situação': uf.index, 'Count': uf['count']})
@@ -63,10 +64,11 @@ c = alt.Chart(df_uf).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Count", type="quantitative"),
     color=alt.Color(field="Situação", type="nominal"),
 )
-st.subheader('POR ESTADO')
+
 col1.dataframe(df_uf,use_container_width=True ,hide_index=True)
 col2.altair_chart(c, use_container_width=True)
 
+st.subheader('LISTA DE AGENDAMENTOS')
 nova_ordem = ['servico', 'contratante', 'placa', 'situacao', 'tecnico', 'telefone', 'data_inicial', 'cidade', 'uf']
 agendamento = df[nova_ordem]
 st.dataframe(data=agendamento, use_container_width=True, hide_index=True)
