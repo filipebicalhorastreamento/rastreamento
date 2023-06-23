@@ -71,10 +71,10 @@ c2 = alt.Chart(df_servico).mark_arc(innerRadius=50).encode(
     color=alt.Color(field="Serviço", type="nominal"),
 )
 
-col1.subheader('Por')
+col1.subheader('Por Estado')
 col1.dataframe(df_uf,use_container_width=True ,hide_index=True)
-col2.subheader('Estado')
 col2.altair_chart(c, use_container_width=True)
+col1.subheader('Por Serviço')
 col3.dataframe(servico,use_container_width=True ,hide_index=True)
 col4.altair_chart(c2, use_container_width=True)
 
