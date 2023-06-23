@@ -53,6 +53,7 @@ def load_data(nrows):
     return dados
 
 dados = load_data(10000000)
+st.write(dados)
 df = pd.DataFrame.from_dict(dados)
 
 st.dataframe(df)
