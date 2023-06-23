@@ -57,3 +57,4 @@ df = pd.DataFrame.from_dict(dados)
 nova_ordem = ['servico']
 agendamento = df[nova_ordem]
 st.dataframe(agendamento)
+st.dataframe(df)
