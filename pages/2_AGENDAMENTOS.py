@@ -66,7 +66,7 @@ c = alt.Chart(df_uf).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Quantidade", type="quantitative"),
     color=alt.Color(field="Situação", type="nominal"),
 )
-c2 = alt.Chart(df_uf).mark_arc(innerRadius=50).encode(
+c2 = alt.Chart(df_servico).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Quantidade", type="quantitative"),
     color=alt.Color(field="Serviço", type="nominal"),
 )
