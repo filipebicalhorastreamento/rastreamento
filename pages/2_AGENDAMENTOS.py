@@ -57,4 +57,4 @@ df = pd.DataFrame.from_dict(dados)
 st.dataframe(df)
 nova_ordem = ['servico', 'contratante', 'placa', 'situacao', 'tecnico', 'telefone', 'data_inicial', 'cidade', 'uf']
 agendamento = df[nova_ordem]
-st.dataframe(agendamento)
+st.dataframe(data=agendamento, use_container_width=True, hide_index=True)
