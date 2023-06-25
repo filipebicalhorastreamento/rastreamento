@@ -1,4 +1,5 @@
 streamlit>=0.69
 streamlit-echarts>=0.4.0
 pandas-profiling>=3.6.6
-ipython>+8.14.0
+ipython>=8.14.0
+ipywidgets>=8.0.6
