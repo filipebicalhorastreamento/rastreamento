@@ -1,27 +1,10 @@
-import streamlit as st
 import pandas as pd
-import pandas_profiling as pf
-DATE_COLUMN = 'date/time'
-DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
-            'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
+import pandas_profiling
+import streamlit as st
 
+from streamlit_pandas_profiling import st_profile_report
 
-@st.cache
-def load_data(nrows):
-    data = pd.read_csv(DATA_URL, nrows=nrows)
-    def lowercase(x): return str(x).lower()
-    data.rename(lowercase, axis='columns', inplace=True)
-    data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
-    return data
+df = pd.read_csv("https://storage.googleapis.com/tf-datasets/titanic/train.csv")
+pr = df.profile_report()
 
-
-data = load_data(100)
-st.subheader('Raw Data')
-st.write(data)
-x = st.slider('x')
-st.write(x, 'Squared is :', x*x)
-selectbox_label = st.selectbox('Filter to :', ['lat', 'lon'])
-selected_columns = selectbox_label
-st.write(data[selected_columns])
-report = pf.ProfileReport(data)
-st.write(report)
+st_profile_report(pr)
