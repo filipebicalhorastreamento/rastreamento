@@ -6,7 +6,7 @@ import numpy as np
 import altair as alt
 
 st.set_page_config(layout="wide")
-st.title('AGENDAMENTOS')
+st.title('AGENDAMENTOS - INSTALAÇÕES')
 # Read in data from the Google Sheet.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
 
@@ -32,6 +32,7 @@ c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
     color=alt.Color(field="Status", type="nominal"),
 )
 
-st.altair_chart(c, use_container_width=True)
+col1, col2 = st.columns([1, 5])
+col1.altair_chart(c, use_container_width=True)
 
-st.dataframe(data=dados, use_container_width=True, hide_index=True)
+col2.dataframe(data=dados, use_container_width=True, hide_index=True)
