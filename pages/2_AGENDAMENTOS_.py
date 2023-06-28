@@ -24,7 +24,7 @@ def load_data2(sheets_url):
 dados = load_data(10000000)
 
 df = pd.DataFrame.from_dict(dados)
-Status = df['Status'].value_counts().to_frame()
+Status = df['STATUS'].value_counts().to_frame()
 DFStatus = pd.DataFrame({'Status': Status.index, 'Count': Status['count']})
 
 c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
