@@ -23,4 +23,15 @@ def load_data2(sheets_url):
 
 dados = load_data(10000000)
 
+df = pd.DataFrame.from_dict(dados)
+Status = df['Status'].value_counts().to_frame()
+DFStatus = pd.DataFrame({'Status': Status.index, 'Count': Status['count']})
+
+c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
+    theta=alt.Theta(field="Count", type="quantitative"),
+    color=alt.Color(field="Status", type="nominal"),
+)
+
+st.altair_chart(DFStatus, use_container_width=True)
+
 st.dataframe(data=dados, use_container_width=True, hide_index=True)
