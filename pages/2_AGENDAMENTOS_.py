@@ -32,6 +32,6 @@ c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
     color=alt.Color(field="Status", type="nominal"),
 )
 
-st.altair_chart(DFStatus, use_container_width=True)
+st.altair_chart(c, use_container_width=True)
 
 st.dataframe(data=dados, use_container_width=True, hide_index=True)
