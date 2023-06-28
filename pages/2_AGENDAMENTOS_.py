@@ -23,4 +23,4 @@ def load_data2(sheets_url):
 
 dados = load_data(10000000)
 
-st.dataframe(dados)
+st.dataframe(data=dados, use_container_width=True, hide_index=True)
