@@ -55,7 +55,7 @@ dados = load_data(10000000)
 dfinstalacoes = pd.DataFrame.from_dict(dados)
 nova_ordem = dfinstalacoes[["nome_cliente", "placa_veiculo", "situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao"]]
 dfinstalacoes = nova_ordem
-filtro = (dfinstalacoes['situacao_veiculo'] == "PENDENTE INSTALAÇÃO") & (dfinstalacoes['situacao_veiculo'] == "AGENDADO")
+filtro = (dfinstalacoes['situacao_veiculo'] == "PENDENTE INSTALAÇÃO")
 filtered_data = dfinstalacoes[filtro]
 
 st.dataframe(filtered_data)
