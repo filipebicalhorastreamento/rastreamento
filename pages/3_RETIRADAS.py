@@ -70,7 +70,7 @@ dfinstalacoes = nova_ordem
 filtro = (dfinstalacoes['situacao_veiculo'] == 'RETIRADA')
 filtered_data = dfinstalacoes[filtro]
 
-Status = filtered_data['situacao_veiculo'].value_counts().to_frame()
+Status = filtered_data['uf_veiculo'].value_counts().to_frame()
 DFStatus = pd.DataFrame({'Status': Status.index, 'Qntd': Status['count']})
 
 c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
