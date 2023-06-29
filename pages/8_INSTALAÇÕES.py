@@ -64,7 +64,6 @@ def load_data2(sheets_url):
 dadossheets = load_sheets(10000000)
 dados = load_data(10000000)
 dfagendamentos = pd.DataFrame.from_dict(dadossheets)
-
 dfinstalacoes = pd.DataFrame.from_dict(dados)
 nova_ordem = dfinstalacoes[["placa_veiculo", "nome_cliente","cidade_veiculo", "situacao_veiculo","modelo_veiculo","uf_veiculo","ultima_atualizacao"]]
 dfinstalacoes = nova_ordem
@@ -73,3 +72,14 @@ filtered_data = dfinstalacoes[filtro]
 
 st.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
 st.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
+
+Status = filtered_data['situacao_veiculo'].value_counts().to_frame()
+DFStatus = pd.DataFrame({'Status': Status.index, 'Count': Status['count']})
+
+c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
+    theta=alt.Theta(field="Count", type="quantitative"),
+    color=alt.Color(field="Status", type="nominal"),
+)
+
+
+st.altair_chart(c, use_container_width=True)
