@@ -81,8 +81,9 @@ c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
 col1, col2 = st.columns([2, 5])
 col1.altair_chart(c, use_container_width=True)
 col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
-st.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
-
+col3, col4 = st.columns([2, 5])
+col3.altair_chart(c, use_container_width=True)
+col4.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
 
 
 
