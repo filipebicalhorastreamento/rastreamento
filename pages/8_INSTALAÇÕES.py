@@ -58,4 +58,4 @@ dfinstalacoes = nova_ordem
 filtro = (dfinstalacoes['situacao_veiculo'] == "PENDENTE INSTALAÇÃO")
 filtered_data = dfinstalacoes[filtro]
 
-st.dataframe(filtered_data)
+st.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
