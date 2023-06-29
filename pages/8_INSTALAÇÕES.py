@@ -53,6 +53,7 @@ def load_data(nrows):
 
 dados = load_data(10000000)
 dfinstalacoes = pd.DataFrame.from_dict(dados)
-
+nova_ordem = dfinstalacoes[["nome_cliente", "placa_veiculo", "situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao"]]
+dfinstalacoes = nova_ordem
 
 st.dataframe(dfinstalacoes)
