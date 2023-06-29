@@ -47,7 +47,7 @@ def load_data(nrows):
     return dados
 
 dados = load_data(10000000)
-
+df = pd.DataFrame.from_dict(dados)
 def run():
     st.set_page_config(
         page_title="MOBILI - RASTREAMENTO",
@@ -55,7 +55,7 @@ def run():
     )
 
 
-    df = pd.DataFrame.from_dict(dados)
+    
     st.dataframe(df)
 
     st.markdown(
