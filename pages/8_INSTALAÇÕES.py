@@ -62,10 +62,9 @@ def load_data2(sheets_url):
     return pd.read_csv(csv_url)
 
 dadossheets = load_sheets(10000000)
-
-dfagendamentos = pd.DataFrame.from_dict(datasheets)
-
 dados = load_data(10000000)
+dfagendamentos = pd.DataFrame.from_dict(dadossheets)
+
 dfinstalacoes = pd.DataFrame.from_dict(dados)
 nova_ordem = dfinstalacoes[["nome_cliente", "placa_veiculo", "situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao"]]
 dfinstalacoes = nova_ordem
