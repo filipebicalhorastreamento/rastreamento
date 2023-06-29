@@ -78,11 +78,20 @@ c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
     color=alt.Color(field="Status", type="nominal"),
 )
 
+Statusagendamento = dfagendamentos['STATUS'].value_counts().to_frame()
+DFStatusagendamento = pd.DataFrame({'Status': Statusagendamento.index, 'Count': Statusagendamento['count']})
+
+d = alt.Chart(DFStatusagendamento).mark_arc(innerRadius=50).encode(
+    theta=alt.Theta(field="Count", type="quantitative"),
+    color=alt.Color(field="Status", type="nominal"),
+)
+
+
 col1, col2 = st.columns([2, 5])
 col1.altair_chart(c, use_container_width=True)
 col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
 col3, col4 = st.columns([2, 5])
-col3.altair_chart(c, use_container_width=True)
+col3.altair_chart(d, use_container_width=True)
 col4.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
 
 
