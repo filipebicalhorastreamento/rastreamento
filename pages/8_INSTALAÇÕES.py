@@ -55,7 +55,7 @@ def load_sheets(nrows):
     datasheets = load_data2(st.secrets["public_gsheets_url"])
     uppercase = lambda x: str(x).upper()
     datasheets.rename(uppercase, axis='columns', inplace=True)
-    return data
+    return datasheets
 
 def load_data2(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
