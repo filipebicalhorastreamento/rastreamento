@@ -85,7 +85,7 @@ col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
 
 col3, col4 = st.columns([2, 5])
 
-col4.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
+st.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
 
 
 
