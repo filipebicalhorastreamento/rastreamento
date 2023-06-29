@@ -79,10 +79,10 @@ c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
 )
 
 Statusagendamento = dfagendamentos['STATUS'].value_counts().to_frame()
-DFStatusagendamento = pd.DataFrame({'Status': Statusagendamento.index, 'Count': Statusagendamento['count']})
+DFStatusagendamento = pd.DataFrame({'Status': Statusagendamento.index, 'Qntd': Statusagendamento['count']})
 
 d = alt.Chart(DFStatusagendamento).mark_arc(innerRadius=50).encode(
-    theta=alt.Theta(field="Count", type="quantitative"),
+    theta=alt.Theta(field="Qntd", type="quantitative"),
     color=alt.Color(field="Status", type="nominal"),
 )
 
