@@ -86,7 +86,7 @@ d = alt.Chart(DFStatusagendamento).mark_arc(innerRadius=50).encode(
     color=alt.Color(field="Status", type="nominal"),
 )
 
-
+st.dataframe(data=Status.T, use_container_width=True, hide_index=True)
 col1, col2 = st.columns([2, 5])
 col1.altair_chart(c, use_container_width=True)
 col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
