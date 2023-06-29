@@ -11,7 +11,7 @@ def run():
     )
 
     st.markdown(
-        P.O.P PROCEDIMENTO OPERACIONAL PADRÃO
+        P O P PROCEDIMENTO OPERACIONAL PADRÃO
     )
 
 
