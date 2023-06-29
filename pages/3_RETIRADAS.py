@@ -7,7 +7,7 @@ from datetime import date
 import numpy as np
 
 st.set_page_config(layout="wide")
-st.title('INSTALAÇÕES PENDENTES')
+st.title('RETIRADAS PENDENTES')
 
 chave_api = 'c5b79e7ce0c72d6e3c9842a51433c726'
 
