@@ -54,7 +54,6 @@ def run():
         layout="wide",
     )
 
-    st.write("MOBILI - RASTREAMENTO")
 
     df = pd.DataFrame.from_dict(dados)
     st.dataframe(df)
