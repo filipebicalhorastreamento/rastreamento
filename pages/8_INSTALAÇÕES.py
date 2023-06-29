@@ -71,10 +71,10 @@ filtro = (dfinstalacoes['situacao_veiculo'] == 'PENDENTE INSTALAÇÃO') | (dfins
 filtered_data = dfinstalacoes[filtro]
 
 Status = filtered_data['situacao_veiculo'].value_counts().to_frame()
-DFStatus = pd.DataFrame({'Status': Status.index, 'Count': Status['count']})
+DFStatus = pd.DataFrame({'Status': Status.index, 'Qntd': Status['count']})
 
 c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
-    theta=alt.Theta(field="Count", type="quantitative"),
+    theta=alt.Theta(field="Qntd", type="quantitative"),
     color=alt.Color(field="Status", type="nominal"),
 )
 
