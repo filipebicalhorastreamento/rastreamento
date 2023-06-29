@@ -51,6 +51,20 @@ def load_data(nrows):
         print('Erro na autenticação. Verifique as credenciais.')
     return dados
 
+def load_sheets(nrows):
+    datasheets = load_data2(st.secrets["public_gsheets_url3"])
+    uppercase = lambda x: str(x).upper()
+    data.rename(uppercase, axis='columns', inplace=True)
+    return data
+
+def load_data2(sheets_url):
+    csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
+    return pd.read_csv(csv_url)
+
+dadossheets = load_sheets(10000000)
+
+dfagendamentos = pd.DataFrame.from_dict(sheets)
+
 dados = load_data(10000000)
 dfinstalacoes = pd.DataFrame.from_dict(dados)
 nova_ordem = dfinstalacoes[["nome_cliente", "placa_veiculo", "situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao"]]
@@ -59,3 +73,4 @@ filtro = (dfinstalacoes['situacao_veiculo'] == "PENDENTE INSTALAÇÃO")
 filtered_data = dfinstalacoes[filtro]
 
 st.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
+st.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
