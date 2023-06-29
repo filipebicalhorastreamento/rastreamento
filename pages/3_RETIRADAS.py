@@ -78,7 +78,7 @@ c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
     color=alt.Color(field="Status", type="nominal"),
 )
 
-Statusagendamento = dfagendamentos['STATUS'].value_counts().to_frame()
+Statusagendamento = dfagendamentos['Estado cliente'].value_counts().to_frame()
 DFStatusagendamento = pd.DataFrame({'Status': Statusagendamento.index, 'Qntd': Statusagendamento['count']})
 
 d = alt.Chart(DFStatusagendamento).mark_arc(innerRadius=50).encode(
