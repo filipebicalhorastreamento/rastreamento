@@ -70,9 +70,6 @@ dfinstalacoes = nova_ordem
 filtro = (dfinstalacoes['situacao_veiculo'] == 'PENDENTE INSTALAÇÃO') | (dfinstalacoes['situacao_veiculo'] == 'AGENDADO')
 filtered_data = dfinstalacoes[filtro]
 
-st.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
-st.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
-
 Status = filtered_data['situacao_veiculo'].value_counts().to_frame()
 DFStatus = pd.DataFrame({'Status': Status.index, 'Count': Status['count']})
 
@@ -81,5 +78,12 @@ c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
     color=alt.Color(field="Status", type="nominal"),
 )
 
+col1, col2 = st.columns([2, 5])
+col1.altair_chart(c, use_container_width=True)
+col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
+st.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
 
-st.altair_chart(c, use_container_width=True)
+
+
+
+
