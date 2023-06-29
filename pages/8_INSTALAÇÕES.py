@@ -54,7 +54,7 @@ def load_data(nrows):
 def load_sheets(nrows):
     datasheets = load_data2(st.secrets["public_gsheets_url"])
     uppercase = lambda x: str(x).upper()
-    data.rename(uppercase, axis='columns', inplace=True)
+    datasheets.rename(uppercase, axis='columns', inplace=True)
     return data
 
 def load_data2(sheets_url):
