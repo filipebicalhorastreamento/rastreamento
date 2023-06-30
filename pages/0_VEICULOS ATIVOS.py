@@ -94,7 +94,7 @@ dfbase['ÚLTIMA CONEXÃO COM O SERVIDOR'] = pd.to_datetime(dfbase['ÚLTIMA CONEX
 dfbase['DATA GPS'] = pd.to_datetime(dfbase['DATA GPS'],dayfirst=True)
 
 dfbase['ultima_transmissao'] = dfbase['ÚLTIMA TRANSMISSÃO'].fillna(dfbase['ÚLTIMA CONEXÃO COM O SERVIDOR']).fillna(dfbase['DATA GPS'])
-dfbase['ultima_transmissao'] = pd.to_datetime(dfbase['ultima_transmissao'], format='%d-%m-%Y %H:%M:%S')
+dfbase['ultima_transmissao'] = pd.to_datetime(dfbase['ultima_transmissao'].dt.strftime('%d-%m-%Y %H:%M:%S'))
 
 dfbase['plataforma'] = np.select(conditions, values, default='')
 st.dataframe(data=dfbase, use_container_width=True, hide_index=True)
