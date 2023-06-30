@@ -39,7 +39,7 @@ def convert_to_csv(dfbase):
 
 veiculos_ativos, logica_monitoramento, softruck_monitoramento, getrak_monitoramento = load_data(10000000)
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["ATIVOS SGR", "LÓGICA MONITORAMENTO", "SOFTRUCK", "GETRAK", "SAFECAR"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["GERAL","ATIVOS SGR", "LÓGICA MONITORAMENTO", "SOFTRUCK", "GETRAK"])
 
 dfveiculosativos =pd.DataFrame.from_dict(veiculos_ativos)
 dflogica = pd.DataFrame.from_dict(logica_monitoramento)
@@ -48,12 +48,12 @@ dflogica.rename(columns = {'VEICULO PLACA':'PLACA'}, inplace = True)
 dfsoftruck =pd.DataFrame.from_dict(softruck_monitoramento)
 dfgetrak = pd.DataFrame.from_dict(getrak_monitoramento)
 
-tab1.subheader('ATIVOS SGR')
+tab5.subheader('ATIVOS SGR')
 ordem_sgr = dfveiculosativos[["NOME", "PLACA","SITUAÇÃO","CIDADE CLIENTE","ESTADO CLIENTE","OBSERVAÇÃO"]]
 sgrfiltrado = ordem_sgr
 dfveiculosativosshape = sgrfiltrado.shape
-tab1.dataframe(data=sgrfiltrado, use_container_width=True, hide_index=True)
-tab1.write(dfveiculosativosshape)
+tab5.dataframe(data=sgrfiltrado, use_container_width=True, hide_index=True)
+tab5.write(dfveiculosativosshape)
 
 tab2.subheader('LOGICA MONITORAMENTO')
 ordem_logica = dflogica[["PLACA", "ÚLTIMA TRANSMISSÃO","GPRS DATA","MARCA","MODELO","TELEFONE"]]
@@ -102,7 +102,7 @@ dfbase['Nº DIAS'] = (f_date - dfbase['ultima_transmissao']) / np.timedelta64(1,
 dfbase['plataforma'] = np.select(conditions, values, default='')
 ordem_dfbase = dfbase[["NOME","PLACA", "ultima_transmissao", "plataforma", "Nº DIAS"]]
 dfbasefiltrado = ordem_dfbase
-st.dataframe(data=dfbasefiltrado, use_container_width=True, hide_index=True)
+tab1.dataframe(data=dfbasefiltrado, use_container_width=True, hide_index=True)
 
 csv = convert_to_csv(dfbase)
 
