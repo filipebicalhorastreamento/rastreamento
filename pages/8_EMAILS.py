@@ -1,7 +1,7 @@
 import streamlit as st
 st.title('MODELOS DE EMAIL')
 col1, col2, col3 = st.columns([3, 3, 3])
-col1.text_area('Atenção: Aviso de Veículos Desatualizados', '''
+col1.code('Atenção: Aviso de Veículos Desatualizados', '''
     Atenção: Aviso de Veículos Desatualizados
 
     Veículos Desatualizados:
