@@ -4,9 +4,6 @@ from datetime import date
 import pandas as pd
 import numpy as np
 import altair as alt
-
-import ydata_profiling
-from streamlit_pandas_profiling import st_profile_report
 import io
 
 # buffer to use for excel writer
@@ -116,8 +113,5 @@ download1 = st.download_button(
     mime='text/csv'
 )
 
-pr = dfbasefiltrado .profile_report()
-
-st_profile_report(pr)
 
 
