@@ -80,6 +80,7 @@ transmissaologica = dflogica[["PLACA", "ÚLTIMA TRANSMISSÃO"]]
 transmissaosoftruck = dfsoftruck[["PLACA", "ÚLTIMA CONEXÃO COM O SERVIDOR"]]
 transmissaogetrak = dfgetrak[["PLACA", "DATA GPS"]]
 
+dfbase = transmissaoativos.merge(transmissaosoftruck,how ='left').merge(transmissaogetrak,how ='left').merge(transmissaologica,how ='left')
 conditions = [
     dfbase['ÚLTIMA TRANSMISSÃO'].notnull(),
     dfbase['ÚLTIMA CONEXÃO COM O SERVIDOR'].notnull(),
@@ -88,7 +89,7 @@ conditions = [
 
 values = ['logica', 'softruck', 'getrak']
 
-dfbase = transmissaoativos.merge(transmissaosoftruck,how ='left').merge(transmissaogetrak,how ='left').merge(transmissaologica,how ='left')
+
 dfbase['ultima_transmissao'] = dfbase['ÚLTIMA TRANSMISSÃO'].fillna(dfbase['ÚLTIMA CONEXÃO COM O SERVIDOR']).fillna(dfbase['DATA GPS'])
 dfbase['plataforma'] = np.select(conditions, values, default='')
 st.dataframe(data=dfbase, use_container_width=True, hide_index=True)
