@@ -9,7 +9,7 @@ col1.code('''
     A desatualização de veículos pode ser ocasionada pelos motivos abaixo:
 
     1. Fora da cobertura de GSM (celular)
-    2. Desligado desde a ultima atualização
+    2. Veículo desligado desde a ultima atualização
     3. Veículo em manutenção.
     4. Equipamento com problema.
 
