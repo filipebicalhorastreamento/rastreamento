@@ -18,7 +18,7 @@ def run():
           
         PLATAFORMAS:  
           
-        GETRAK - https://sistema.getrak.com/mobili/msumario/index
+        GETRAK - https://sistema.getrak.com/mobili/msumario/index  
         SOFTRUCK - https://app.softruck.com/  
         LÓGICA - https://mobili.logicasolucoes.com.br/
         
