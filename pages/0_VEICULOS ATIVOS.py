@@ -2,7 +2,7 @@ import streamlit as st
 import datetime
 from datetime import date
 import pandas as pd
-import pandas_profiling
+import ydata_profiling
 from streamlit_pandas_profiling import st_profile_report
 
 st.set_page_config(layout="wide")
@@ -33,6 +33,7 @@ dflogica = pd.DataFrame.from_dict(logica_monitoramento)
 tab1.subheader('ATIVOS SGR')
 tab1.dataframe(data=dfveiculosativos, use_container_width=True, hide_index=True)
 tab2.subheader('LOGICA MONITORAMENTO')
+filtrologica = 
 tab2.dataframe(data=dflogica, use_container_width=True, hide_index=True)
 
 
