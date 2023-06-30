@@ -67,7 +67,7 @@ tab4.dataframe(data=getrakfiltrado, use_container_width=True, hide_index=True)
 tab4.write(getrakfiltradoshape)
 
 transmissaoativos = dfveiculosativos[["NOME", "PLACA","SITUAÇÃO"]]
-transmissaologica = dflogica[["PLACA", "ÚLTIMA TRANSMISSÃO","GPRS DATA","MARCA","MODELO","TELEFONE"]]
+transmissaologica = dflogica[["PLACA", "ÚLTIMA TRANSMISSÃO"]]
 transmissaosoftruck = dfsoftruck[["PLACA", "ÚLTIMA CONEXÃO COM O SERVIDOR"]]
 transmissaogetrak = dfgetrak[["PLACA", "DATA GPS"]]
 
