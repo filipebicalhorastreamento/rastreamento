@@ -37,8 +37,7 @@ dfsoftruck =pd.DataFrame.from_dict(softruck_monitoramento)
 dfgetrak = pd.DataFrame.from_dict(getrak_monitoramento)
 
 tab1.subheader('ATIVOS SGR')
-dfveiculosativos['ÚLTIMA TRANSMISSÃO'] = ''
-ordem_sgr = dfveiculosativos[["NOME", "PLACA","SITUAÇÃO","CIDADE CLIENTE","ESTADO CLIENTE","OBSERVAÇÃO", "ÚLTIMA TRANSMISSÃO"]]
+ordem_sgr = dfveiculosativos[["NOME", "PLACA","SITUAÇÃO","CIDADE CLIENTE","ESTADO CLIENTE","OBSERVAÇÃO"]]
 sgrfiltrado = ordem_sgr
 dfveiculosativosshape = sgrfiltrado.shape
 tab1.dataframe(data=sgrfiltrado, use_container_width=True, hide_index=True)
@@ -65,6 +64,11 @@ getrakfiltradoshape = getrakfiltrado.shape
 tab4.dataframe(data=getrakfiltrado, use_container_width=True, hide_index=True)
 tab4.write(getrakfiltradoshape)
 
-dfbase = pd.merge(dfveiculosativos, softruckfiltrado, on=['PLACA'], how='left')
+
+transmissaologica = dflogica[["VEICULO PLACA", "ÚLTIMA TRANSMISSÃO","GPRS DATA","MARCA","MODELO","TELEFONE"]]
+transmissaosoftruck = dfsoftruck[["PLACA", "ÚLTIMO ENVIO DE POSIÇÃO PARA O SERVIDOR","ÚLTIMA CONEXÃO COM O SERVIDOR","MARCA DO DISPOSITIVO","APELIDO DO MODELO","LINHA"]]
+transmissaogetrak = dfgetrak[["PLACA", "DATA GPS"]]
+
+dfbase = pd.merge(dfveiculosativos, transmissaogetrak, on=['PLACA'], how='left')
 dfbase
 
