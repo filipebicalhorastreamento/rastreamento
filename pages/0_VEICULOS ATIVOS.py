@@ -41,6 +41,8 @@ tab1.dataframe(data=dfveiculosativos, use_container_width=True, hide_index=True)
 tab2.subheader('LOGICA MONITORAMENTO')
 tab2.dataframe(data=dflogica, use_container_width=True, hide_index=True)
 tab3.subheader('SOFTRUCK')
+ordem_softruck = dfsoftruck[["PLACA", "ÚLTIMO ENVIO DE POSIÇÃO PARA O SERVIDOR","ÚLTIMA CONEXÃO COM O SERVIDOR","MARCA DO DISPOSITIVO","APELIDO DO MODELO","LINHA"]]
+dfsoftruck = ordem_softruck
 tab3.dataframe(data=dfsoftruck, use_container_width=True, hide_index=True)
 tab4.subheader('GETRAK')
 tab4.dataframe(data=dfgetrak, use_container_width=True, hide_index=True)
