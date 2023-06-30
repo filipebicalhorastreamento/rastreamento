@@ -26,7 +26,7 @@ dados = load_data(10000000)
 data_frame = pd.DataFrame(dados)
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 
-estado = data_frame['ESTADO'].value_counts().to_frame()
+estado = data_frame['ESTADO CLIENTE'].value_counts().to_frame()
 estado_count = pd.DataFrame({'ESTADO': estado.index, 'Count': estado['count']})
 
 FIPE = data_frame['FIPE'].value_counts().to_frame()
