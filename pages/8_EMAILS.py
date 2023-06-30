@@ -1,4 +1,5 @@
 import streamlit as st
+import smtplib
 st.title('MODELOS DE EMAIL')
 col1, col2, col3 = st.columns([3, 3, 3])
 col1.write('Atenção: Aviso de Veículos Desatualizados')
