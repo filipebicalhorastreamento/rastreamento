@@ -24,7 +24,7 @@ def load_data2(sheets_url):
 dados = load_data(10000000)
 
 data_frame = pd.DataFrame(dados)
-data_frame ['DATA'] = pd.to_datetime(data_frame ['DATA']).dt.date
+#data_frame ['DATA'] = pd.to_datetime(data_frame ['DATA']).dt.date
 
 estado = data_frame['ESTADO'].value_counts().to_frame()
 estado_count = pd.DataFrame({'ESTADO': estado.index, 'Count': estado['count']})
