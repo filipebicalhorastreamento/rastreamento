@@ -12,20 +12,19 @@ st.title('VEÍCULOS ATIVOS')
 
 @st.cache_data
 def load_data(nrows):
-    data = load_data2(st.secrets["veiculos_ativos"])
-    data = data.apply(lambda x: x.str.upper() if x.dtype == "object" else x)
-    datagetrak = load_data2(st.secrets["getrak_plataforma"])
-    datagetrak = datagetrak.apply(lambda x: x.str.upper() if x.dtype == "object" else x)
-    return data, datagetrak
-
+    veiculos_ativos = load_data2(st.secrets["veiculos_ativos"])
+    veiculos_ativos = veiculos_ativos.apply(lambda x: x.str.upper() if x.dtype == "object" else x)
+    logica_monitoramento = load_data2(st.secrets["getrak_plataforma"])
+    logica_monitoramento = logica_monitoramento.apply(lambda x: x.str.upper() if x.dtype == "object" else x)
+    return veiculos_ativos, logica_monitoramento
 
 def load_data2(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(csv_url)
 
-dados = load_data(10000000)
+veiculos_ativos, logica_monitoramento = load_data(10000000)
 
-data_frame = pd.DataFrame.from_dict(dados)
+data_frame = pd.DataFrame.from_dict(logica_monitoramento)
 st.dataframe(data=data_frame, use_container_width=True, hide_index=True)
 st.write(data_frame)
 """data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
