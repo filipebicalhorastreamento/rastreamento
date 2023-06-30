@@ -15,13 +15,16 @@ def load_data(nrows):
     data = load_data2(st.secrets["veiculos_ativos"])
     uppercase = lambda x: str(x).upper()
     data.rename(uppercase, axis='columns', inplace=True)
-    return data
+    datagetrak = load_data2(st.secrets["getrak_plataforma"])
+    uppercase = lambda x: str(x).upper()
+    datagetrak.rename(uppercase, axis='columns', inplace=True)
+    return data, datagetrak
 
 def load_data2(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(csv_url)
 
-dados = load_data(10000000)
+dados, datagetrak = load_data(10000000)
 
 data_frame = pd.DataFrame(dados)
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
