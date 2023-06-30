@@ -37,8 +37,10 @@ dfsoftruck =pd.DataFrame.from_dict(softruck_monitoramento)
 dfgetrak = pd.DataFrame.from_dict(getrak_monitoramento)
 
 tab1.subheader('ATIVOS SGR')
-tab1.dataframe(data=dfveiculosativos, use_container_width=True, hide_index=True)
-dfveiculosativosshape = dfveiculosativos.shape
+ordem_sgr = dfveiculosativos[["NOME", "PLACA","SITUAÇÃO","CIDADE CLIENTE","ESTADO CLIENTE","OBSERVAÇÃO"]]
+sgrfiltrado = ordem_sgr
+dfveiculosativosshape = sgrfiltrado.shape
+tab1.dataframe(data=sgrfiltrado, use_container_width=True, hide_index=True)
 tab1.write(dfveiculosativosshape)
 
 tab2.subheader('LOGICA MONITORAMENTO')
