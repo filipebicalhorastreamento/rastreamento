@@ -15,15 +15,19 @@ def load_data(nrows):
     veiculos_ativos = load_data2(st.secrets["veiculos_ativos"])
     uppercase = lambda x: str(x).upper()
     veiculos_ativos.rename(uppercase, axis='columns', inplace=True)
-    logica_monitoramento = load_data2(st.secrets["getrak_plataforma"])
+    logica_monitoramento = load_data2(st.secrets["logica_plataforma"])
     logica_monitoramento.rename(uppercase, axis='columns', inplace=True)
-    return veiculos_ativos, logica_monitoramento
+    softruck_monitoramento = load_data2(st.secrets["softruck_plataforma"])
+    softruck_monitoramento.rename(uppercase, axis='columns', inplace=True)
+    getrak_monitoramento = load_data2(st.secrets["getrak_plataforma"])
+    getrak_monitoramento.rename(uppercase, axis='columns', inplace=True)
+    return veiculos_ativos, logica_monitoramento, softruck_monitoramento, getrak_monitoramento
 
 def load_data2(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(csv_url)
 
-veiculos_ativos, logica_monitoramento = load_data(10000000)
+veiculos_ativos, logica_monitoramento, softruck_monitoramento, getrak_monitoramento = load_data(10000000)
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["ATIVOS SGR", "LÓGICA MONITORAMENTO", "SOFTRUCK", "GETRAK", "SAFECAR"])
 
