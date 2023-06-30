@@ -9,6 +9,7 @@ import io
 
 # buffer to use for excel writer
 buffer = io.BytesIO()
+f_date = date.today()
 
 st.set_page_config(layout="wide")
 st.title('VEÍCULOS ATIVOS')
@@ -94,10 +95,13 @@ dfbase['ÚLTIMA CONEXÃO COM O SERVIDOR'] = pd.to_datetime(dfbase['ÚLTIMA CONEX
 dfbase['DATA GPS'] = pd.to_datetime(dfbase['DATA GPS'],dayfirst=True)
 
 dfbase['ultima_transmissao'] = dfbase['ÚLTIMA TRANSMISSÃO'].fillna(dfbase['ÚLTIMA CONEXÃO COM O SERVIDOR']).fillna(dfbase['DATA GPS'])
+df['Nº DIAS'] = (f_date - df['DATA SITUAÇÃO']) / np.timedelta64(1, 'D')
 dfbase['ultima_transmissao'] = pd.to_datetime(dfbase['ultima_transmissao'].dt.strftime('%d-%m-%Y %H:%M:%S'))
 
 dfbase['plataforma'] = np.select(conditions, values, default='')
-st.dataframe(data=dfbase, use_container_width=True, hide_index=True)
+ordem_dfbase = dfbase[["NOME","PLACA", "ultima_transmissao", "plataforma"]]
+dfbasefiltrado = ordem_dfbase
+st.dataframe(data=dfbasefiltrado, use_container_width=True, hide_index=True)
 
 csv = convert_to_csv(dfbase)
 
