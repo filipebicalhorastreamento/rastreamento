@@ -26,16 +26,8 @@ dados = load_data(10000000)
 data_frame = pd.DataFrame(dados)
 data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 
-estado = data_frame['ESTADO CLIENTE'].value_counts().to_frame()
-estado_count = pd.DataFrame({'ESTADO': estado.index, 'Count': estado['count']})
 
-c = alt.Chart(estado_count).mark_arc(innerRadius=50).encode(
-    theta=alt.Theta(field="Count", type="quantitative"),
-    color=alt.Color(field="ESTADO", type="nominal"),
-)
 nova_ordem = data_frame[["NOME", "PLACA","SISTEMA DE MONITORAMENTO"]]
 data_frame = nova_ordem
-#col1, col2, col3 = st.columns([3, 3, 3])
-st.subheader('POR ESTADO')
-st.altair_chart(c, use_container_width=True)
+
 st.dataframe(data=data_frame, use_container_width=True, hide_index=True)
