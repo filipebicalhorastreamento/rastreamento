@@ -28,7 +28,7 @@ veiculos_ativos, logica_monitoramento = load_data(10000000)
 dfveiculosativos =pd.DataFrame.from_dict(veiculos_ativos)
 dflogica = pd.DataFrame.from_dict(logica_monitoramento)
 
-st.subheader('ATIVOS')
+st.subheader('ATIVOS SGR')
 st.dataframe(data=dfveiculosativos, use_container_width=True, hide_index=True)
 st.subheader('LOGICA')
 st.dataframe(data=dflogica, use_container_width=True, hide_index=True)
