@@ -38,18 +38,27 @@ dfgetrak = pd.DataFrame.from_dict(getrak_monitoramento)
 
 tab1.subheader('ATIVOS SGR')
 tab1.dataframe(data=dfveiculosativos, use_container_width=True, hide_index=True)
+dfveiculosativosshape = dfveiculosativos.shape
+tab1.write(dfveiculosativosshape)
+
 tab2.subheader('LOGICA MONITORAMENTO')
 ordem_logica = dflogica[["VEICULO PLACA", "ÚLTIMA TRANSMISSÃO","GPRS DATA","MARCA","MODELO","TELEFONE"]]
 logicafiltrado = ordem_logica
+logicafiltradoshape = logicafiltrado.shape
 tab2.dataframe(data=logicafiltrado, use_container_width=True, hide_index=True)
+tab2.write(logicafiltradoshape)
+
 tab3.subheader('SOFTRUCK')
 ordem_softruck = dfsoftruck[["PLACA", "ÚLTIMO ENVIO DE POSIÇÃO PARA O SERVIDOR","ÚLTIMA CONEXÃO COM O SERVIDOR","MARCA DO DISPOSITIVO","APELIDO DO MODELO","LINHA"]]
 softruckfiltrado = ordem_softruck
+softruckfiltradoshape = softruckfiltrado.shape
 tab3.dataframe(data=softruckfiltrado, use_container_width=True, hide_index=True)
+tab3.write(softruckfiltradoshape)
+
 tab4.subheader('GETRAK')
 ordem_getrak = dfgetrak[["PLACA", "DATA GPS"]]
 getrakfiltrado = ordem_getrak
-shape = getrakfiltrado.shape
+getrakfiltradoshape = getrakfiltrado.shape
 tab4.dataframe(data=getrakfiltrado, use_container_width=True, hide_index=True)
-tab4.write(shape)
+tab4.write(getrakfiltradoshape)
 
