@@ -49,6 +49,7 @@ tab3.dataframe(data=softruckfiltrado, use_container_width=True, hide_index=True)
 tab4.subheader('GETRAK')
 ordem_getrak = dfgetrak[["PLACA", "DATA GPS"]]
 getrakfiltrado = ordem_getrak
+shape = getrakfiltrado.shape
 tab4.dataframe(data=getrakfiltrado, use_container_width=True, hide_index=True)
-
+tab4.write(shape)
 
