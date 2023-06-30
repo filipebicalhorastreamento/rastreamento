@@ -16,12 +16,20 @@ col1.code('''
     3. Veículo em manutenção.
     4. Equipamento com problema.
 
-    Caso o seu veículo não esteja em nenhuma das 3 primeiras situações, entre em contato pelo telefone (31) 2515-1616 ou através do Mobili Express (31) 99940-9900 solicitando uma verificação do equipamento.
+    Caso o seu veículo não esteja em nenhuma das 3 primeiras situações, entre em contato através dos canais abaixo e solicite uma verificação do equipamento.
+
+    Mobili Express: 31999409900 WhatsApp
+    Telefone Fixo: 31 2515-1616
+    E-mail: rastreador@gomobili.com.br
+    
+    Caso já tenha solicitado a verificação, favor desconsiderar esse e-mail.
+    Cláusula 3.6.1 do FAM – Fundo de Amparo Mobili:
+    "3.6.1 – Para todos os veículos citados na cláusula 3.6 e seus parágrafos, os eventos danosos reparáveis e irreparáveis em casos de furto e roubo somente serão amparados pelo FAM após a instalação do equipamento." 
     ''')
 
 col2.write('Contato sem sucesso.')
 col2.code('''
-    Olá [nome_associado], tudo bem? 
+   Olá [nome_associado], tudo bem? 
 
    Tentamos contato através do telefone de cadastro, porém não obtivemos sucesso.
    Realize o agendamento do Serviço de Instalação - Rastreamento Mobili, através dos canais abaixo: 
