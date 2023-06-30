@@ -13,7 +13,7 @@ def run():
     st.markdown(
         """
         LINKS ÚTEIS:  
-        SGR - https://sgr.hinova.com.br/sgr/sgrv2/#/access/signin
+        SGR - https://sgr.hinova.com.br/sgr/sgrv2/#/access/signin  
         SAFECAR - https://www.safecar.net.br/associacoes/  
           
         PLATAFORMAS:  
