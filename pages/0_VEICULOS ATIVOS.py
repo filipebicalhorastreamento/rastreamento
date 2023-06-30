@@ -13,9 +13,10 @@ st.title('VEÍCULOS ATIVOS')
 @st.cache_data
 def load_data(nrows):
     veiculos_ativos = load_data2(st.secrets["veiculos_ativos"])
-    veiculos_ativos = veiculos_ativos.apply(lambda x: x.str.upper() if x.dtype == "object" else x)
+    uppercase = lambda x: str(x).upper()
+    veiculos_ativos.rename(uppercase, axis='columns', inplace=True)
     logica_monitoramento = load_data2(st.secrets["getrak_plataforma"])
-    logica_monitoramento = logica_monitoramento.apply(lambda x: x.str.upper() if x.dtype == "object" else x)
+    logica_monitoramento.rename(uppercase, axis='columns', inplace=True)
     return veiculos_ativos, logica_monitoramento
 
 def load_data2(sheets_url):
