@@ -26,7 +26,7 @@ def load_data2(sheets_url):
 dados = load_data(10000000)
 
 data_frame = pd.DataFrame.from_dict(dados)
-st.dataframe(data=data_frame.T, use_container_width=True, hide_index=True)
+st.dataframe(data=data_frame, use_container_width=True, hide_index=True)
 st.write(data_frame)
 """data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 
