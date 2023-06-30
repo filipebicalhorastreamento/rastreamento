@@ -13,6 +13,8 @@ def run():
     st.markdown(
         """
         PROCEDIMENTO OPERACIONAL PADRÃO
+        LINKS ÚTEIS:
+        SAFECAR - https://www.safecar.net.br/associacoes/
         """
     )
 
