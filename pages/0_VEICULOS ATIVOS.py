@@ -37,7 +37,8 @@ dfsoftruck =pd.DataFrame.from_dict(softruck_monitoramento)
 dfgetrak = pd.DataFrame.from_dict(getrak_monitoramento)
 
 tab1.subheader('ATIVOS SGR')
-ordem_sgr = dfveiculosativos[["NOME", "PLACA","SITUAÇÃO","CIDADE CLIENTE","ESTADO CLIENTE","OBSERVAÇÃO"]]
+dfveiculosativos['ÚLTIMA TRANSMISSÃO'] = ''
+ordem_sgr = dfveiculosativos[["NOME", "PLACA","SITUAÇÃO","CIDADE CLIENTE","ESTADO CLIENTE","OBSERVAÇÃO", "ÚLTIMA TRANSMISSÃO"]]
 sgrfiltrado = ordem_sgr
 dfveiculosativosshape = sgrfiltrado.shape
 tab1.dataframe(data=sgrfiltrado, use_container_width=True, hide_index=True)
