@@ -13,12 +13,11 @@ st.title('VEÍCULOS ATIVOS')
 @st.cache_data
 def load_data(nrows):
     data = load_data2(st.secrets["veiculos_ativos"])
-    uppercase = lambda x: str(x).upper()
-    data.rename(uppercase, axis='columns', inplace=True)
+    data = data.apply(lambda x: x.str.upper() if x.dtype == "object" else x)
     datagetrak = load_data2(st.secrets["getrak_plataforma"])
-    uppercase = lambda x: str(x).upper()
-    datagetrak.rename(uppercase, axis='columns', inplace=True)
+    datagetrak = datagetrak.apply(lambda x: x.str.upper() if x.dtype == "object" else x)
     return data, datagetrak
+
 
 def load_data2(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
