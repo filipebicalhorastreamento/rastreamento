@@ -33,13 +33,16 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["ATIVOS SGR", "LÓGICA MONITORAMENTO", "
 
 dfveiculosativos =pd.DataFrame.from_dict(veiculos_ativos)
 dflogica = pd.DataFrame.from_dict(logica_monitoramento)
+dfsoftruck =pd.DataFrame.from_dict(softruck_monitoramento)
+dfgetrak = pd.DataFrame.from_dict(getrak_monitoramento)
 
 tab1.subheader('ATIVOS SGR')
 tab1.dataframe(data=dfveiculosativos, use_container_width=True, hide_index=True)
 tab2.subheader('LOGICA MONITORAMENTO')
-
 tab2.dataframe(data=dflogica, use_container_width=True, hide_index=True)
-
-
+tab3.subheader('SOFTRUCK')
+tab3.dataframe(data=dfsoftruck, use_container_width=True, hide_index=True)
+tab4.subheader('GETRAK')
+tab4.dataframe(data=dfgetrak, use_container_width=True, hide_index=True)
 
 
