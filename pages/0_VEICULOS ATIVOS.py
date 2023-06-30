@@ -35,9 +35,7 @@ tab1.dataframe(data=dfveiculosativos, use_container_width=True, hide_index=True)
 tab2.subheader('LOGICA MONITORAMENTO')
 
 tab2.dataframe(data=dflogica, use_container_width=True, hide_index=True)
-pr = dflogica.profile_report()
 
-st_profile_report(pr)
 
 
 
