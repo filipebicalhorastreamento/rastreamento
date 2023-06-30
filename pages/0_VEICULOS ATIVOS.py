@@ -65,3 +65,6 @@ getrakfiltradoshape = getrakfiltrado.shape
 tab4.dataframe(data=getrakfiltrado, use_container_width=True, hide_index=True)
 tab4.write(getrakfiltradoshape)
 
+dfbase = pd.merge(dfveiculosativos, softruckfiltrado, on=['PLACA'], how='left')
+dfbase
+
