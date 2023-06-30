@@ -116,5 +116,8 @@ download1 = st.download_button(
     mime='text/csv'
 )
 
+pr = dfbasefiltrado .profile_report()
+
+st_profile_report(pr)
 
 
