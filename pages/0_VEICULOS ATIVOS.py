@@ -66,7 +66,7 @@ tab4.write(getrakfiltradoshape)
 
 transmissaoativos = dfveiculosativos[["NOME", "PLACA","SITUAÇÃO"]]
 transmissaologica = dflogica[["VEICULO PLACA", "ÚLTIMA TRANSMISSÃO","GPRS DATA","MARCA","MODELO","TELEFONE"]]
-transmissaosoftruck = dfsoftruck[["PLACA", "ÚLTIMO ENVIO DE POSIÇÃO PARA O SERVIDOR","ÚLTIMA CONEXÃO COM O SERVIDOR","MARCA DO DISPOSITIVO","APELIDO DO MODELO","LINHA"]]
+transmissaosoftruck = dfsoftruck[["PLACA", "ÚLTIMA CONEXÃO COM O SERVIDOR"]]
 transmissaogetrak = dfgetrak[["PLACA", "DATA GPS"]]
 
 dfbase = pd.merge(transmissaoativos, transmissaosoftruck, on=['PLACA'])
