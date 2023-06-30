@@ -1,4 +1,4 @@
-cimport streamlit as st
+import streamlit as st
 import datetime
 from datetime import date
 import pandas as pd
@@ -6,7 +6,7 @@ import numpy as np
 import altair as alt
 
 st.set_page_config(layout="wide")
-st.title('PRONTA RESPOSTA')
+st.title('VEÍCULOS ATIVOS')
 # Read in data from the Google Sheet.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
 
