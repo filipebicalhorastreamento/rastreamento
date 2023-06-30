@@ -4,6 +4,10 @@ from datetime import date
 import pandas as pd
 import ydata_profiling
 from streamlit_pandas_profiling import st_profile_report
+import io
+
+# buffer to use for excel writer
+buffer = io.BytesIO()
 
 st.set_page_config(layout="wide")
 st.title('VEÍCULOS ATIVOS')
@@ -75,4 +79,30 @@ dfbase = transmissaoativos.merge(transmissaosoftruck,how ='left').merge(transmis
 dfbase['ultima_transmissao'] = dfbase['ÚLTIMA TRANSMISSÃO'].fillna(dfbase['ÚLTIMA CONEXÃO COM O SERVIDOR']).fillna(dfbase['DATA GPS'])
 st.dataframe(data=dfbase, use_container_width=True, hide_index=True)
 
+def convert_to_csv(dfbase):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return dfbase.to_csv(index=False).encode('utf-8')
+
+csv = convert_to_csv(dfbase)
+
+
+# download button 1 to download dataframe as csv
+download1 = st.download_button(
+    label="Download data as CSV",
+    data=csv,
+    file_name='large_df.csv',
+    mime='text/csv'
+)
+
+# download button 2 to download dataframe as xlsx
+with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+    # Write each dataframe to a different worksheet.
+    dfbase.to_excel(writer, sheet_name='Sheet1', index=False)
+
+    download2 = st.download_button(
+        label="Download data as Excel",
+        data=buffer,
+        file_name='large_df.xlsx',
+        mime='application/vnd.ms-excel'
+    )
 
