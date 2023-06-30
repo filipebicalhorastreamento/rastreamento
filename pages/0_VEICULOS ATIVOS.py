@@ -91,6 +91,7 @@ values = ['logica', 'softruck', 'getrak']
 
 
 dfbase['ultima_transmissao'] = dfbase['ÚLTIMA TRANSMISSÃO'].fillna(dfbase['ÚLTIMA CONEXÃO COM O SERVIDOR']).fillna(dfbase['DATA GPS'])
+dfbase['ultima_transmissao'] = pd.to_datetime(dfbase['ultima_transmissao']).dt.date
 dfbase['plataforma'] = np.select(conditions, values, default='')
 st.dataframe(data=dfbase, use_container_width=True, hide_index=True)
 
