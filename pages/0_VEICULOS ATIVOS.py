@@ -69,7 +69,7 @@ transmissaologica = dflogica[["VEICULO PLACA", "ÚLTIMA TRANSMISSÃO","GPRS DATA
 transmissaosoftruck = dfsoftruck[["PLACA", "ÚLTIMA CONEXÃO COM O SERVIDOR"]]
 transmissaogetrak = dfgetrak[["PLACA", "DATA GPS"]]
 
-dfbase = transmissaoativos,.merge(transmissaosoftruck,how ='left').merge(transmissaogetrak,how ='left')
+dfbase = transmissaoativos.merge(transmissaosoftruck,how ='left').merge(transmissaogetrak,how ='left')
 
 dfbase
 
