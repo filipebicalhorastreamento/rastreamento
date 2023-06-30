@@ -28,9 +28,17 @@ data_frame ['DATA'] = pd.to_datetime(data_frame ['DATA']).dt.date
 
 estado = data_frame['ESTADO'].value_counts().to_frame()
 estado_count = pd.DataFrame({'ESTADO': estado.index, 'Count': estado['count']})
+#trata os dados da fipe
+faixas_preco = {
+    '0 a 30 mil': (0, 30000),
+    '30 a 50 mil': (30001, 50000),
+    '50 a 70 mil': (50001, 70000),
+    '70 mil ou mais': (70001, float('inf'))
+}
 
 FIPE = data_frame['FIPE'].value_counts().to_frame()
 estado_count = pd.DataFrame({'ESTADO': estado.index, 'Count': estado['count']})
+tabela_fipe['faixa_preco'] = pd.cut(data_frame['FIPE'], bins=[faixa[0] for faixa in faixas_preco.values()] + [float('inf')], labels=faixas_preco.keys())
 
 estado = data_frame['ESTADO'].value_counts().to_frame()
 estado_count = pd.DataFrame({'ESTADO': estado.index, 'Count': estado['count']})
