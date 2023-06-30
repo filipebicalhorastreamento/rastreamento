@@ -1,4 +1,4 @@
-import streamlit as st
+cimport streamlit as st
 import datetime
 from datetime import date
 import pandas as pd
@@ -12,7 +12,7 @@ st.title('PRONTA RESPOSTA')
 
 @st.cache_data
 def load_data(nrows):
-    data = load_data2(st.secrets["public_gsheets_url2"])
+    data = load_data2(st.secrets["veiculos_ativos"])
     uppercase = lambda x: str(x).upper()
     data.rename(uppercase, axis='columns', inplace=True)
     return data
