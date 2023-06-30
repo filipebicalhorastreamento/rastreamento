@@ -4,8 +4,6 @@ st.title('MODELOS DE EMAIL')
 col1, col2, col3 = st.columns([3, 3, 3])
 col1.write('Atenção: Rastreador sem comunicação.')
 col1.code('''
-    ***Atenção: Rastreador sem comunicação.***
-
     Prezado [nome_associado], o rastreamento do seu veículo de placa: [placa] está sem atualização há pelo menos 96 horas.
 
     A desatualização de veículos pode ser ocasionada pelos motivos abaixo:
