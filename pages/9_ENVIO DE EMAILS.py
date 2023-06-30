@@ -37,10 +37,10 @@ recipient = st.text_input("Destinatário")
 if st.button("Enviar"):
     try:
         send_email(subject, body, recipient)
-        print('Sent')
+        st.write('Sent')
     except (gaierror, ConnectionRefusedError):
-        print('Failed to connect to the server. Bad connection settings?')
+        st.write("Failed to connect to the server. Bad connection settings?")
     except smtplib.SMTPServerDisconnected:
-        print('Failed to connect to the server. Wrong user/password?')
+        st.write("Failed to connect to the server. Wrong user/password?")
     except smtplib.SMTPException as e:
-        print('SMTP error occurred: ' + str(e))
+        st.write("SMTP error occurred: " + str(e))
