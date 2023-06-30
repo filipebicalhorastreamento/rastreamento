@@ -23,13 +23,14 @@ def load_data2(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(csv_url)
 
-dados, datagetrak = load_data(10000000)
+dados = load_data(10000000)
 
 data_frame = pd.DataFrame(dados)
-data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
+st.write(dados)
+"""data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 
 
 nova_ordem = data_frame[["NOME", "PLACA","SISTEMA DE MONITORAMENTO"]]
-data_frame = nova_ordem
+data_frame = nova_ordem"""
 
 st.dataframe(data=data_frame, use_container_width=True, hide_index=True)
