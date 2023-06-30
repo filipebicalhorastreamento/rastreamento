@@ -33,6 +33,8 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["ATIVOS SGR", "LÓGICA MONITORAMENTO", "
 
 dfveiculosativos =pd.DataFrame.from_dict(veiculos_ativos)
 dflogica = pd.DataFrame.from_dict(logica_monitoramento)
+dflogica.rename(columns = {'VEICULO PLACA':'PLACA'}, inplace = True)
+
 dfsoftruck =pd.DataFrame.from_dict(softruck_monitoramento)
 dfgetrak = pd.DataFrame.from_dict(getrak_monitoramento)
 
@@ -44,7 +46,7 @@ tab1.dataframe(data=sgrfiltrado, use_container_width=True, hide_index=True)
 tab1.write(dfveiculosativosshape)
 
 tab2.subheader('LOGICA MONITORAMENTO')
-ordem_logica = dflogica[["VEICULO PLACA", "ÚLTIMA TRANSMISSÃO","GPRS DATA","MARCA","MODELO","TELEFONE"]]
+ordem_logica = dflogica[["PLACA", "ÚLTIMA TRANSMISSÃO","GPRS DATA","MARCA","MODELO","TELEFONE"]]
 logicafiltrado = ordem_logica
 logicafiltradoshape = logicafiltrado.shape
 tab2.dataframe(data=logicafiltrado, use_container_width=True, hide_index=True)
@@ -65,11 +67,11 @@ tab4.dataframe(data=getrakfiltrado, use_container_width=True, hide_index=True)
 tab4.write(getrakfiltradoshape)
 
 transmissaoativos = dfveiculosativos[["NOME", "PLACA","SITUAÇÃO"]]
-transmissaologica = dflogica[["VEICULO PLACA", "ÚLTIMA TRANSMISSÃO","GPRS DATA","MARCA","MODELO","TELEFONE"]]
+transmissaologica = dflogica[["PLACA", "ÚLTIMA TRANSMISSÃO","GPRS DATA","MARCA","MODELO","TELEFONE"]]
 transmissaosoftruck = dfsoftruck[["PLACA", "ÚLTIMA CONEXÃO COM O SERVIDOR"]]
 transmissaogetrak = dfgetrak[["PLACA", "DATA GPS"]]
 
-dfbase = transmissaoativos.merge(transmissaosoftruck,how ='left').merge(transmissaogetrak,how ='left')
+dfbase = transmissaoativos.merge(transmissaosoftruck,how ='left').merge(transmissaogetrak,how ='left').merge(transmissaologica,how ='left')
 st.dataframe(data=dfbase, use_container_width=True, hide_index=True)
 
 
