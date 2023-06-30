@@ -39,12 +39,16 @@ dfgetrak = pd.DataFrame.from_dict(getrak_monitoramento)
 tab1.subheader('ATIVOS SGR')
 tab1.dataframe(data=dfveiculosativos, use_container_width=True, hide_index=True)
 tab2.subheader('LOGICA MONITORAMENTO')
-tab2.dataframe(data=dflogica, use_container_width=True, hide_index=True)
+ordem_logica = dflogica[["PLACA", "ÚLTIMO ENVIO DE POSIÇÃO PARA O SERVIDOR","ÚLTIMA CONEXÃO COM O SERVIDOR","MARCA DO DISPOSITIVO","APELIDO DO MODELO","LINHA"]]
+logicafiltrado = ordem_logica
+tab2.dataframe(data=logicafiltrado, use_container_width=True, hide_index=True)
 tab3.subheader('SOFTRUCK')
 ordem_softruck = dfsoftruck[["PLACA", "ÚLTIMO ENVIO DE POSIÇÃO PARA O SERVIDOR","ÚLTIMA CONEXÃO COM O SERVIDOR","MARCA DO DISPOSITIVO","APELIDO DO MODELO","LINHA"]]
-dfsoftruck = ordem_softruck
-tab3.dataframe(data=dfsoftruck, use_container_width=True, hide_index=True)
+softruckfiltrado = ordem_softruck
+tab3.dataframe(data=softruckfiltrado, use_container_width=True, hide_index=True)
 tab4.subheader('GETRAK')
-tab4.dataframe(data=dfgetrak, use_container_width=True, hide_index=True)
+ordem_getrak = dfgetrak[["PLACA", "ÚLTIMO ENVIO DE POSIÇÃO PARA O SERVIDOR","ÚLTIMA CONEXÃO COM O SERVIDOR","MARCA DO DISPOSITIVO","APELIDO DO MODELO","LINHA"]]
+getrakfiltrado = ordem_getrak
+tab4.dataframe(data=getrakfiltrado, use_container_width=True, hide_index=True)
 
 
