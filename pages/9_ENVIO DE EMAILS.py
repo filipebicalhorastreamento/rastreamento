@@ -36,7 +36,7 @@ recipient = st.text_input("Destinatário")
 # Botão para enviar o e-mail
 if st.button("Enviar"):
     try:
-    send_email(subject, body, recipient)
+        send_email(subject, body, recipient)
     st.success("E-mail enviado com sucesso!")
     except (gaierror, ConnectionRefusedError):
         print('Failed to connect to the server. Bad connection settings?')
