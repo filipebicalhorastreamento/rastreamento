@@ -72,6 +72,7 @@ transmissaosoftruck = dfsoftruck[["PLACA", "ÚLTIMA CONEXÃO COM O SERVIDOR"]]
 transmissaogetrak = dfgetrak[["PLACA", "DATA GPS"]]
 
 dfbase = transmissaoativos.merge(transmissaosoftruck,how ='left').merge(transmissaogetrak,how ='left').merge(transmissaologica,how ='left')
+dfbase['ultima_transmissao'] = dfbase['ÚLTIMA TRANSMISSÃO'].fillna(dfbase['ÚLTIMA CONEXÃO COM O SERVIDOR']).fillna(dfbase['DATA GPS'])
 st.dataframe(data=dfbase, use_container_width=True, hide_index=True)
 
 
