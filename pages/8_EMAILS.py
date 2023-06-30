@@ -43,3 +43,22 @@ col2.code('''
    Qualquer dúvida ou sugestão estou à disposição. 
 
     ''')
+col3.write('Agendamento de retirada')
+col3.code('''
+    Olá [nome_associado], tudo bem?
+    Gostaria de agendar com você a retirada do equipamento rastreador do seu veículo.
+    Lembrando que o *equipamento rastreador é entregue como comodato, para o uso dos serviços de rastreamento em quanto associado Mobili - Veja o Regulamento de Rastreador, aqui.
+    Entre em contato, no número 31999409900 (Clique aqui para começar uma conversa via WhatsApp).
+
+    Caso já tenha retirado o equipamento, favor desconsiderar esse e-mail.
+
+    *Regulamento do Rastreador Mobili:
+        Cláusula 3ª - O equipamento será cedido pela MOBILI em regime de comodato, de modo que fica o associado obrigando a devolvê-lo no prazo máximo de 07 (sete) dias úteis em caso de cancelamento, nas mesmas condições em que o receber. A não devolução do aparelho acarretará cobrança de multa no valor de 800,00 (oitocentos reais), contemplando essa o valor do equipamento e as despesas da MOBILI com procedimentos administrativos, judiciais e extrajudiciais para ressarcimento. Por sua vez, o inadimplemento da referida multa ensejará a inclusão do nome do associado nos órgãos de proteção ao crédito, além de legitimar procedimentos de cobrança, como citado, judiciais e extrajudiciais.
+
+
+    Tem dúvidas? Entre em contato no seu canal preferido:
+    Mobili Express: 31999409900
+
+
+
+    ''')
