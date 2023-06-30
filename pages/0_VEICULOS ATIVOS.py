@@ -25,7 +25,7 @@ def load_data2(sheets_url):
 
 veiculos_ativos, logica_monitoramento = load_data(10000000)
 
-tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["ATIVOS SGR", "LÓGICA MONITORAMENTO", "SOFTRUCK", "GETRAK", "SAFECAR"])
 
 dfveiculosativos =pd.DataFrame.from_dict(veiculos_ativos)
 dflogica = pd.DataFrame.from_dict(logica_monitoramento)
