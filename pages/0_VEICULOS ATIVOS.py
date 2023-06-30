@@ -25,9 +25,13 @@ def load_data2(sheets_url):
 
 veiculos_ativos, logica_monitoramento = load_data(10000000)
 
-data_frame = pd.DataFrame.from_dict(logica_monitoramento)
-st.dataframe(data=data_frame, use_container_width=True, hide_index=True)
-st.write(data_frame)
+dfveiculosativos =pd.DataFrame.from_dict(veiculos_ativos)
+dflogica = pd.DataFrame.from_dict(logica_monitoramento)
+
+st.subheader('ATIVOS')
+st.dataframe(data=dfveiculosativos, use_container_width=True, hide_index=True)
+st.subheader('LOGICA')
+st.dataframe(data=dflogica, use_container_width=True, hide_index=True)
 """data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
 
 
