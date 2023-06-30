@@ -2,6 +2,7 @@ import streamlit as st
 import datetime
 from datetime import date
 import pandas as pd
+import numpy as np
 import ydata_profiling
 from streamlit_pandas_profiling import st_profile_report
 import io
@@ -79,8 +80,17 @@ transmissaologica = dflogica[["PLACA", "ÚLTIMA TRANSMISSÃO"]]
 transmissaosoftruck = dfsoftruck[["PLACA", "ÚLTIMA CONEXÃO COM O SERVIDOR"]]
 transmissaogetrak = dfgetrak[["PLACA", "DATA GPS"]]
 
+conditions = [
+    dfbase['ÚLTIMA TRANSMISSÃO'].notnull(),
+    dfbase['ÚLTIMA CONEXÃO COM O SERVIDOR'].notnull(),
+    dfbase['DATA GPS'].notnull()
+]
+
+values = ['logica', 'softruck', 'getrak']
+
 dfbase = transmissaoativos.merge(transmissaosoftruck,how ='left').merge(transmissaogetrak,how ='left').merge(transmissaologica,how ='left')
 dfbase['ultima_transmissao'] = dfbase['ÚLTIMA TRANSMISSÃO'].fillna(dfbase['ÚLTIMA CONEXÃO COM O SERVIDOR']).fillna(dfbase['DATA GPS'])
+dfbase['plataforma'] = np.select(conditions, values, default='')
 st.dataframe(data=dfbase, use_container_width=True, hide_index=True)
 
 csv = convert_to_csv(dfbase)
