@@ -33,7 +33,7 @@ c = alt.Chart(estado_count).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Count", type="quantitative"),
     color=alt.Color(field="ESTADO", type="nominal"),
 )
-nova_ordem = data_frame[["NOME", "PLACA","SISTEMA DE MONITORAMENTO","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao"]]
+nova_ordem = data_frame[["NOME", "PLACA","SISTEMA DE MONITORAMENTO"]]
 data_frame = nova_ordem
 #col1, col2, col3 = st.columns([3, 3, 3])
 st.subheader('POR ESTADO')
