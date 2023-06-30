@@ -19,7 +19,7 @@ message["To"] = receiver_email
 part1 = MIMEText(text, "plain") 
 part2 = MIMEText(html, "html") 
 message.attach(part1)
- message.attach(part2) 
+message.attach(part2) 
 # send your email with smtplib.SMTP("smtp.mailtrap.io", 2525) as server: server.login(login, password) 
 server.sendmail( sender_email, receiver_email, message.as_string() ) 
 print('Sent')
