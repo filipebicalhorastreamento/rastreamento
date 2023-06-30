@@ -100,7 +100,7 @@ dfbase['ultima_transmissao'] = dfbase['ultima_transmissao'].fillna(pd.to_datetim
 dfbase['Nº DIAS'] = (f_date - dfbase['ultima_transmissao']) / np.timedelta64(1, 'D')
 
 dfbase['plataforma'] = np.select(conditions, values, default='')
-ordem_dfbase = dfbase[["NOME","PLACA", "ultima_transmissao", "plataforma"]]
+ordem_dfbase = dfbase[["NOME","PLACA", "ultima_transmissao", "plataforma", "Nº DIAS"]]
 dfbasefiltrado = ordem_dfbase
 st.dataframe(data=dfbasefiltrado, use_container_width=True, hide_index=True)
 
