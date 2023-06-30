@@ -33,7 +33,7 @@ dflogica = pd.DataFrame.from_dict(logica_monitoramento)
 tab1.subheader('ATIVOS SGR')
 tab1.dataframe(data=dfveiculosativos, use_container_width=True, hide_index=True)
 tab2.subheader('LOGICA MONITORAMENTO')
-filtrologica = 
+
 tab2.dataframe(data=dflogica, use_container_width=True, hide_index=True)
 pr = dflogica.profile_report()
 
