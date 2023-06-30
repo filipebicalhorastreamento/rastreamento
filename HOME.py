@@ -9,12 +9,19 @@ def run():
         page_title="MOBILI - RASTREAMENTO",
         layout="wide",
     )
-
+    st.title('PROCEDIMENTO OPERACIONAL PADRÃO')
     st.markdown(
         """
-        PROCEDIMENTO OPERACIONAL PADRÃO
         LINKS ÚTEIS:  
-        SAFECAR - https://www.safecar.net.br/associacoes/
+        SGR - https://sgr.hinova.com.br/sgr/sgrv2/#/access/signin
+        SAFECAR - https://www.safecar.net.br/associacoes/  
+          
+        PLATAFORMAS:  
+          
+        GETRAK - https://sistema.getrak.com/mobili/msumario/index
+        SOFTRUCK - https://app.softruck.com/  
+        LÓGICA - https://mobili.logicasolucoes.com.br/
+        
         """
     )
 
