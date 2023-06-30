@@ -23,8 +23,8 @@ col1.code('''
     E-mail: rastreador@gomobili.com.br
     
     Caso já tenha solicitado a verificação, favor desconsiderar esse e-mail.
-    Cláusula 3.6.1 do FAM – Fundo de Amparo Mobili:
-    "3.6.1 – Para todos os veículos citados na cláusula 3.6 e seus parágrafos, os eventos danosos reparáveis e irreparáveis em casos de furto e roubo somente serão amparados pelo FAM após a instalação do equipamento." 
+    Cláusula 3.6.3 do FAM – Fundo de Amparo Mobili:
+    "3.6.3 – A responsabilidade da fiscalização de funcionamento e manutenção do equipamento é de inteira responsabilidade do associado. Se porventura na data do evento danoso o equipamento estiver inoperante, o associado não terá o amparo do FAM para os casos de despesas reparáveis e irreparáveis oriundas de furto e roubo." 
     ''')
 
 col2.write('Contato sem sucesso.')
