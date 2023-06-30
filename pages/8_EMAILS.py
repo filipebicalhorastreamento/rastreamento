@@ -21,17 +21,20 @@ col1.code('''
 
 col2.write('Contato sem sucesso.')
 col2.code('''
-    ***Atenção: Aviso de Veículos Desatualizados***
+    Olá [nome_associado], tudo bem? 
 
-    Veículos Desatualizados:
-    Prezado cliente, segue a lista de 3 veículo(s) sem atualização há pelo menos 96 horas.
+   Tentamos contato através do telefone de cadastro, porém não obtivemos sucesso.
+   Realize o agendamento do Serviço de Instalação - Rastreamento Mobili, através dos canais abaixo: 
+   Mobili Express: 31999409900 WhatsApp
+   Telefone Fixo: 31 2515-1616
+   E-mail: rastreador@gomobili.com.br
+   Cláusula 3.6.1 do FAM – Fundo de Amparo Mobili:
+   "3.6.1 – Para todos os veículos citados na cláusula 3.6 e seus parágrafos, os eventos danosos reparáveis e irreparáveis em casos de furto e roubo somente serão amparados pelo FAM após a instalação do equipamento." 
+   Veja o Regulamento do FAM, aqui.
+   Veja o Regulamento de Rastreador, aqui.
 
-    A desatualização de veículos pode ser ocasionada pelos motivos abaixo:
+   *Para reagendamento basta entrar em contato com antecedência de 24h. Em caso de visita improdutiva sem aviso do associado com antecedência, terá um custo de instalação adicional de R$50,00 cobrado na próxima mensalidade.
+   Caso já tenha instalado ou solicitado a instalação, favor desconsiderar esse e-mail.
+   Qualquer dúvida ou sugestão estou à disposição. 
 
-    Fora da cobertura de GSM (celular)
-    Desligado desde a ultima atualização
-    Em manutenção.
-    Equipamento com problema.
-
-    Caso o seu veículo não esteja em nenhuma das 3 primeiras situações, entre em contato pelo telefone (31) 2535-6060 [ ON SIG RASTREAMENTO ] solicitando uma verificação do equipamento.
     ''')
