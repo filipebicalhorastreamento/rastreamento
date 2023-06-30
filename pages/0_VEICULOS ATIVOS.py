@@ -25,17 +25,15 @@ def load_data2(sheets_url):
 
 veiculos_ativos, logica_monitoramento = load_data(10000000)
 
+tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
+
 dfveiculosativos =pd.DataFrame.from_dict(veiculos_ativos)
 dflogica = pd.DataFrame.from_dict(logica_monitoramento)
 
-st.subheader('ATIVOS SGR')
-st.dataframe(data=dfveiculosativos, use_container_width=True, hide_index=True)
-st.subheader('LOGICA')
-st.dataframe(data=dflogica, use_container_width=True, hide_index=True)
-"""data_frame ['DATA/HORA ALTERAÇÃO'] = pd.to_datetime(data_frame['DATA/HORA ALTERAÇÃO']).dt.date
+tab1.subheader('ATIVOS SGR')
+tab1.dataframe(data=dfveiculosativos, use_container_width=True, hide_index=True)
+tab2.subheader('LOGICA MONITORAMENTO')
+tab2.dataframe(data=dflogica, use_container_width=True, hide_index=True)
 
-
-nova_ordem = data_frame[["NOME", "PLACA","SISTEMA DE MONITORAMENTO"]]
-data_frame = nova_ordem"""
 
 
