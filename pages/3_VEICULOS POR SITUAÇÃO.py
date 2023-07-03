@@ -107,5 +107,16 @@ dfsituacao = filtered_data
 col1.dataframe(data=estado, use_container_width=True, hide_index=False)
 col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
 
+def convert_to_csv(dfbase):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return dfbase.to_csv(index=False).encode('utf-8')
 
-st.dataframe(df)
+csv = convert_to_csv(filtered_data)
+
+# download button 1 to download dataframe as csv
+download1 = st.download_button(
+    label="Download data as CSV",
+    data=csv,
+    file_name='base rastreada.csv',
+    mime='text/csv'
+)
