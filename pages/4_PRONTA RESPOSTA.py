@@ -71,4 +71,4 @@ tab1.dataframe(data=data_frame, use_container_width=True, hide_index=True)
 
 pr = data_frame.profile_report()
 
-tab2.st_profile_report(pr)
+st_profile_report(pr)
