@@ -67,7 +67,7 @@ dfagendamentos = pd.DataFrame.from_dict(dadossheets)
 dfinstalacoes = pd.DataFrame.from_dict(dados)
 nova_ordem = dfinstalacoes[["placa_veiculo", "nome_cliente","situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao"]]
 dfinstalacoes = nova_ordem
-nova_ordemagendamento = dfagendamentos [["Cliente", "Placa","Cidade","Status","Instalação"]]
+nova_ordemagendamento = dfagendamentos[["Cliente", "Placa","Cidade","Status","Instalação"]]
 dfagendamentos  = nova_ordemagendamento
 filtro = (dfinstalacoes['situacao_veiculo'] == 'PENDENTE INSTALAÇÃO') | (dfinstalacoes['situacao_veiculo'] == 'AGENDADO') | (dfinstalacoes['situacao_veiculo'] == 'RECUSADO')
 filtered_data = dfinstalacoes[filtro]
