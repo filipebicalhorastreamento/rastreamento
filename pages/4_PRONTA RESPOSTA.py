@@ -4,7 +4,7 @@ from datetime import date
 import pandas as pd
 import numpy as np
 import altair as alt
-
+from streamlit_pandas_profiling import st_profile_report
 st.set_page_config(layout="wide")
 st.title('PRONTA RESPOSTA')
 # Read in data from the Google Sheet.
@@ -24,6 +24,8 @@ def load_data2(sheets_url):
 dados = load_data(10000000)
 
 data_frame = pd.DataFrame(dados)
+tab1, tab2 = st.tabs(["GERAL","Reporte"])
+
 """#data_frame ['DATA'] = pd.to_datetime(data_frame ['DATA']).dt.date
 
 estado = data_frame['ESTADO'].value_counts().to_frame()
@@ -65,4 +67,8 @@ col3.subheader('POR MES')
 col3.altair_chart(c3, use_container_width=True)"""
 
 
-st.dataframe(data=data_frame, use_container_width=True, hide_index=True)
+tab1.dataframe(data=data_frame, use_container_width=True, hide_index=True)
+
+pr = data_frame.profile_report()
+
+tab2.st_profile_report(pr)
