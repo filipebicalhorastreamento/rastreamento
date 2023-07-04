@@ -24,7 +24,7 @@ def load_data2(sheets_url):
 dados = load_data(10000000)
 
 data_frame = pd.DataFrame(dados)
-#data_frame ['DATA'] = pd.to_datetime(data_frame ['DATA']).dt.date
+"""#data_frame ['DATA'] = pd.to_datetime(data_frame ['DATA']).dt.date
 
 estado = data_frame['ESTADO'].value_counts().to_frame()
 estado_count = pd.DataFrame({'ESTADO': estado.index, 'Count': estado['count']})
@@ -62,7 +62,7 @@ col1.altair_chart(c, use_container_width=True)
 col2.subheader('POR FIPE')
 col2.altair_chart(c2, use_container_width=True)
 col3.subheader('POR MES')
-col3.altair_chart(c3, use_container_width=True)
+col3.altair_chart(c3, use_container_width=True)"""
 
 
 st.dataframe(data=data_frame, use_container_width=True, hide_index=True)
