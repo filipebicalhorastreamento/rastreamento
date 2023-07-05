@@ -61,12 +61,20 @@ def load_data2(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(csv_url)
 
+def convert_to_csv(dfretirada):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return dfbase.to_csv(index=False).encode('utf-8')
+
 dadossheets = load_sheets(10000000)
 dados = load_data(10000000)
+f_date = date.today()
+
 dfagendamentos = pd.DataFrame.from_dict(dadossheets)
-dfinstalacoes = pd.DataFrame.from_dict(dados)
-nova_ordem = dfinstalacoes[["placa_veiculo", "nome_cliente","situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao"]]
-dfinstalacoes = nova_ordem
+dfretirada = pd.DataFrame.from_dict(dados)
+dfretirada ['ultima_atualizacao'] = pd.to_datetime(df['ultima_atualizacao']).dt.date
+dfretirada['Nº Dias'] = (f_date - dfretirada['ultima_atualizacao']) / np.timedelta64(1, 'D')
+nova_ordem = dfretirada[["placa_veiculo", "nome_cliente","situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao","Nº Dias"]]
+dfretirada = nova_ordem
 filtro = (dfinstalacoes['situacao_veiculo'] == 'RETIRADA')
 filtered_data = dfinstalacoes[filtro]
 
@@ -87,5 +95,14 @@ col3, col4 = st.columns([2, 5])
 
 st.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
 
+csv = convert_to_csv(dfbase)
+
+# download button 1 to download dataframe as csv
+download1 = st.download_button(
+    label="Download data as CSV",
+    data=csv,
+    file_name='base retirada.csv',
+    mime='text/csv'
+)
 
 
