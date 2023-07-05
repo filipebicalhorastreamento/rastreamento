@@ -75,7 +75,7 @@ dfretirada ['ultima_atualizacao'] = pd.to_datetime(dfretirada['ultima_atualizaca
 dfretirada['Nº Dias'] = (f_date - dfretirada['ultima_atualizacao']) / np.timedelta64(1, 'D')
 nova_ordem = dfretirada[["placa_veiculo", "nome_cliente","situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao","Nº Dias"]]
 dfretirada = nova_ordem
-filtro = (dfinstalacoes['situacao_veiculo'] == 'RETIRADA')
+filtro = (dfretirada['situacao_veiculo'] == 'RETIRADA')
 filtered_data = dfinstalacoes[filtro]
 
 Status = filtered_data['uf_veiculo'].value_counts().to_frame()
