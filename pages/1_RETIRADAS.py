@@ -95,8 +95,7 @@ col3, col4 = st.columns([2, 5])
 
 st.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
 
-csv = convert_to_csv(dfbase)
-
+csv = convert_to_csv(filtered_data)
 # download button 1 to download dataframe as csv
 download1 = st.download_button(
     label="Download data as CSV",
