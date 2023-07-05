@@ -63,7 +63,7 @@ def load_data2(sheets_url):
 
 def make_clickable_both(val): 
     nome_cliente, placa_veiculo = val.split('#')
-    return f'<a target="_blank" href="{placa_veiculo}">{nome_cliente}</a>'
+    return f'<a target="_blank" href="web.whatsapp.com/55">{nome_cliente}</a>'
 
 dadossheets = load_sheets(10000000)
 dados = load_data(10000000)
