@@ -62,14 +62,14 @@ def load_data2(sheets_url):
     return pd.read_csv(csv_url)
 
 def make_clickable_both(val): 
-    name, url = val.split('#')
-    return f'<a target="_blank" href="{url}">{name}</a>'
+    nome_cliente, placa_veiculo = val.split('#')
+    return f'<a target="_blank" href="{placa_veiculo}">{nome_cliente}</a>'
 
 dadossheets = load_sheets(10000000)
 dados = load_data(10000000)
 dfagendamentos = pd.DataFrame.from_dict(dadossheets)
 dfinstalacoes = pd.DataFrame.from_dict(dados)
-dfinstalacoes ['Whatsapp'] = dfinstalacoes['nome_cliente'] + 'https://web.whatsapp.com/' + dfinstalacoes['placa_veiculo']
+dfinstalacoes ['Whatsapp'] = dfinstalacoes['nome_cliente'] + '#' + dfinstalacoes['placa_veiculo']
 nova_ordem = dfinstalacoes[["placa_veiculo", "nome_cliente","situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao","Whatsapp"]]
 dfinstalacoes = nova_ordem
 
