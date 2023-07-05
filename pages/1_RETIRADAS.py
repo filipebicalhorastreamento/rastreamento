@@ -71,7 +71,7 @@ f_date = date.today()
 
 dfagendamentos = pd.DataFrame.from_dict(dadossheets)
 dfretirada = pd.DataFrame.from_dict(dados)
-dfretirada ['ultima_atualizacao'] = pd.to_datetime(df['ultima_atualizacao']).dt.date
+dfretirada ['ultima_atualizacao'] = pd.to_datetime(dfretirada['ultima_atualizacao']).dt.date
 dfretirada['Nº Dias'] = (f_date - dfretirada['ultima_atualizacao']) / np.timedelta64(1, 'D')
 nova_ordem = dfretirada[["placa_veiculo", "nome_cliente","situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao","Nº Dias"]]
 dfretirada = nova_ordem
