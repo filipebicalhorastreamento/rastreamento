@@ -65,7 +65,7 @@ dadossheets = load_sheets(10000000)
 dados = load_data(10000000)
 dfagendamentos = pd.DataFrame.from_dict(dadossheets)
 dfinstalacoes = pd.DataFrame.from_dict(dados)
-dfinstalacoes ['Whatsapp'] = df['dfinstalacoes'] + 'https://web.whatsapp.com/' + df['placa_veiculo']
+dfinstalacoes ['Whatsapp'] = dfinstalacoes['nome_cliente'] + 'https://web.whatsapp.com/' + dfinstalacoes['placa_veiculo']
 nova_ordem = dfinstalacoes[["placa_veiculo", "nome_cliente","situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao","Whatsapp"]]
 dfinstalacoes = nova_ordem
 
