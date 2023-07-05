@@ -91,7 +91,7 @@ d = alt.Chart(DFStatusagendamento).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Qntd", type="quantitative"),
     color=alt.Color(field="Status", type="nominal"),
 )
-st.dataframe(df.style.applymap(make_clickable_both, subset=['Whatsapp']))
+st.dataframe(dfinstalacoes.style.applymap(make_clickable_both, subset=['Whatsapp']))
 st.dataframe(data=Status.T, use_container_width=True, hide_index=True)
 col1, col2 = st.columns([2, 5])
 col1.altair_chart(c, use_container_width=True)
