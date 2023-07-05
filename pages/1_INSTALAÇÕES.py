@@ -61,6 +61,10 @@ def load_data2(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(csv_url)
 
+def make_clickable_both(val): 
+    name, url = val.split('#')
+    return f'<a target="_blank" href="{url}">{name}</a>'
+
 dadossheets = load_sheets(10000000)
 dados = load_data(10000000)
 dfagendamentos = pd.DataFrame.from_dict(dadossheets)
@@ -87,7 +91,7 @@ d = alt.Chart(DFStatusagendamento).mark_arc(innerRadius=50).encode(
     theta=alt.Theta(field="Qntd", type="quantitative"),
     color=alt.Color(field="Status", type="nominal"),
 )
-
+st.dataframe(df.style.applymap(make_clickable_both, subset=['Whatsapp']))
 st.dataframe(data=Status.T, use_container_width=True, hide_index=True)
 col1, col2 = st.columns([2, 5])
 col1.altair_chart(c, use_container_width=True)
