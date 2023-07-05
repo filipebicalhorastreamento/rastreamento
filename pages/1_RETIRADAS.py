@@ -63,7 +63,7 @@ def load_data2(sheets_url):
 
 def convert_to_csv(dfretirada):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
-    return dfbase.to_csv(index=False).encode('utf-8')
+    return filtered_data.to_csv(index=False).encode('utf-8')
 
 dadossheets = load_sheets(10000000)
 dados = load_data(10000000)
