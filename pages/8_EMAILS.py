@@ -65,3 +65,23 @@ col3.code('''
 
 
     ''')
+col4.write('Desprotegido')
+col4.code('''
+Prezado(a), venho como lembrete que seu veículo estará desprotegido até que o equipamento rastreador for instalado devidamente.
+
+Entre em contato para agendar a instalação através no WhatsApp pelo (31)99940-9900 ou ligue para nossa central através do (31) 2515-1616.
+
+Lembrete da cláusula 3.6.1 do FAM:
+"3.6.1 – Para todos os veículos citados na cláusula 3.6 e seus parágrafos, os eventos danosos reparáveis e irreparáveis em casos de furto e roubo somente serão amparados pelo FAM após a instalação do equipamento." 
+
+REAGENDAMENTO: basta entrar em contato com antecedência mínima de 24h através no WhatsApp pelo (31)99940-9900 ou ligue para nossa central através do (31) 2515-1616. 
+IMPRODUTIVA: Em casos devido a desencontro proporcionado pelo associado ou não comunicado com antecedência, terá um custo de instalação adicional de R$50,00 cobrado na próxima mensalidade.
+
+
+Tem dúvidas? Entre em contato no seu canal preferido:
+Mobili Express: 31999409900
+Telefone Fixo: 31 2515-1616
+E-mail: rastreador@gomobili.com.br
+
+Qualquer dúvida ou sugestão estou à disposição.
+''')
