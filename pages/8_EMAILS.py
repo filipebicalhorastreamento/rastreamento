@@ -65,6 +65,7 @@ col3.code('''
 
 
     ''')
+col4, col5, col6 = st.columns([3, 3, 3])
 col4.write('Desprotegido')
 col4.code('''
 Prezado(a), venho como lembrete que seu veículo estará desprotegido até que o equipamento rastreador for instalado devidamente.
