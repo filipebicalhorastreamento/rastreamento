@@ -86,3 +86,25 @@ E-mail: rastreador@gomobili.com.br
 
 Qualquer dúvida ou sugestão estou à disposição.
 ''')
+col5.write('RASTREADOR : PENDÊNCIA DE INSTALAÇÃO')
+col5.code('''
+Olá [nome_associado], como você está?
+
+Estamos enfrentando dificuldades para agendar a instalação do módulo rastreador em seu veículo [modelo], [placa]. 
+É importante ressaltar que, devido a essa pendência, seu veículo permanece sem a devida proteção contra roubo e furto.
+Solicitamos encarecidamente que realize o agendamento o mais rápido possível.
+
+Conforme a cláusula 3.6.1 do FAM – Fundo do Amparo Mobili: 
+Para todos os veículos citados na cláusula 3.6 e seus parágrafos, os eventos danosos reparáveis e irreparáveis em casos de furto e roubo somente serão amparados pelo FAM após a instalação do equipamento.
+
+Contamos com a sua cooperação imediata para resolver essa questão.
+
+Veja o Regulamento de Rastreador
+https://gomobili.com.br/wp-content/uploads/2022/05/Regulamento-de-Rastreadores-v3.0.pdf
+
+Mobili Express: 31999409900 WhatsApp
+Telefone Fixo: 31 2515-1616
+E-mail: rastreador@gomobili.com.br
+
+''')
+
