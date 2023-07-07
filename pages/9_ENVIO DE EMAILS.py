@@ -7,9 +7,9 @@ from email.mime.multipart import MIMEMultipart
 # Função para enviar o e-mail
 def send_email(subject, body, recipient):
     # Configurações do servidor de e-mail
-    email_address = "seu_email@example.com"
-    password = "sua_senha"
-    smtp_server = "smtp.example.com"
+    email_address = "rastreador@gomobili.com.br"
+    password = "mobili@2023"
+    smtp_server = "smtp.kinghost.net"
     smtp_port = 587
 
     # Criar uma mensagem de e-mail
