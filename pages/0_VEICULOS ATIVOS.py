@@ -5,6 +5,9 @@ import pandas as pd
 import numpy as np
 import altair as alt
 import io
+from io import BytesIO
+from pyxlsb import open_workbook as open_xlsb
+
 
 # buffer to use for excel writer
 buffer = io.BytesIO()
@@ -35,6 +38,18 @@ def load_data2(sheets_url):
 def convert_to_csv(dfbase):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return dfbase.to_csv(index=False).encode('utf-8')
+
+def to_excel(dfbase):
+    output = BytesIO()
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    dfbase.to_excel(writer, index=False, sheet_name='Sheet1')
+    workbook = writer.book
+    worksheet = writer.sheets['Sheet1']
+    format1 = workbook.add_format({'num_format': '0.00'}) 
+    worksheet.set_column('A:A', None, format1)  
+    writer.save()
+    processed_data = output.getvalue()
+    return processed_data
 
 veiculos_ativos, logica_monitoramento, softruck_monitoramento, getrak_monitoramento = load_data(10000000)
 
@@ -124,4 +139,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         mime='application/vnd.ms-excel'
     )
 
-
+df_xlsx = to_excel(dfbase)
+st.download_button(label='📥 Download Current Result',
+                                data=df_xlsx ,
+                                file_name= 'df_test.xlsx')
