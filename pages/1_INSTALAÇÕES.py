@@ -92,14 +92,26 @@ d = alt.Chart(DFStatusagendamento).mark_arc(innerRadius=50).encode(
     color=alt.Color(field="Status", type="nominal"),
 )
 #st.dataframe(dfinstalacoes.style.applymap(make_clickable_both, subset=['Whatsapp']))
-st.dataframe(data=Status.T, use_container_width=True, hide_index=True)
-col1, col2 = st.columns([2, 5])
-col1.altair_chart(c, use_container_width=True)
-col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
-st.dataframe(data=Statusagendamento.T, use_container_width=True, hide_index=True)
-col3, col4 = st.columns([2, 5])
-col3.altair_chart(d, use_container_width=True)
-col4.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
+tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
+
+with tab1:
+    st.dataframe(data=Status.T, use_container_width=True, hide_index=True)
+    col1, col2 = st.columns([2, 5])
+    col1.altair_chart(c, use_container_width=True)
+    col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
+    st.dataframe(data=Statusagendamento.T, use_container_width=True, hide_index=True)
+    col3, col4 = st.columns([2, 5])
+    col3.altair_chart(d, use_container_width=True)
+    col4.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
+
+with tab2:
+   st.header("A dog")
+   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+
+with tab3:
+   st.header("An owl")
+   st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+
 
 
 
