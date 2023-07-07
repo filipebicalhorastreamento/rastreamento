@@ -69,6 +69,7 @@ dadossheets = load_sheets(10000000)
 dados = load_data(10000000)
 dfagendamentos = pd.DataFrame.from_dict(dadossheets)
 dfinstalacoes = pd.DataFrame.from_dict(dados)
+dfcontatos = pd.DataFrame.from_dict(dados)
 dfinstalacoes ['Whatsapp'] = 'http://web.whatsapp.com/55'+ '#' + dfinstalacoes['placa_veiculo']
 nova_ordem = dfinstalacoes[["placa_veiculo", "nome_cliente","situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao","Whatsapp"]]
 dfinstalacoes = nova_ordem
@@ -95,6 +96,7 @@ d = alt.Chart(DFStatusagendamento).mark_arc(innerRadius=50).encode(
 tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
 
 with tab1:
+    st.header("DASHBOARD")
     st.dataframe(data=Status.T, use_container_width=True, hide_index=True)
     col1, col2 = st.columns([2, 5])
     col1.altair_chart(c, use_container_width=True)
@@ -105,8 +107,8 @@ with tab1:
     col4.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
 
 with tab2:
-   st.header("A dog")
-   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+   st.header("BOAS VINDAS")
+   st.dataframe(data=dfcontatos, use_container_width=True, hide_index=True)
 
 with tab3:
    st.header("An owl")
