@@ -1,120 +1,74 @@
 import streamlit as st
-import pandas as pd
-import requests
-import altair as alt
+import time
 import datetime
 from datetime import date
 import numpy as np
-
-st.set_page_config(layout="wide")
-st.title('INSTALAÇÕES PENDENTES')
-
-chave_api = 'c5b79e7ce0c72d6e3c9842a51433c726'
-
-@st.cache_data
+import pandas as pd
+from app.rotinas import load_veiculos, readshets, load_clientes
+st.set_page_config(page_title="MOBILI - RASTREAMENTO", layout="wide")
+st.title('MOBILI - PENDENTE INSTALAÇÃO')
 def load_data(nrows):
-
-    url = "https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/headers_authorization?cliente=3542&nome=operacional&senha=WR3D5K"
-
-    payload = {}
-    headers = {}
-
-    session = requests.Session()
-    response = session.post(url=url, headers=headers, data=payload)
-    data = response.json()
-
-    # Verifica se a autenticação foi bem-sucedida
-    if response.status_code == 200 and data.get('error') == False:
-        dados = []
-        indice = 0
-
-        while True:
-            # Faz uma solicitação GET para buscar um veículo específico
-            veiculo_url = f'https://sgr.hinova.com.br/sgr/sgrv2_api/service_api/servicos/buscar_veiculo/{chave_api}'
-            params = {'indice': str(indice)}
-            veiculo_response = session.get(url=veiculo_url, params=params)
-            veiculo_data = veiculo_response.json()
-
-            # Se dar algum erro, ou não retonar 200, quebrar o loop pois chegou no fim da lista
-            if veiculo_response.status_code != 200 or veiculo_data.get('error') == True or len(veiculo_data.get('data')) == 0:
-                break
-
-        # Adicionar dados na lista de dados
-            dados.extend(veiculo_data.get('data'))
-
-        # Subir indice, para procurar no proximo indice
-            indice += 200
-
-        # Exibe os dados no Streamlit
-        return dados
-    else:
-        print('Erro na autenticação. Verifique as credenciais.')
-    return dados
-
-def load_sheets(nrows):
-    datasheets = load_data2(st.secrets["public_gsheets_url"])
-    uppercase = lambda x: str(x).upper()
-    datasheets.rename(uppercase, axis='columns', inplace=True)
-    return datasheets
-
-def load_data2(sheets_url):
-    csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
-    return pd.read_csv(csv_url)
-
-def make_clickable_both(val): 
-    nome_cliente, placa_veiculo = val.split('#')
-    return f'<a target="_blank" href="http://web.whatsapp.com/55">{nome_cliente}</a>'
-
-dadossheets = load_sheets(10000000)
-dados = load_data(10000000)
-dfagendamentos = pd.DataFrame.from_dict(dadossheets)
-dfinstalacoes = pd.DataFrame.from_dict(dados)
-dfcontatos = pd.DataFrame.from_dict(dados)
-dfinstalacoes ['Whatsapp'] = 'http://web.whatsapp.com/55'+ '#' + dfinstalacoes['placa_veiculo']
-nova_ordem = dfinstalacoes[["placa_veiculo", "nome_cliente","situacao_veiculo","modelo_veiculo","cidade_veiculo","uf_veiculo","ultima_atualizacao","Whatsapp"]]
-dfinstalacoes = nova_ordem
-
-filtro = (dfinstalacoes['situacao_veiculo'] == 'PENDENTE INSTALAÇÃO') | (dfinstalacoes['situacao_veiculo'] == 'AGENDADO') | (dfinstalacoes['situacao_veiculo'] == 'RECUSADO')
-filtered_data = dfinstalacoes[filtro]
-
-Status = filtered_data['situacao_veiculo'].value_counts().to_frame()
-DFStatus = pd.DataFrame({'Status': Status.index, 'Qntd': Status['count']})
-
-c = alt.Chart(DFStatus).mark_arc(innerRadius=50).encode(
-    theta=alt.Theta(field="Qntd", type="quantitative"),
-    color=alt.Color(field="Status", type="nominal"),
+  veiculos = load_veiculos(10000000)
+  safecar = readshets(st.secrets["safecar"])
+  return veiculos, safecar
+def convert_to_csv(df):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_csv(index=False, sep=';')
+f_date = date.today()
+veiculos, safecar = load_data(10000000)
+#CRIA OS DATAFRAMES
+dfsafecar = pd.DataFrame.from_dict(safecar)
+dfsafecar.rename(columns = {'ConcluÃ­do':'Conclusão','Placa':'PLACA'}, inplace = True)
+dfsafecar = dfsafecar.apply(lambda x: x.astype(str).str.upper())
+dfsafecar["Concluído"] = pd.to_datetime(dfsafecar["Concluído"]).dt.date
+#dfsafecar["Concluído"] = pd.to_datetime(dfsafecar["Concluído"], format="%Y-%m-%d %H:%M")
+#dfsafecar["Concluído"] = pd.to_datetime(dfsafecar["Concluído"], format="%d/%m/%Y", dayfirst=True)
+dfveiculos = pd.DataFrame.from_dict(veiculos)
+dfveiculos.rename(columns = {'placa_veiculo':'PLACA', 'nome_cliente':'NOME', 'situacao_veiculo':'SITUAÇÃO', 'fipe_valor_veiculo':'FIPE'}, inplace = True)
+dfveiculos = dfveiculos.apply(lambda x: x.astype(str).str.upper())
+pendentes = (dfveiculos['SITUAÇÃO'] == "PENDENTE INSTALAÇÃO") | (dfveiculos['SITUAÇÃO'] == "AGENDADO")| (dfveiculos['SITUAÇÃO'] == "RECUSADO")
+dfveiculospendentes = dfveiculos[pendentes]
+dfveiculospendentes = pd.merge(dfveiculospendentes, dfsafecar, on='PLACA', how='left')
+#Processa os dataframes PENDENTE INSTALAÇÃO
+dfveiculospendentes['ultima_atualizacao'] = pd.to_datetime(dfveiculospendentes['ultima_atualizacao']).dt.date
+#dfveiculospendentes['Status'] = df = pd.merge(dfsafecar, dfveiculospendentes, on='PLACA', how='left')
+dfveiculospendentes['Dias'] = (f_date - dfveiculospendentes['ultima_atualizacao']) / np.timedelta64(1, 'D')
+dfveiculospendentes['Dias'] = pd.to_numeric(dfveiculospendentes['Dias'], errors='coerce').fillna(0).astype(int)
+dfveiculospendentes['FIPE'] = pd.to_numeric(dfveiculospendentes['FIPE'], errors='coerce')
+ordem_dfveiculospendentes = dfveiculospendentes[["NOME","PLACA","FIPE","cidade_veiculo", "Concluído", "SITUAÇÃO","Status","Dias"]]
+dfveiculospendentes = ordem_dfveiculospendentes
+agendado = (dfveiculospendentes['SITUAÇÃO'] == "AGENDADO")
+dfagendado = dfveiculospendentes[agendado]
+pendente = (dfveiculospendentes['SITUAÇÃO'] == "PENDENTE INSTALAÇÃO")
+dfpendente = dfveiculospendentes[pendente]
+recusado = (dfveiculospendentes['SITUAÇÃO'] == "RECUSADO")
+dfrecusado = dfveiculospendentes[recusado]
+novasinstalacoes = dfpendente['PLACA'].nunique()
+statusnovasinstalacoes = dfpendente['Status'].value_counts()
+statusnovasinstalacoes_texto = statusnovasinstalacoes.to_frame().to_string(header=False, index=True)
+statusnovasinstalacoes_texto_com_quebra_de_linha = statusnovasinstalacoes_texto.replace('\n', ',\n')
+agendados = dfagendado['PLACA'].nunique()
+recusados = dfrecusado['PLACA'].nunique()
+total_placas = dfveiculospendentes['PLACA'].nunique()
+placas_por_situacao = dfveiculospendentes['SITUAÇÃO'].value_counts()
+status_por_situacao = dfveiculospendentes.groupby('SITUAÇÃO')['Status'].nunique()
+placas_acima_de_10_dias = dfveiculospendentes[dfveiculospendentes['Dias'] > 10]
+#statusnovasinstalacoes_texto = statusnovasinstalacoes.to_frame().to_string()
+st.write(f'Novas instalações: {novasinstalacoes} \n')
+st.write(statusnovasinstalacoes_texto_com_quebra_de_linha)
+st.write(f'Instalações agendadas: {agendados}\n')
+st.write(f'Instalações recusadas: {recusados}\n')
+#st.write('\nPlacas acima de 10 dias em uma mesma situação:\n', placas_acima_de_10_dias)
+#st.write(f'Total de placas: {total_placas}\n')
+dfveiculospendentes.sort_values(by='Status', ascending=True, inplace=True)
+st.dataframe(data=dfveiculospendentes, use_container_width=True, hide_index=True)
+csv1 = convert_to_csv(dfveiculospendentes)
+download = st.download_button(
+    label="Download",
+    data=csv1,
+    file_name='instalacoes.csv',
+    mime='text/csv'
 )
-
-Statusagendamento = dfagendamentos['STATUS'].value_counts().to_frame()
-DFStatusagendamento = pd.DataFrame({'Status': Statusagendamento.index, 'Qntd': Statusagendamento['count']})
-
-d = alt.Chart(DFStatusagendamento).mark_arc(innerRadius=50).encode(
-    theta=alt.Theta(field="Qntd", type="quantitative"),
-    color=alt.Color(field="Status", type="nominal"),
-)
-#st.dataframe(dfinstalacoes.style.applymap(make_clickable_both, subset=['Whatsapp']))
-tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
-
-with tab1:
-    st.header("DASHBOARD")
-    st.dataframe(data=Status.T, use_container_width=True, hide_index=True)
-    col1, col2 = st.columns([2, 5])
-    col1.altair_chart(c, use_container_width=True)
-    col2.dataframe(data=filtered_data, use_container_width=True, hide_index=True)
-    st.dataframe(data=Statusagendamento.T, use_container_width=True, hide_index=True)
-    col3, col4 = st.columns([2, 5])
-    col3.altair_chart(d, use_container_width=True)
-    col4.dataframe(data=dfagendamentos, use_container_width=True, hide_index=True)
-
-with tab2:
-   st.header("BOAS VINDAS")
-   st.dataframe(data=dfcontatos, use_container_width=True, hide_index=True)
-
-with tab3:
-   st.header("An owl")
-   st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
-
-
-
-
-
+st.link_button("Atualiza planilhas", "https://webhookworkflow.swiftychat.com.br/webhook/d48eb156-79c6-4595-821b-b0d58ff9bc82")
+st.link_button("Atualiza planilhas", "https://webhookworkflow.swiftychat.com.br/webhook/7d423110-29fd-4c58-a7c1-a0ab18cc761d")
+st.link_button("Envia comunicados", "https://webhookworkflow.swiftychat.com.br/webhook/363ab170-45ff-4ff7-b8ff-3f3f96c2518a")
